@@ -1,0 +1,618 @@
+/* ========================================================================================================================
+                                                    ESTILOS BASE Y RESETEO
+   ======================================================================================================================== */
+*{
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none; /* Quita el subrayado azul de los links */
+    color: inherit;        /* Hace que el link herede el color del texto */
+}
+img {
+    max-width: 100%;       /* Evita que las imágenes grandes se salgan de la pantalla */
+    display: block;        /* Quita un pequeño espacio extraño que dejan debajo */
+}
+
+/* ========================================================================================================================
+                                                    NAVBAR (Escritorio)
+   ======================================================================================================================== */
+/* Configuración del Header */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Logo a la izquierda, links a la derecha */
+    align-items: center;
+    padding: 10px 5% 10px 3%;
+    background-color: #ffffff;
+    position: sticky; /* Se queda pegado arriba al hacer scroll */
+    top: 0;
+    z-index: 1000; /* Para que siempre esté por encima de las imágenes */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Sombra sutil */
+}
+/*__________________________________________________________________________________________________________*/
+/* Estilo del Logo */
+.logo-nav{
+    width: 120px;
+}
+/*__________________________________________________________________________________________________________*/
+
+/*______________________________________________Menú de Navegación__________________________________________*/
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+.nav-links li {
+    margin-left: 30px;
+}
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #333;
+    transition: color 0.3s;
+    position: relative;
+    padding: 0px 5px 5px 5px;
+}
+/* Línea debajo de cada link del navbar */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0; /* Empieza sin ancho */
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #465d63;
+    transition: width 0.3s ease;
+}
+/* Cuando el enlace tenga la clase .active, la línea medirá el 100% */
+.nav-links a.active::after {
+    width: 100%;
+}
+/* Efecto al pasar el ratón por los enlaces */
+.nav-links a:hover {
+    color: #888; 
+}
+/* Linea debajo del link al pasar el ratón*/
+.nav-links a:hover::after {
+    width: 100%;
+}
+/*__________________________________________________________________________________________________________*/
+/* ========================================================================================================================
+                                                BOTÓN HAMBURGUESA (Estructura y Animación)
+   ======================================================================================================================== */
+/* Estilo base del botón del navbar en PC*/
+.menu-toggle {
+    display: none; /* <--- Esconde el icono en PC */
+    width: 30px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1002;
+}
+/* Las 3 barras */
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #333; /* Color de las barras */
+    border-radius: 9px;
+    left: 0;
+    transition: .25s ease-in-out;
+}
+/* Posición inicial de cada barra */
+.hamburger span:nth-child(1) { top: 0px; }
+.hamburger span:nth-child(2) { top: 10px; }
+.hamburger span:nth-child(3) { top: 20px; }
+
+/* --- TRANSFORMACIÓN A "X" --- */
+/* La barra de arriba gira 45 grados */
+.menu-toggle.is-active span:nth-child(1) {
+    top: 10px;
+    transform: rotate(135deg);
+}
+/* La barra del medio desaparece */
+.menu-toggle.is-active span:nth-child(2) {
+    opacity: 0;
+    left: -40px;
+}
+/* La barra de abajo gira -45 grados */
+.menu-toggle.is-active span:nth-child(3) {
+    top: 10px;
+    transform: rotate(-135deg);
+}
+
+/* ========================================================================================================================
+                                                    BODY Y CAPA OSCURA (Overlay)
+   ======================================================================================================================== */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.089);
+    z-index: 999;
+    /* Empieza invisible */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s;
+    pointer-events: none;
+}
+/* Estado cuando el menú está abierto */
+body.menu-open::before {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+body.menu-open {
+    overflow: hidden; /* Bloquea el scroll del fondo */
+}
+
+/* ========================================================================================================================
+                                                    SECCIÓN INICIO (HERO PARALLAX)
+   ======================================================================================================================== */
+.hero-parallax {
+    /* Ajustamos la altura para que ocupe casi toda la pantalla */
+    height: 80vh; 
+    
+    /* Imagen de fondo */
+    background-image: url('../img/background-parallax.webp'); 
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 48%;
+
+    /* Centrado del texto */
+    display: flex;
+    justify-content: flex-start; /* Alinea el contenido a la izquierda */
+    align-items: center;
+    text-align: left; /* Texto alineado a la izquierda */
+    color: white;
+    position: relative;
+    padding-left: 10%;
+}
+
+/* Capa oscura sobre la imagen para que el texto se lea bien */
+.hero-parallax::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Oscurece un poco la foto */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Por encima de la capa oscura */
+    max-width: 850px;
+    border-left: 4px solid #e6d4ac; 
+    padding: 10px 0 10px 30px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    margin-bottom: 35px;
+    color: #e0e0e0;
+}
+
+/* Botón Parallax */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Centra el contenido */
+    gap: 0; /* Empezamos sin hueco para que el texto esté centrado */
+    padding: 8px 25px;
+    background-color: transparent;
+    color: #e6d4ac;
+    border: 1px solid #e6d4ac;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+/* El icono SVG */
+.btn-primary svg {
+    width: 0; /* Ocupa 0 espacio al inicio para no descentrar el texto */
+    opacity: 0;
+    transition: all 0.4s ease;
+    transform: translateX(-10px);
+}
+.btn-primary:hover {
+    gap: 15px; /* Crea el espacio para la flecha al entrar */
+    font-size: 0.95rem;
+}
+.btn-primary:hover svg {
+    width: 20px; /* Recupera su tamaño */
+    opacity: 1;
+    transform: translateX(0);
+}
+.btn-primary span {
+    transition: transform 0.4s ease;
+}
+.btn-primary:hover span {
+    transform: translateX(2px);
+}
+
+/* Inicialmente los ocultamos para que la animación los "despierte" */
+.hero-content h1, 
+.hero-content p, 
+.hero-content .btn-primary {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Retrasos para crear la cascada */
+.hero-content h1 { animation-delay: 0.3s; }
+.hero-content p { animation-delay: 0.6s; }
+.hero-content .btn-primary { animation-delay: 0.9s; }
+
+/* Definimos el movimiento: empieza invisible y 30px más abajo */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================================================================================================
+                                                SECCIÓN CARRUSEL PROYECTOS
+   ======================================================================================================================== */
+.proyectos-slider {
+    padding: 80px 10%;
+    background-color: #f9f9f9;
+}
+.proyectos-slider .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.slider-intro {
+    position: relative;
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 60px 0; /* Más espacio arriba y abajo */
+    width: 100%;     /* Que ocupe todo el ancho disponible */
+    max-width: 800px; 
+    z-index: 10; 
+}
+
+.bg-text-decor {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem; /* Tamaño gigante */
+    font-weight: 900;
+    color: rgba(105, 109, 110, 0.12);  /* Muy, muy clarito (tu color técnico al 5%) */
+    text-transform: uppercase;
+    letter-spacing: 20px; /* Letras muy separadas */
+    z-index: -1; /* Se va al fondo del todo */
+    pointer-events: none; /* Que el ratón pase de él */
+    user-select: none; /* Que no se pueda seleccionar al copiar texto */
+    white-space: nowrap;
+    color: transparent; /* Letra transparente */
+    -webkit-text-stroke: 1px rgba(70, 93, 99, 0.2); /* Solo el borde finito */
+    display: block;
+}
+/* El "marco" por donde vemos las fotos */
+.slider-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* El carril largo que contiene todas las fotos */
+.slider-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+.slide {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    pointer-events: none;
+}
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    pointer-events: auto;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;       /* Altura automática */
+    max-height: 500px;  /* Límite máximo para que no sea gigante */
+    object-fit: contain;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+.slide-info {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 40px;
+    text-align: left;
+    padding-left: 60px;
+}
+.slide-info h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.slide-info p {
+    color: #666;
+    margin-bottom: 25px;
+    max-width: 700px;
+}
+
+.btn-slider {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #465d63;
+    color: #465d63;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-slider:hover {
+    background-color: #465d63;
+    color: white;
+}
+
+/* Botones Flechas */
+.prev, .next {
+    position: absolute;
+    top: 250px;
+    transform: translateY(-50%);
+    background: transparent;
+    color: #465d63;
+    border: none;
+    cursor: pointer;
+    z-index: 101;
+    padding: 10px;
+}
+.prev:hover, .next:hover {
+    color: #e6d4ac; /* Color beige técnico */
+    transform: translateY(-50%) scale(1.2); /* Se hacen un poco más grandes */
+}
+.prev { left: -60px; }
+.next { right: -60px; }
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px; /* Pegados a la imagen */
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 100;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background-color: #465d63;
+    transform: scale(1.2);
+}
+
+/* ========================================================================================================================
+                                                        MEDIA QUERY
+   ======================================================================================================================== */
+
+/*________________________________________________Pantallas menores a 650___________________________________________________*/
+@media (max-width: 650px) {
+    .navbar {
+        display: flex;
+        justify-content: right; /* Centra el logo */
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background-color: #ffffff;
+        z-index: 1001;
+        padding: 10px 0;
+    }
+    
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1002;
+    }
+    /*________________________________________________Menú desplegable_____________________________________________________*/
+    .nav-links {
+        position: fixed;
+        left: -100%; /* Escondido a la izquierda */
+        top: 90px;   /* Debajo del navbar */
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        background-color: #fff;
+        transition: left 0.5s ease-in-out; 
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+        padding: 20px 0;
+        text-align: left;  /* Alinea el texto a la izquierda */
+        padding: 10px 7% 20px 7%;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+        transition: left 0.6s ease-in-out; 
+        z-index: 1000;
+    }
+    .nav-links.active {
+        left: 0; /* Aparece al hacer clic */
+    }
+    /* --- Animación Cascada Links --- */
+    .nav-links li {
+        margin: 15px 0;
+        margin-left: 0;
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    /* Orden de salida (cuando cerramos): el 1º desaparece el último */
+    .nav-links li:nth-child(1) { transition-delay: 0.8s; }
+    .nav-links li:nth-child(2) { transition-delay: 0.5s; }
+    .nav-links li:nth-child(3) { transition-delay: 0.3s; }
+    .nav-links li:nth-child(4) { transition-delay: 0s; }
+    /* Animación de ENTRADA (cuando el menú tiene .active) */
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    /* Tiempos de entrada mucho más rápidos (0.05s de diferencia) */
+    .nav-links.active li:nth-child(1) { transition-delay: 0.20s; }
+    .nav-links.active li:nth-child(2) { transition-delay: 0.40s; }
+    .nav-links.active li:nth-child(3) { transition-delay: 0.55s; }
+    .nav-links.active li:nth-child(4) { transition-delay: 0.60s; }
+
+    body{
+        padding-top: 100px;
+    }
+    /*________________________________________________Sección Inicio (Parallax)_____________________________________________________*/
+    .hero-parallax {
+        background-attachment: scroll;
+        height: 60vh;
+        justify-content: center;
+        text-align: center;
+        padding-left: 0;
+        padding: 0 10%; 
+        background-position: center center;
+    }
+
+    .hero-content {
+        border-left: none;       /* Quitamos la línea lateral */
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+
+    .hero-content p {
+        font-size: 0.8rem;
+        margin-bottom: 25px;
+    }
+
+    /* El botón en móvil: un poco más grande para facilitar el clic táctil */
+    .btn-primary {
+        padding: 10px 25px;
+        width: auto;
+    }
+
+    .slider-container {
+        height: auto;
+        min-height: 250px;
+    }
+
+    .proyectos-slider {
+        padding: 40px 5% 20px 5%; /* Menos espacio arriba/abajo */
+    }
+    .bg-text-decor {
+        font-size: 4rem;
+        letter-spacing: 5px;
+        top: 40%; /* Ajuste visual para el móvil */
+    }
+    .slider-intro {
+        width: 100%;           /* No puede medir más del 100% del móvil */
+        max-width: 100%;       /* Refuerzo para que no se pase */
+        padding: 0 5%;         /* Un poco de margen para que no toque los bordes */
+        margin-left: auto;
+        margin-right: auto;
+        overflow-wrap: break-word; /* Si una palabra es muy larga, la corta */
+        box-sizing: border-box;    /* Asegura que el padding no sume ancho extra */
+    }
+
+    /* Ajustamos el marco para que no se salga nada */
+    .slider-wrapper {
+        max-width: 100%;
+        overflow: hidden; 
+    }
+
+    /* La imagen en móvil: menos alta para que no ocupe todo */
+    .slide img {
+        height: 250px; 
+        margin-bottom: 20px;
+    }
+
+    /* El texto del proyecto */
+    .slide-info {
+        margin-top: 15px; /* De 100px a 15px para que se pegue a la imagen */
+        padding: 0 5%;
+    }
+
+    .slide-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .slide-info p {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    /* Botón más cómodo para pulsar con el dedo */
+    .btn-slider {
+        width: 150px;
+        padding: 8px 4px;
+        text-align: center;
+    }
+
+    /* LAS FLECHAS: las quitamos */
+    .prev, .next {
+        display: none !important;
+    }
+    .slider-container {
+        touch-action: pan-y; /* Permite scroll vertical pero bloquea el horizontal nativo para usar el nuestro */
+    }
+    /* Los puntos un poco más cerca */
+    .slider-dots {
+        margin-top: 10px;    /* Reducimos el espacio con el botón de arriba */
+        gap: 8px;            /* Juntamos los circulitos entre sí */
+        padding-bottom: 10px; /* Menos espacio por debajo */
+    }
+
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título de la pestaña -->
+    <title>Arena Técnica | Gestión Integral de Proyectos</title>
+    <!-- Descripción para Google (SEO) -->
+    <meta name="description" content="Arena Técnica: Tu técnico de confianza para la gestión integral de proyectos. Desde la decisión inicial hasta la entrega final de obra. Calidad y rigor técnico.">
+    <!-- Favicon (el icono pequeño que sale en la pestaña) -->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+    <!-- Enlace al CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Fuentes de Google Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Para cargar los iconos de Yesicon -->
+    <script src="https://iconify.design"></script>
+</head>
+<body>
+    <header class="navbar">
+        <!-- Botones navbar formato móvil -->
+        <div class="menu-toggle" id="mobile-menu">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <img class="logo-nav" src="assets/img/logo-navbar.webp" alt="imagen del logo de Arena Técnica">
+        
+        <nav class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="acerca-de-mi.html">Acerca de mí</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="servicios.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero-parallax">
+        <div class="hero-content">
+            <h1>Gestión Integral de Proyectos</h1>
+            <p>¡Bienvenido a nuestro espacio de arquitectura técnico!</p>
+            <a href="acerca-de-mi.html" class="btn-primary">
+                <span>CONÓCENOS</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+        </div>
+    </section>
+    <section class="proyectos-slider">
+        <div class="container">
+            <!-- Texto fijo que no se mueve -->
+            <div class="slider-intro">
+                <!-- El texto que "flota" al fondo -->
+                <span class="bg-text-decor">PROYECTOS</span> 
+                <p>Gestionamos todo el proceso constructivo desde fase inicial de toma de decisiones, redacción de proyectos, gestión de obra y entrega final.</p>
+            </div>
+
+            <!-- Contenedor del movimiento -->
+            <div class="slider-wrapper">
+                <div class="slider-container" id="slider">
+                    
+                    <!-- PROYECTO 1 -->
+                    <div class="slide active">
+                        <img src="assets/img/background-parallax.webp" alt="Reforma integral">
+                        <div class="slide-info">
+                            <h3>Reforma Integral Vivienda</h3>
+                            <p>Gestión completa de licencias y dirección de obra en el centro de Madrid.</p>
+                            <a href="servicios.html" class="btn-slider">Saber más</a>
+                        </div>
+                    </div>
+
+                    <!-- PROYECTO 2 -->
+                    <div class="slide">
+                        <img src="assets/img/background-parallax.webp" alt="Informe técnico">
+                        <div class="slide-info">
+                            <h3>Informes Técnicos de Estructura</h3>
+                            <p>Redacción de informes periciales para comunidades de propietarios.</p>
+                            <a href="servicios.html" class="btn-slider">Saber más</a>
+                        </div>
+                    </div>
+
+                    <!-- PROYECTO 3 -->
+                    <div class="slide">
+                        <img src="assets/img/logo-navbar.webp" alt="Nave industrial">
+                        <div class="slide-info">
+                            <h3>Gestión Nave Industrial</h3>
+                            <p>Seguimiento técnico y coordinación de seguridad en fase de construcción.</p>
+                            <a href="servicios.html" class="btn-slider">Saber más</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Botones para pasar -->
+                <!-- Flecha Izquierda -->
+                <button class="prev" id="prevBtn">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6""")/>></svg>
+                </button>
+
+                <!-- Flecha Derecha -->
+                <button class="next" id="nextBtn">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6""")/>></svg>
+                </button>
+                <div class="slider-dots" id="dots-container"></div>
+            </div>
+        </div>
+    </section>
+    <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi tempora nam explicabo. Ut labore, culpa omnis nam cupiditate eaque nihil laudantium pariatur numquam adipisci minus consequatur voluptate beatae illo alias.</h1>
+    <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi tempora nam explicabo. Ut labore, culpa omnis nam cupiditate eaque nihil laudantium pariatur numquam adipisci minus consequatur voluptate beatae illo alias.</h1>
+    
+    
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
