@@ -34,29 +34,46 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 
 
-const slider = document.getElementById('slider'); // Necesitamos el contenedor para el swipe
+const slider = document.getElementById('slider');
 const slides = document.querySelectorAll('.slide');
 const dotsContainer = document.getElementById('dots-container');
 let counter = 0;
 let interval;
 
-// 1. CREAR PUNTOS INDICADORES
-slides.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.classList.add('dot');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => goToSlide(i));
-    dotsContainer.appendChild(dot);
-});
-const dots = document.querySelectorAll('.dot');
+// --- NUEVA FUNCIÓN DE INICIALIZACIÓN ---
+const initSlider = () => {
+    // 1. Forzamos que solo el primero sea visible al cargar
+    slides.forEach((s, i) => {
+        if (i === 0) s.classList.add('active');
+        else s.classList.remove('active');
+    });
 
-// 2. FUNCIONES DE NAVEGACIÓN
+    // 2. Creamos los puntos (Dots)
+    slides.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    });
+
+    // 3. Iniciamos el auto-play
+    startAutoPlay();
+};
+
+// 2. FUNCIONES DE NAVEGACIÓN (Corregidas para evitar solapamientos)
 const updateUI = () => {
-    slides.forEach(s => s.classList.remove('active'));
+    slides.forEach(s => {
+        s.classList.remove('active');
+        s.style.opacity = "0"; // Refuerzo visual
+    });
+    
+    const dots = document.querySelectorAll('.dot');
     dots.forEach(d => d.classList.remove('active'));
     
     slides[counter].classList.add('active');
-    dots[counter].classList.add('active');
+    slides[counter].style.opacity = "1"; // Refuerzo visual
+    if(dots[counter]) dots[counter].classList.add('active');
 };
 
 const nextSlide = () => {
@@ -76,42 +93,42 @@ const goToSlide = (index) => {
 };
 
 // 3. AUTO-REPRODUCCIÓN
-const startAutoPlay = () => interval = setInterval(nextSlide, 5000);
+const startAutoPlay = () => {
+    clearInterval(interval); // Limpiamos cualquier intervalo previo por seguridad
+    interval = setInterval(nextSlide, 5000);
+};
+
 const resetAutoPlay = () => { 
     clearInterval(interval); 
     startAutoPlay(); 
 };
 
-// 4. EVENTOS DE FLECHAS (Solo funcionan si existen en el HTML)
-const nextBtn = document.getElementById('nextBtn');
-const prevBtn = document.getElementById('prevBtn');
+// 4. EVENTOS (Encapsulados en un chequeo de existencia)
+const setupEvents = () => {
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
 
-if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
-if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
 
-// 5. CONTROL TÁCTIL (SWIPE) PARA MÓVIL
-let touchStartX = 0;
-let touchEndX = 0;
+    // Swipe para móvil
+    if (slider) {
+        let touchStartX = 0;
+        slider.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
 
-slider.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-}, {passive: true});
-
-slider.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-}, {passive: true});
-
-const handleSwipe = () => {
-    const swipeThreshold = 50; // Sensibilidad: píxeles mínimos para mover
-    if (touchStartX - touchEndX > swipeThreshold) {
-        nextSlide(); // Deslizar a la izquierda
-        resetAutoPlay();
-    } else if (touchEndX - touchStartX > swipeThreshold) {
-        prevSlide(); // Deslizar a la derecha
-        resetAutoPlay();
+        slider.addEventListener('touchend', e => {
+            let touchEndX = e.changedTouches[0].screenX;
+            const swipeThreshold = 50;
+            if (touchStartX - touchEndX > swipeThreshold) { nextSlide(); resetAutoPlay(); }
+            else if (touchEndX - touchStartX > swipeThreshold) { prevSlide(); resetAutoPlay(); }
+        }, {passive: true});
     }
 };
 
-// INICIAR CARRUSEL
-startAutoPlay();
+// --- EJECUCIÓN AL CARGAR EL DOM ---
+document.addEventListener('DOMContentLoaded', () => {
+    initSlider();
+    setupEvents();
+});
