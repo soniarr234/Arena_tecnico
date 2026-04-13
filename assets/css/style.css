@@ -95,7 +95,7 @@ img {
 .hamburger span {
     display: block;
     position: absolute;
-    height: 2.5px;
+    height: 2px;
     width: 100%;
     background: #333; /* Color de las barras */
     border-radius: 9px;
@@ -104,13 +104,13 @@ img {
 }
 /* Posición inicial de cada barra */
 .hamburger span:nth-child(1) { top: 0px; }
-.hamburger span:nth-child(2) { top: 10px; }
-.hamburger span:nth-child(3) { top: 20px; }
+.hamburger span:nth-child(2) { top: 7px; }
+.hamburger span:nth-child(3) { top: 14px; }
 
 /* --- TRANSFORMACIÓN A "X" --- */
 /* La barra de arriba gira 45 grados */
 .menu-toggle.is-active span:nth-child(1) {
-    top: 10px;
+    top: 7px;
     transform: rotate(135deg);
 }
 /* La barra del medio desaparece */
@@ -120,7 +120,7 @@ img {
 }
 /* La barra de abajo gira -45 grados */
 .menu-toggle.is-active span:nth-child(3) {
-    top: 10px;
+    top: 7px;
     transform: rotate(-135deg);
 }
 
@@ -527,7 +527,7 @@ body.menu-open {
 }
 
 .footer-mini-logo {
-    height: 80px;
+    height: 70px;
 }
 
 .footer h4 {
@@ -598,10 +598,10 @@ body.menu-open {
 @media (max-width: 650px) {
     .navbar {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
         width: 100%;
-        height: 90px;
+        height: 80px;
         padding: 0 5%;
         box-sizing: border-box;
         position: fixed;
@@ -611,7 +611,7 @@ body.menu-open {
     }
 
     .logo-nav {
-        width: 90px;
+        width: 80px;
         height: auto;
         display: block;
     }
@@ -628,7 +628,7 @@ body.menu-open {
     .nav-links {
         position: fixed;
         left: -100%; /* Escondido a la izquierda */
-        top: 90px;   /* Debajo del navbar */
+        top: 80px;   /* Debajo del navbar */
         width: 100%;
         height: auto;
         flex-direction: column;
@@ -673,7 +673,7 @@ body.menu-open {
     .nav-links.active li:nth-child(4) { transition-delay: 0.60s; }
 
     body{
-        padding-top: 90px;
+        padding-top: 80px;
     }
     /*________________________________________________Sección Inicio (Parallax)_____________________________________________________*/
     .hero-parallax {
@@ -769,6 +769,9 @@ body.menu-open {
     .slide-info {
         padding-left: 0;
         margin-top: 60px;
+    }
+    .slide-info h3 {
+        font-size: 1.3rem;
     }
 
     .slide-description {
