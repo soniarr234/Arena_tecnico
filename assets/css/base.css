@@ -1,0 +1,32 @@
+/* ========================================================================================================================
+                                                    ESTILOS BASE Y RESETEO
+   ======================================================================================================================== */
+*{
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /*outline: 1px solid red !important;*/ /*Para ver que sobresale de la pantalla y hace overflow*/
+}
+a {
+    text-decoration: none; /* Quita el subrayado azul de los links */
+    color: inherit;        /* Hace que el link herede el color del texto */
+}
+ul {
+    list-style: none;
+}
+img {
+    max-width: 100%;       /* Evita que las imágenes grandes se salgan de la pantalla */
+    display: block;        /* Quita un pequeño espacio extraño que dejan debajo */
+}
+
+/* --- Variables --- */
+:root {
+    --bg-light: #ffffff;
+    --bg-dark: #1a1a1a;
+    --text-dark: #333;
+    --text-light: #999;
+    --color-logo-light: #e6d4ac;
+    --color-logo-dark: #465d63;
+    --transition: 0.3s ease;    
+}

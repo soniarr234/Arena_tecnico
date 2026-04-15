@@ -1,0 +1,166 @@
+/* ========================================================================================================================
+                                                    NAVBAR (Escritorio)
+   ======================================================================================================================== */
+/* Configuración del Header */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5% 10px 3%;
+    background: var(--bg-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo-nav{ width: 120px; }
+
+/*______________________________________________Menú de Navegación__________________________________________*/
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+.nav-links a {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    transition: color var(--transition);
+    position: relative;
+    padding-bottom: 5px;
+}
+/* Línea debajo de cada link del navbar */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--color-logo-dark);
+    transition: width var(--transition);
+}
+.nav-links a:hover, 
+.nav-links a.active { color: var(--text-light); }
+
+.nav-links a:hover::after, 
+.nav-links a.active::after { width: 100%; }
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/*______________________________________________Menú de Hamburguesa__________________________________________*/
+.menu-toggle {
+    display: none;
+    width: 30px; height: 16px; /* Ajustado para que encajen las barras */
+    position: relative;
+    cursor: pointer;
+}
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 2px; width: 100%;
+    background: var(--text-dark);
+    transition: .25s ease-in-out;
+}
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 7px; }
+.hamburger span:nth-child(3) { top: 14px; }
+/* Estado Activo (X) */
+.menu-toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(135deg); }
+.menu-toggle.is-active span:nth-child(2) { opacity: 0; transform: translateX(-20px); }
+.menu-toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-135deg); }
+
+/* ========================================================================================================================
+                                                    BODY Y CAPA OSCURA (Overlay)
+   ======================================================================================================================== */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.089);
+    z-index: 999;
+    /* Empieza invisible */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s;
+    pointer-events: none;
+}
+/* Estado cuando el menú está abierto */
+body.menu-open::before {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+body.menu-open {
+    overflow: hidden; /* Bloquea el scroll del fondo */
+}
+
+/* ========================================================================================================================
+                                                        MEDIA QUERY
+   ======================================================================================================================== */
+
+/*________________________________________________Pantallas menores a 650___________________________________________________*/
+@media (max-width: 650px) {
+    .navbar {
+        justify-content: flex-end;
+        width: 100%;
+        height: 80px;
+        padding: 0 7%;
+        position: fixed;
+    }
+    .logo-nav {
+        width: 80px;
+        margin-right: 3%;
+    }
+    /*________________________________________________Menú desplegable_____________________________________________________*/ 
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 7%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--bg-light);
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+        padding: 10px 7% 20px 7%;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+        transition: left 0.6s ease-in-out;
+        gap: 0;
+    }
+    .nav-links.active {
+        left: 0; /* Aparece al hacer clic */
+    }
+    /* --- Animación Cascada Links --- */
+    .nav-links li {
+        margin: 15px 0;
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    /* Orden de salida (cuando cerramos): el 1º desaparece el último */
+    .nav-links li:nth-child(1) { transition-delay: 0.8s; }
+    .nav-links li:nth-child(2) { transition-delay: 0.5s; }
+    .nav-links li:nth-child(3) { transition-delay: 0.3s; }
+    .nav-links li:nth-child(4) { transition-delay: 0s; }
+    /* Animación de ENTRADA (cuando el menú tiene .active) */
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    /* Tiempos de entrada mucho más rápidos (0.05s de diferencia) */
+    .nav-links.active li:nth-child(1) { transition-delay: 0.20s; }
+    .nav-links.active li:nth-child(2) { transition-delay: 0.40s; }
+    .nav-links.active li:nth-child(3) { transition-delay: 0.55s; }
+    .nav-links.active li:nth-child(4) { transition-delay: 0.60s; }
+}
