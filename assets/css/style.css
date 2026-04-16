@@ -275,6 +275,12 @@
 .prev { left: -60px; }
 .next { right: -60px; }
 
+.slider-wrapper {
+    position: relative; /* Importante para que los puntos se guíen por este marco */
+    display: flex;
+    flex-direction: column;
+}
+
 .slider-dots {
     position: absolute;
     top: 535px; 
@@ -365,11 +371,7 @@
         margin-top: 30px;
     }
 
-    /* Ajustamos el marco para que no se salga nada */
-    .slider-wrapper {
-        max-width: 100%;
-        overflow: hidden; 
-    }
+    
 
     .slide-img-container {
         height: 300px; /* Misma medida que tu max-height */
