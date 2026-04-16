@@ -358,7 +358,7 @@
         overflow: hidden;
     }
     .bg-text-decor {
-        font-size: clamp(45px, 10vw, 80px); 
+        font-size: clamp(40px, 9vw, 75px); 
         letter-spacing: 5px;
         top: 40%; /* Ajuste visual para el móvil */
         width: 100%;
@@ -424,7 +424,7 @@
 
     /* Botón más cómodo para pulsar con el dedo */
     .btn-slider {
-        width: 150px;
+        width: 160px;
         padding: 8px 6px;
         text-align: center;
     }
