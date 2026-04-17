@@ -150,23 +150,21 @@
 }
 .slide.active {
     display: flex !important;
+    flex-direction: row; /* Alineación horizontal */
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 50px;
+    width: 100%;
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
-    position: relative;
-    z-index: 2;
 }
 
 .slide-img-container {
-    width: 100%;
-    max-width: 900px;
-    height: 500px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px; 
+    flex: 1 1 500px;       /* Crece, se encoge, pero intenta no bajar de 500px */
+    min-width: 300px;      /* Ancho mínimo para que nunca sea diminuta */
+    height: 450px;         /* Altura fija o puedes usar aspect-ratio: 16/9 */
+    border-radius: 20px;
     overflow: hidden;
-    background-color: transparent;
 }
 
 .slide img {
@@ -181,10 +179,9 @@
 }
 
 .slide-info {
-    width: 100%;
-    max-width: 900px;
-    margin-top: 80px; 
-    text-align: left;
+    flex: 1 1 400px;       /* El texto también intentará tener su espacio */
+    min-width: 300px;
+    margin-top: 0 !important;
 }
 .slide-info h3 {
     font-size: 2rem;
@@ -256,41 +253,51 @@
     transform: translateY(-3px);
 }
 
-/* Botones Flechas */
+/* ==========================================================================
+   CONTROLES (Flecha - Puntos - Flecha) alineados bajo la foto
+   ========================================================================== */
+.slider-controls {
+    display: flex;
+    flex-direction: row;     /* Fuerza la fila horizontal */
+    align-items: center;
+    justify-content: center; 
+    width: 100%;             
+    margin-top: 30px;
+    gap: 25px;   
+}
+
+/* Reseteamos flechas y puntos */
+.prev, .next, .slider-dots {
+    position: static !important;
+    transform: none !important;
+    margin: 0 !important;
+}
+
+.slider-dots {
+    display: flex !important; /* Asegura que sea flex */
+    flex-direction: row !important; /* FUERZA LOS PUNTOS EN HORIZONTAL */
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: auto; /* Evita que herede alturas raras */
+}
+
 .prev, .next {
-    position: absolute;
-    top: 250px;
-    transform: translateY(-50%);
     background: transparent;
     color: var(--color-logo-dark);
     border: none;
     cursor: pointer;
-    z-index: 101;
-    padding: 10px;
+    padding: 5px;
+    transition: 0.3s ease;
 }
+
 .prev:hover, .next:hover {
     color: var(--color-logo-light);
-    transform: translateY(-50%) scale(1.2); /* Se hacen un poco más grandes */
-}
-.prev { left: -60px; }
-.next { right: -60px; }
-
-.slider-wrapper {
-    position: relative; /* Importante para que los puntos se guíen por este marco */
-    display: flex;
-    flex-direction: column;
+    transform: scale(1.2);
 }
 
 .slider-dots {
-    position: absolute;
-    top: 535px; 
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
     gap: 12px;
-    z-index: 100;
-    margin: 0;
 }
 
 .dot {
@@ -300,13 +307,13 @@
     border-radius: 50%;
     cursor: pointer;
     transition: 0.3s;
+    display: block; /* Asegura que se vean como circulitos */
 }
 
 .dot.active {
     background-color: var(--color-logo-dark);
-    transform: scale(1.2);
+    transform: scale(1.3);
 }
-
 
 /* ========================================================================================================================
                                                         MEDIA QUERY
