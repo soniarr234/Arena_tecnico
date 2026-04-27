@@ -150,13 +150,14 @@
 }
 .slide.active {
     display: flex !important;
-    flex-direction: row; /* Alineación horizontal */
+    flex-direction: row;
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 50px;
     width: 100%;
     opacity: 1;
     visibility: visible;
+    pointer-events: auto; 
 }
 
 .slide-img-container {
@@ -434,11 +435,6 @@
         width: 160px;
         padding: 8px 6px;
         text-align: center;
-    }
-
-    /* LAS FLECHAS: las quitamos */
-    .prev, .next {
-        display: none !important;
     }
     .slider-container {
         touch-action: pan-y; /* Permite scroll vertical pero bloquea el horizontal nativo para usar el nuestro */
