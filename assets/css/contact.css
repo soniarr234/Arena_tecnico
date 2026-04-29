@@ -174,6 +174,123 @@
 }
 
 /* ========================================================================================================================
+                                                BLOQUE CONTACTO + FORMULARIO
+======================================================================================================================== */
+
+.contacto-main {
+    padding: 100px 10%;
+    background: #ffffff;
+}
+
+.contacto-wrapper {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* IZQUIERDA */
+.contacto-info h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.contacto-info p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.contacto-datos {
+    margin-top: 25px;
+}
+
+.contacto-datos p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.contacto-extra {
+    margin-top: 30px;
+}
+
+.contacto-extra p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* FORMULARIO */
+.contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    font-size: 1rem;
+    outline: none;
+    background: transparent;
+}
+
+/* LABEL ANIMADO */
+.input-group label {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: #777;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+    pointer-events: none;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label,
+.input-group textarea:focus + label,
+.input-group textarea:valid + label {
+    top: -12px;
+    font-size: 0.75rem;
+    color: #000;
+}
+
+/* BOTÓN */
+.contacto-form button {
+    margin-top: 10px;
+    padding: 14px;
+    border: none;
+    background: #000;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.contacto-form button:hover {
+    background: #333;
+    transform: scale(1.02);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .contacto-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .contacto-main {
+        padding: 60px 20px;
+    }
+}
+/* ========================================================================================================================
                                                         MEDIA QUERY
    ======================================================================================================================== */
 /*________________________________________________Pantallas menores a 650___________________________________________________*/
