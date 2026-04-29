@@ -63,7 +63,6 @@
 
 .mapa-contacto iframe {
     width: 100%;
-    filter: grayscale(0.2) contrast(1.1); /* Opcional: un toque estético para que encaje con tu marca */
     display: block;
 }
 
