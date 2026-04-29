@@ -1,0 +1,100 @@
+/* ========================================================================================================================
+                                                    SECCIÓN INICIO (HERO PARALLAX)
+   ======================================================================================================================== */
+.hero-parallax {
+    /* Ajustamos la altura para que ocupe casi toda la pantalla */
+    height: 50vh; 
+    /* Imagen de fondo */
+       background: linear-gradient(rgba(0, 0, 0, 0.249), rgba(0, 0, 0, 0.244)), 
+                url('../img/background-contact.webp') no-repeat center 48% / cover fixed;
+
+    /* Centrado del texto */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    color: white;
+    position: relative;
+    padding-left: 10%;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    border-left: 4px solid var(--color-logo-light); 
+    padding: 10px 0 10px 30px;
+}
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+.hero-content p {
+    font-size: 1.15rem;
+    margin-bottom: 35px;
+    color: #e0e0e0;
+}
+
+/* Inicialmente los ocultamos para que la animación los "despierte" */
+.hero-content h1, .hero-content p, .hero-content {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Retrasos para crear la cascada */
+.hero-content h1 { animation-delay: 0.3s; }
+.hero-content p { animation-delay: 0.6s; }
+.hero-content { animation-delay: 0.9s; }
+
+/* Definimos el movimiento: empieza invisible y 30px más abajo */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================================================================================================
+                                                    SECCIÓN MAPA (FULL WIDTH)
+   ======================================================================================================================== */
+.mapa-contacto {
+    width: 100%;
+    line-height: 0; /* Elimina un pequeño espacio en blanco debajo del iframe */
+    overflow: hidden;
+}
+
+.mapa-contacto iframe {
+    width: 100%;
+    filter: grayscale(0.2) contrast(1.1); /* Opcional: un toque estético para que encaje con tu marca */
+    display: block;
+}
+
+
+/* ========================================================================================================================
+                                                        MEDIA QUERY
+   ======================================================================================================================== */
+/*________________________________________________Pantallas menores a 650___________________________________________________*/
+@media (max-width: 650px) {
+    body{ padding-top: 80px; }
+    /*________________________________________________Sección Inicio (Parallax)_____________________________________________________*/
+    .hero-parallax {
+        background-attachment: scroll;
+        height: 40vh;
+        justify-content: center;
+        text-align: center;
+        padding-left: 0;
+        padding: 0 10%; 
+        background-position: center center;
+    }
+
+    .hero-content {
+        border-left: none;
+        padding: 0;
+    }
+
+    .hero-content h1 { font-size: 1.8rem; }
+    .hero-content p { font-size: 0.8rem; }
+
+    .mapa-contacto iframe {
+        height: 300px; /* Reducimos la altura en pantallas pequeñas */
+    }
+
+}
