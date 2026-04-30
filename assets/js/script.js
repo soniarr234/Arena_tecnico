@@ -133,33 +133,57 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEvents();
 });
 
-
-
-document.querySelector('form').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contact-form');
     
-    const form = this;
-    const successMsg = document.getElementById('mensaje-exito');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            console.log("¡Botón pulsado y evento capturado!");
+            e.preventDefault();
+            
+            const form = this;
+            const btn = document.getElementById('btn-submit');
+            const successMsg = document.getElementById('mensaje-exito');
 
-    // Ocultar formulario
-    form.classList.add('fade-out');
+            // Solo intentamos añadir la clase si el botón existe
+            if (btn) {
+                btn.classList.add('loading');
+            }
 
-    setTimeout(() => {
-        form.style.display = 'none';
-        successMsg.style.display = 'block';
+            emailjs.sendForm('service_yw5zhtr', 'template_y4sozo6', this)
+                .then(() => {
+                    form.classList.add('fade-out');
 
-        // Esperar a que el avión vuele y luego resetear (5 segundos total)
-        setTimeout(() => {
-            successMsg.style.opacity = '0';
-            successMsg.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => {
+                        form.style.display = 'none';
+                        if (successMsg) successMsg.style.display = 'block';
 
-            setTimeout(() => {
-                successMsg.style.display = 'none';
-                successMsg.style.opacity = '1';
-                form.reset();
-                form.style.display = 'block';
-                setTimeout(() => form.classList.remove('fade-out'), 50);
-            }, 500);
-        }, 6000);
-    }, 400);
+                        setTimeout(() => {
+                            if (successMsg) {
+                                successMsg.style.opacity = '0';
+                                successMsg.style.transition = 'opacity 0.5s ease';
+                            }
+                            setTimeout(() => {
+                                if (successMsg) {
+                                    successMsg.style.display = 'none';
+                                    successMsg.style.opacity = '1';
+                                }
+                                form.reset();
+                                form.style.display = 'block';
+                                setTimeout(() => form.classList.remove('fade-out'), 50);
+                            }, 500);
+                        }, 6000);
+                    }, 400);
+
+                }, (error) => {
+                    console.error('FAILED...', error);
+                    const errorMsg = error.text || "Error desconocido";
+                    alert("Error al enviar: " + errorMsg);
+                    
+                    if (btn) {
+                        btn.classList.remove('loading');
+                    }
+                });
+        });
+    }
 });
