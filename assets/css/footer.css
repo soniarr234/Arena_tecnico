@@ -94,7 +94,7 @@
 }
 
 .contact-text a:hover {
-    color: white;
+    color: var(--color-logo-light);
 }
 
 /* Barra inferior */
