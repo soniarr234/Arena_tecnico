@@ -70,7 +70,7 @@
 /* Columna Info */
 .info-contacto h2 {
     font-size: 2rem;
-    color: #333;
+    color: var(--color-logo-light);
     margin-bottom: 20px;
 }
 
