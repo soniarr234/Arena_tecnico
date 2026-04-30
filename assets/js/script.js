@@ -95,7 +95,7 @@ const goToSlide = (index) => {
 // 3. AUTO-REPRODUCCIÓN
 const startAutoPlay = () => {
     clearInterval(interval); // Limpiamos cualquier intervalo previo por seguridad
-    interval = setInterval(nextSlide, 7000);
+    interval = setInterval(nextSlide, 9000);
 };
 
 const resetAutoPlay = () => { 
