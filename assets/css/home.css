@@ -233,6 +233,7 @@
 .btn-slider {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     padding: 12px 30px;
     background-color: transparent;
