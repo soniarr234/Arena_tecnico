@@ -95,7 +95,7 @@ const goToSlide = (index) => {
 // 3. AUTO-REPRODUCCIÓN
 const startAutoPlay = () => {
     clearInterval(interval); // Limpiamos cualquier intervalo previo por seguridad
-    interval = setInterval(nextSlide, 5000);
+    interval = setInterval(nextSlide, 7000);
 };
 
 const resetAutoPlay = () => { 
@@ -131,4 +131,35 @@ const setupEvents = () => {
 document.addEventListener('DOMContentLoaded', () => {
     initSlider();
     setupEvents();
+});
+
+
+
+document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const successMsg = document.getElementById('mensaje-exito');
+
+    // Ocultar formulario
+    form.classList.add('fade-out');
+
+    setTimeout(() => {
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+
+        // Esperar a que el avión vuele y luego resetear (5 segundos total)
+        setTimeout(() => {
+            successMsg.style.opacity = '0';
+            successMsg.style.transition = 'opacity 0.5s ease';
+
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+                successMsg.style.opacity = '1';
+                form.reset();
+                form.style.display = 'block';
+                setTimeout(() => form.classList.remove('fade-out'), 50);
+            }, 500);
+        }, 6000);
+    }, 400);
 });
