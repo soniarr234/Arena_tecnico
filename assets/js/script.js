@@ -134,31 +134,59 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.querySelector('form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const form = this;
+/* ========================================================================================================================
+                                            GESTIÓN DEL FORMULARIO (EmailJS)
+   ======================================================================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contact-form');
+    const btnSubmit = document.getElementById('btn-submit');
     const successMsg = document.getElementById('mensaje-exito');
 
-    // Ocultar formulario
-    form.classList.add('fade-out');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-    setTimeout(() => {
-        form.style.display = 'none';
-        successMsg.style.display = 'block';
+            // 1. Desactivar botón para evitar múltiples clics
+            const originalBtnContent = btnSubmit.innerHTML;
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = '<span>ENVIANDO...</span>';
 
-        // Esperar a que el avión vuele y luego resetear (5 segundos total)
-        setTimeout(() => {
-            successMsg.style.opacity = '0';
-            successMsg.style.transition = 'opacity 0.5s ease';
+            // 2. Enviar vía EmailJS
+            // service_yw5zhtr, template_y4sozo6 (Tus IDs proporcionados)
+            emailjs.sendForm('service_yw5zhtr', 'template_y4sozo6', this)
+                .then(() => {
+                    // --- ÉXITO: EJECUTAR TUS ANIMACIONES ---
+                    contactForm.classList.add('fade-out');
 
-            setTimeout(() => {
-                successMsg.style.display = 'none';
-                successMsg.style.opacity = '1';
-                form.reset();
-                form.style.display = 'block';
-                setTimeout(() => form.classList.remove('fade-out'), 50);
-            }, 500);
-        }, 6000);
-    }, 400);
+                    setTimeout(() => {
+                        contactForm.style.display = 'none';
+                        successMsg.style.display = 'block';
+
+                        // Resetear el formulario después de la animación (6 segundos)
+                        setTimeout(() => {
+                            successMsg.style.opacity = '0';
+                            successMsg.style.transition = 'opacity 0.5s ease';
+
+                            setTimeout(() => {
+                                successMsg.style.display = 'none';
+                                successMsg.style.opacity = '1';
+                                contactForm.reset();
+                                contactForm.style.display = 'block';
+                                btnSubmit.disabled = false;
+                                btnSubmit.innerHTML = originalBtnContent;
+                                setTimeout(() => contactForm.classList.remove('fade-out'), 50);
+                            }, 500);
+                        }, 5000);
+                    }, 400);
+
+                }, (error) => {
+                    // --- ERROR: NOTIFICAR AL USUARIO ---
+                    console.error('EmailJS Error:', error);
+                    alert('Lo sentimos, hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.');
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = originalBtnContent;
+                });
+        });
+    }
 });
+
