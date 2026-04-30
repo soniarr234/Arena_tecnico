@@ -99,7 +99,7 @@
 
                 <!-- Columna Formulario -->
                 <div class="formulario-contacto-moderno">
-                    <form action="#" method="POST" class="form-container">
+                    <form action="#" method="POST" class="form-container" id="contact-form">
                         <div class="form-row">
                             <div class="form-group-moderno">
                                 <input type="text" id="nombre" name="nombre" placeholder=" " required>
@@ -115,7 +115,7 @@
                             <label for="mensaje">¿En qué podemos ayudarte?</label>
                         </div>
 
-                        <button type="submit" class="btn-enviar-moderno">
+                        <button type="submit" class="btn-enviar-moderno" id="btn-submit">
                             <span>ENVIAR MENSAJE</span>
                             <span class="iconify" data-icon="hugeicons:sent-01"></span>
                         </button>
@@ -193,6 +193,19 @@
             </div>
         </div>
     </footer>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
+    <!-- 2. Inicializas el servicio con tu Public Key -->
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "Xj86dpQWeHm8xlmRZ",
+            });
+        })();
+    </script>
     
     <script src="assets/js/script.js"></script>
 </body>
