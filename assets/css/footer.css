@@ -1,149 +1,178 @@
-/* ========================================================================================================================
-                                                            FOOTER
-   ======================================================================================================================== */
 .footer {
     background-color: var(--bg-dark);
-    padding: 40px 10%;
-    border-top: 1px solid #eee;
+    padding: 40px 8% 30px; /* Más aire arriba para que respire */
+    color: white;
 }
 
 .footer-container {
+    display: flex;
+    justify-content: space-between; /* Empuja logo a un lado y contacto al otro */
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-mini-logo {
+    width: 120px;
+    filter: brightness(1.1);
+}
+
+.footer-contact-wrapper {
+    flex: 1;
+    max-width: 750px; /* Evita que se estire demasiado en pantallas gigantes */
+}
+
+.footer-contact-wrapper h4 {
+    color: var(--color-logo-light);
+    letter-spacing: 3px;
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+    /* Eliminamos el padding para que se alinee con el texto de abajo */
+    padding-left: 0;
+}
+
+/* Grid de contacto para que no sea una lista aburrida */
+.footer-contact-grid {
     display: grid;
-    grid-template-columns: 1fr 0.5fr 1fr;
-    align-items: start;
-    gap: 60px;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
 }
 
-.footer-brand {
-    width: 100%; 
+.contact-item {
     display: flex;
-    justify-content: center; 
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Centramos el segundo y el tercero */
+.contact-item:nth-child(2),
+.contact-item:nth-child(3) {
     align-items: center;
 }
-.footer-mini-logo{
-    width: 150px;
+
+/* El primero lo forzamos a la izquierda (aunque ya lo esté, por seguridad) */
+.contact-item:first-child {
+    align-items: flex-start;
+    text-align: left;
 }
 
-.footer h4 {
-    color: var(--color-logo-light);
-    letter-spacing: 2px;
-    font-size: 0.8rem;
-    margin-bottom: 15px;
+/* Ajuste del header para que los iconos también se centren en el 2 y 3 */
+.contact-item:nth-child(2) .contact-item-header,
+.contact-item:nth-child(3) .contact-item-header {
+    justify-content: center;
 }
 
-/* Estilos de los Enlaces */
-.footer-links a {
-    position: relative;
-    padding-bottom: 3px;
-    display: inline-block;
-    color: var(--text-light);
-    transition: all var(--transition);
+.contact-item:first-child .contact-item-header {
+    justify-content: flex-start;
 }
-
-/* LÍNEA FIJA: Solo para el elemento con clase .active */
-.footer-links a.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%; /* Línea completa fija */
-    height: 2px;
-    background-color: var(--color-logo-light);
-}
-
-/* EFECTO HOVER: Solo color y movimiento (sin línea) */
-.footer-links a:hover {
-    color: var(--color-logo-light);
-    padding-left: 5px;
-}
-
-.footer-description, 
-.contact-info p { 
-    color: var(--text-light); 
-    margin-bottom: 12px;
-}
-
-.footer-links li { 
-    margin-bottom: 12px; 
-}
-
-/* BARRA INFERIOR */
-.footer-bottom-bar {
+.contact-item-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    border-top: 1px solid #5d5d5d;
-    padding-top: 30px;
-    margin-top: 20px;
+    justify-content: center; /* Centra el icono y el 'small' entre sí */
+    gap: 8px;
+    color: #888;
+    width: 100%;
 }
 
-.footer-bottom-left, 
-.footer-bottom-right { 
-    display: flex; 
-    gap: 20px; 
+.contact-item-header .iconify {
+    font-size: 1rem;
+    color: var(--color-logo-light);
 }
 
-.footer-bottom-left p, 
-.footer-bottom-right a {
-    font-size: 0.8rem;
+.contact-text small {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+.contact-text a {
     color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.85rem; /* Un poco más pequeño para que quepa bien el email */
+    word-break: break-all; /* Evita que el email largo rompa la columna */
     transition: color 0.3s;
 }
 
-.footer-bottom-right a:hover { 
-    color: var(--color-logo-light); 
+.contact-text a:hover {
+    color: white;
 }
 
-/* ========================================================================================================================
-                                                        MEDIA QUERY
-   ======================================================================================================================== */
-/*________________________________________________Pantallas menores a 650___________________________________________________*/
-@media (max-width: 650px) {
+/* Barra inferior */
+.footer-bottom {
+    border-top: 1px solid rgba(252, 252, 252, 0.05);
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-legal a { color: inherit; text-decoration: none; }
+
+/* Responsive */
+@media (max-width: 850px) {
     .footer-container {
-        display: flex;
-        flex-wrap: wrap; /* Permite que los elementos bajen a la siguiente línea */
-        flex-direction: row; /* Alineación horizontal inicial */
-        justify-content: space-between; /* Separa logo de navegación */
-        align-items: flex-start;
-        gap: 20px 0;
+        flex-direction: column;
+        align-items: flex-start; /* Esto mantiene el logo a la izquierda */
+        gap: 40px;
     }
 
-    /* Logo arriba a la izquierda */
     .footer-brand {
-        width: 40%; /* Ocupa menos de la mitad para que quepa la navegación al lado */
+        width: 100%;
         display: flex;
-        justify-content: flex-start;
-        order: 1;
+        justify-content: flex-start; /* Logo a la izquierda */
     }
 
-    .footer-mini-logo {
-        width: 120px;
+    .footer-contact-wrapper {
+        width: 100%;
     }
 
-    /* Navegación arriba a la derecha */
-    .footer-links {
-        width: 50%;
-        order: 2;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-    }
-
-    /* Contacto debajo de todo */
-    .footer-contact {
-        width: 100%; /* Ocupa todo el ancho para bajar a la segunda fila */
-        order: 3;
-        text-align: left;
-    }
-
-    .footer-description { 
-        display: none; 
-    }
-
-    /* Ajuste de la barra de copyright */
-    .footer-bottom-bar {
-        flex-direction: column;
-        gap: 15px;
+    /* El título de contacto sí lo centramos para que mande sobre la lista */
+    .footer-contact-wrapper h4 {
         text-align: center;
+        margin-bottom: 25px;
+    }
+
+    /* Pasamos a una sola columna para los datos */
+    .footer-contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* Forzamos a que todos los items de contacto se centren uno debajo de otro */
+    .contact-item,
+    .contact-item:first-child,
+    .contact-item:nth-child(2),
+    .contact-item:nth-child(3) {
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-item-header {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column; /* Apila los elementos verticalmente */
+        gap: 20px;             /* Espacio entre el copyright y los legales */
+        text-align: center;    /* Centra el texto */
+        align-items: center;   /* Centra los bloques */
+        border-top: 1px solid rgba(252, 252, 252, 0.115);
+    }
+
+    .footer-legal {
+        justify-content: center; /* Centra Aviso Legal y Privacidad entre sí */
+        width: 100%;
+    }
+
+    .footer-bottom-left, 
+    .footer-bottom-right { 
+        justify-content: center;
+        width: 100%;
     }
 }
