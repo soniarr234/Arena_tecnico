@@ -395,26 +395,45 @@ form {
 @media (max-width: 850px) {
     /*________________________________________________Sección Inicio (Parallax)_____________________________________________________*/
     .hero-parallax {
-        background-attachment: scroll;
-        height: 40vh;
-        justify-content: center;
+        background-attachment: scroll; 
+        height: 30vh;
+        
+        /* CENTRADO TOTAL */
+        display: flex;
+        flex-direction: column; /* Apila el contenido si fuera necesario */
+        justify-content: center; /* Centrado vertical */
+        align-items: center;     /* Centrado horizontal */
+        
         text-align: center;
-        padding-left: 0;
-        padding: 0 10%; 
+        padding: 0 5%; /* Padding lateral mínimo para que el texto no toque los bordes */
         background-position: center center;
+        margin-top: 80px;
     }
 
     .hero-content {
-        border-left: none;
+        border-left: none; /* Quitamos la línea lateral en móvil */
         padding: 0;
+        margin: 0; /* Eliminamos márgenes que puedan desplazarlo */
+        width: 100%; 
     }
 
-    .hero-content h1 { font-size: 1.8rem; }
-    .hero-content p { font-size: 0.8rem; }
+    .hero-content h1 { 
+        font-size: 2.2rem; /* Un poco más grande para que destaque */
+        margin-bottom: 10px;
+    }
+    
+    .hero-content p { 
+        font-size: 1rem; 
+        margin-bottom: 0; /* Quitamos el margen inferior para que el centro sea real */
+    }
 
     .container-grid {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+    .info-contacto h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
     }
     .contacto-intermedia {
         padding: 50px 5%;
