@@ -34,57 +34,54 @@
     gap: 30px;
     align-items: center;
 }
-
+/*========================================================================== 
+  Sección Foto del perfil 
+==========================================================================*/
 .profile-image-wrapper {
     position: relative;
-    /* Ajustamos el tamaño aquí */
-    width: 100%;
-    max-width: 300px; /* Limita el ancho de la foto a tu gusto */
-    margin: 0 auto;   /* La mantiene centrada en su columna */
+    max-width: 300px;
+    margin: 0 auto;
 }
-
 .profile-image-wrapper img {
-    width: 100%;      /* La imagen se adapta al contenedor de 400px */
+    width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 15px 15px 0px var(--color-logo-dark); /* Sombra un poco más pequeña */
+    box-shadow: 15px 15px 0px var(--color-logo-dark);
 }
-
+/*Texto debajo de la foto del perfil (años de experiencia)*/
 .experience-badge {
     padding: 25px 12px 12px 12px;
 }
-
 .experience-badge .years {
     font-size: 1.5rem;
 }
-
 .experience-badge .label-text {
     font-size: 0.8rem;
     text-transform: uppercase;
     color: var(--bg-dark);
     font-weight: 600;
 }
-
+/*========================================================================== 
+  Sección resumen del perfil 
+==========================================================================*/
 .profile-content h2 {
     font-size: 2.5rem;
     color: var(--text-dark);
     margin-bottom: 5px;
 }
-
 .tagline {
     color: var(--color-logo-dark);
     font-weight: 600;
     font-size: 1.2rem;
     margin-bottom: 25px;
 }
-
 .profile-content p {
     margin-bottom: 20px;
     line-height: 1.8;
     color: var(--text-dark);
 }
 
-/* Iconos de Valores */
+/* Iconos de Valores (Transpariencia, Rigor técnico y Compromiso)*/
 .values-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -93,7 +90,6 @@
     padding-top: 30px;
     border-top: 1px solid #eee;
 }
-
 .value-item {
     display: flex;
     flex-direction: column;
@@ -102,6 +98,35 @@
     color: var(--color-logo-dark);
     font-size: 0.9rem;
     font-weight: 600;
+}
+
+/*========================================================================== 
+  Sección Tarjeta de Colegiado
+==========================================================================*/
+.license-container {
+    display: contents; 
+}
+.license-card {
+    order: 1; /* Primero: Colegiado */
+}
+.license-card {
+    background: #fdfaf3; /* Un crema muy suave */
+    padding: 30px 30px 10px 30px;
+    border-left: 5px solid var(--color-logo-light);
+    margin-top: 40px;
+}
+.license-label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-logo-dark);
+    margin-bottom: 5px;
+}
+.license-id {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--text-dark);
 }
 
 /* ==========================================================================
@@ -154,29 +179,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: start;
-}
-
-/* Tarjeta de Colegiado */
-.license-card {
-    background: #fdfaf3; /* Un crema muy suave */
-    padding: 30px 30px 10px 30px;
-    border-left: 5px solid var(--color-logo-light);
-    margin-top: 40px;
-}
-
-.license-label {
-    display: block;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--color-logo-dark);
-    margin-bottom: 5px;
-}
-
-.license-id {
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--text-dark);
 }
 
 /* Listado de Skills */
@@ -330,45 +332,52 @@
     font-weight: 500;
 }
 
-/* ==========================================================================
-   MEDIA QUERY
-   ========================================================================== */
+/* ========================================================================================================================
+                                                        MEDIA QUERY
+   ======================================================================================================================== */
+/*===============================================================================================================
+                                            Pantallas menores a 800 
+===============================================================================================================*/
 @media (max-width: 800px) {
+    /* ==========================================================================
+       SECCIÓN PERFIL
+    ========================================================================== */
     .profile-grid {
         display: flex;
-        flex-direction: column; /* Forzamos orden vertical */
+        flex-direction: column;
         gap: 20px;
         text-align: left;
     }
-
+    /* ==========================================================================
+       Sección Foto del perfil
+    ========================================================================== */
     .profile-image-wrapper {
-        max-width: 280px;      /* Foto más pequeña aún en móvil */
+        max-width: 280px;
     }
-
     .profile-image-wrapper img {
         box-shadow: 10px 10px 0px var(--color-logo-dark); /* Sombra más sutil */
     }
-
     .experience-badge {
         right: 50%;
         bottom: -15px;
         width: 100%;
     }
-
+    /*========================================================================== 
+      Sección resumen del perfil 
+    ==========================================================================*/
     .profile-content h2 {
         font-size: 1.8rem;
     }
-
+    /* Iconos de Valores (Transpariencia, Rigor técnico y Compromiso)*/
     .values-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
         padding-top: 25px;
     }
-    
     .value-item {
-        flex-direction: row; /* Icono al lado del texto */
-        justify-content: flex-start; /* Alineado a la izquierda para mejor lectura */
-        background: #f8f9fa; /* Un fondo muy sutil para que parezca una etiqueta */
+        flex-direction: row;
+        justify-content: flex-start;
+        background: #f8f9fa;
         padding: 12px;
         border-radius: 8px;
         gap: 10px;
@@ -389,12 +398,7 @@
         height: 18px;
         flex-shrink: 0; /* Evita que el icono se aplaste si el texto es largo */
     }
-    .license-container {
-        display: contents; 
-    }
-    .license-card {
-        order: 1; /* Primero: Colegiado */
-    }
+    
 
     .profesional-right {
         order: 2; /* Segundo: Trayectoria */
