@@ -2,19 +2,15 @@
                                                     SECCIÓN INICIO (HERO PARALLAX)
    ======================================================================================================================== */
 .hero-parallax {
-    /* Ajustamos la altura para que ocupe casi toda la pantalla */
-    height: 80vh; 
+    height: 65vh; 
     /* Imagen de fondo */
        background: linear-gradient(rgba(0, 0, 0, 0.249), rgba(0, 0, 0, 0.244)), 
                 url('../img/background-parallax.webp') no-repeat center 48% / cover fixed;
-
     /* Centrado del texto */
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    text-align: left;
     color: white;
-    position: relative;
     padding-left: 10%;
 }
 .hero-content {
@@ -25,17 +21,19 @@
     padding: 10px 0 10px 30px;
 }
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     line-height: 1.1;
     margin-bottom: 20px;
 }
 .hero-content p {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     margin-bottom: 35px;
     color: #e0e0e0;
 }
 
-/* Botón Parallax */
+/*========================================================================== 
+  Botón Parallax 
+==========================================================================*/
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -49,16 +47,14 @@
     font-size: 0.85rem;
     transition: all 0.4s ease;
 }
-/* El icono SVG */
+/* Icono SVG */
 .btn-primary svg {
     width: 0;
     opacity: 0;
     transform: translateX(-10px);
     transition: all 0.4s ease;
 }
-
 .btn-primary:hover { gap: 15px; }
-
 .btn-primary:hover svg {
     width: 20px;
     opacity: 1;
@@ -66,18 +62,15 @@
 }
 .btn-primary span { transition: transform 0.4s ease; }
 .btn-primary:hover span { transform: translateX(2px); }
-
 /* Inicialmente los ocultamos para que la animación los "despierte" */
 .hero-content h1, .hero-content p, .hero-content .btn-primary {
     opacity: 0;
     animation: fadeInUp 0.8s ease-out forwards;
 }
-
 /* Retrasos para crear la cascada */
 .hero-content h1 { animation-delay: 0.3s; }
 .hero-content p { animation-delay: 0.6s; }
 .hero-content .btn-primary { animation-delay: 0.9s; }
-
 /* Definimos el movimiento: empieza invisible y 30px más abajo */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
@@ -87,7 +80,7 @@
 /* ========================================================================================================================
                                                 SECCIÓN CARRUSEL PROYECTOS
    ======================================================================================================================== */
-.proyectos-slider {
+.projects-slider {
     padding: 80px 10%;
     background-color: #f9f9f9;
 }
@@ -99,9 +92,11 @@
     align-items: center;
     position: relative;
 }
-
+/*========================================================================== 
+  Texto principal de la sección "Proyectos destacados"
+==========================================================================*/
 .bg-text-decor {
-    font-size: clamp(35px, 11vw, 120px);
+    font-size: clamp(30px, 9vw, 90px);
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: clamp(4px, 1.5vw, 15px);
@@ -126,8 +121,9 @@
     margin: 30px auto 0;
     opacity: 0.5;
 }
-
-/* El "marco" por donde vemos las fotos */
+/*========================================================================== 
+  El "marco" por donde vemos las fotos
+==========================================================================*/
 .slider-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -136,7 +132,6 @@
     min-height: 450px;
     order: 1;
 }
-
 .slide {
     grid-area: 1 / 1;
     display: none !important;
@@ -159,77 +154,74 @@
     visibility: visible;
     pointer-events: auto; 
 }
-
 .slide-img-container {
-    flex: 1 1 500px;       /* Crece, se encoge, pero intenta no bajar de 500px */
-    min-width: 300px;      /* Ancho mínimo para que nunca sea diminuta */
-    height: 450px;         /* Altura fija o puedes usar aspect-ratio: 16/9 */
+    flex: 1 1 500px;
+    min-width: 300px;
+    height: 450px;
     border-radius: 20px;
     overflow: hidden;
 }
-
 .slide img {
     width: auto;
     max-width: 100%;
     height: auto;
     max-height: 100%;
     object-fit: contain;
-    border-radius: 20px; /* Redondeado real sobre la foto */
+    border-radius: 20px;
     display: block;
     margin: 0 auto;
 }
-
+/*========================================================================== 
+  Container de detalles técnicos de cada proyecto
+==========================================================================*/
 .slide-info {
-    flex: 1 1 400px;       /* El texto también intentará tener su espacio */
+    flex: 1 1 400px;
     min-width: 300px;
     margin-top: 0 !important;
 }
 .slide-info h3 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #333;
     margin-bottom: 15px;
 }
 .slide-description {
-    font-size: 1.05rem;
+    font-size: 1rem;
     line-height: 1.7;
     color: #666;
     margin-bottom: 30px !important;
-    border-left: 3px solid var(--color-logo-dark); /* Línea de acento lateral */
+    border-left: 3px solid var(--color-logo-dark);
     padding-left: 20px;
-}
-/* Bloque de detalles técnicos */
+} 
+/*Bloque de detalles técnicos*/
 .project-details {
     display: grid;
-    grid-template-columns: repeat(3, minmax(150px, 300px));
-    gap: 40px;
-    border-top: 1px solid #eee; /* La línea que ya tienes */
-    padding: 30px 0;           /* 30px arriba y 30px abajo para centrar el bloque respecto a la línea */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px 40px;
+    border-top: 1px solid #eee;
+    padding: 25px 0;
     margin: 20px 0;
-    width: fit-content;
-    justify-content: center;
 }
 .detail-item {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra el label y el valor uno sobre otro */
+    align-items: center;
     text-align: center;
 }
 .detail-item .label {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     color: #999;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
-
 .detail-item .value {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--color-logo-dark);
-    line-height: 1.4;
-    word-wrap: break-word; 
-    display: block;
+    line-height: 1.3;
+    word-break: break-word;
 }
+/*Boton de cada proyecto*/
 .btn-slider {
     display: inline-flex;
     align-items: center;
@@ -244,11 +236,9 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: all 0.4s ease;
-    background-color: transparent;
     border-radius: 5px;
     cursor: pointer;
 }
-
 .btn-slider:hover {
     background-color: var(--color-logo-dark);
     color: white;
@@ -256,34 +246,31 @@
 }
 
 /* ==========================================================================
-   CONTROLES (Flecha - Puntos - Flecha) alineados bajo la foto
+   CONTROLES (Flecha - Puntos - Flecha)
    ========================================================================== */
 .slider-controls {
     display: flex;
-    flex-direction: row;     /* Fuerza la fila horizontal */
+    flex-direction: row;
     align-items: center;
     justify-content: center; 
     width: 100%;             
     margin-top: 30px;
     gap: 25px;   
 }
-
-/* Reseteamos flechas y puntos */
+/* Reseto de flechas y puntos */
 .prev, .next, .slider-dots {
     position: static !important;
     transform: none !important;
     margin: 0 !important;
 }
-
 .slider-dots {
-    display: flex !important; /* Asegura que sea flex */
-    flex-direction: row !important; /* FUERZA LOS PUNTOS EN HORIZONTAL */
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    height: auto; /* Evita que herede alturas raras */
+    height: auto;
 }
-
 .prev, .next {
     background: transparent;
     color: var(--color-logo-dark);
@@ -292,16 +279,14 @@
     padding: 5px;
     transition: 0.3s ease;
 }
-
 .prev:hover, .next:hover {
     color: var(--color-logo-light);
     transform: scale(1.2);
 }
-
+/* Puntos */
 .slider-dots {
     gap: 12px;
 }
-
 .dot {
     width: 8px;
     height: 8px;
@@ -311,7 +296,6 @@
     transition: 0.3s;
     display: block; /* Asegura que se vean como circulitos */
 }
-
 .dot.active {
     background-color: var(--color-logo-dark);
     transform: scale(1.3);
@@ -320,56 +304,38 @@
 /* ========================================================================================================================
                                                         MEDIA QUERY
    ======================================================================================================================== */
-/*________________________________________________Pantallas menores a 650___________________________________________________*/
-@media (max-width: 650px) {
+/*===============================================================================================================
+                                            Pantallas menores a 750 
+===============================================================================================================*/
+@media (max-width: 750px) {
     body{ padding-top: 80px; }
-    /*________________________________________________Sección Inicio (Parallax)_____________________________________________________*/
+    /* ==========================================================================
+       Sección Parallax
+    ========================================================================== */
     .hero-parallax {
         background-attachment: scroll;
-        height: 60vh;
+        height: 40vh;
         justify-content: center;
         text-align: center;
-        padding-left: 0;
         padding: 0 10%; 
-        background-position: center center;
     }
-
     .hero-content {
         border-left: none;
         padding: 0;
     }
-
     .hero-content h1 { font-size: 1.8rem; }
     .hero-content p { font-size: 0.8rem; }
-
-    /* El botón en móvil: un poco más grande para facilitar el clic táctil */
     .btn-primary {
         padding: 10px 25px;
-        width: auto;
     }
-
-    .slider-container {
-        height: auto;
-        min-height: 250px;
-    }
-
-    .proyectos-slider {
-        padding: 60px 5% 40px 5%;
-    }
-    .slider-intro {
-        width: 100%;
-        max-width: 100%;
-        padding: 0;           /* Quitamos padding para que el centrado sea real */
-        margin-bottom: 30px;  /* Espacio controlado con el slider de abajo */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        overflow: hidden;
-    }
+    /* ==========================================================================
+       Sección Carrusel
+    ========================================================================== */
+    /*Texto principal de la sección "Proyectos destacados"*/
     .bg-text-decor {
         font-size: clamp(40px, 9vw, 75px); 
         letter-spacing: 5px;
-        top: 40%; /* Ajuste visual para el móvil */
+        top: 40%;
         width: 100%;
     }
     .descripcion-intro {
@@ -379,75 +345,49 @@
         max-width: 100%;
         margin-top: 30px;
     }
-
-    
-
-    .slide-img-container {
-        height: 300px; /* Misma medida que tu max-height */
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    /*Texto principal de la sección "Proyectos destacados"*/
+    .projects-slider {
+        padding: 40px 5%;
     }
-
-    /* La imagen en móvil: menos alta para que no ocupe todo */
-    .slide img {
-        width: auto;
-        max-width: 100%;
-        height: auto;
-        max-height: 100%;
-        border-radius: 12px; 
-        margin: 0 auto; 
+    .slider-intro{
+        margin-bottom: 20px;
     }
-
-    /* El texto del proyecto */
-    .slide-info {
-        padding-left: 0;
-        margin-top: 60px;
-    }
-    .slide-info h3 {
-        font-size: 1.3rem;
-    }
-
-    .slide-description {
-        border-left: none;
-        border-top: 2px solid var(--color-logo-dark);
-        padding-left: 0;
-        padding-top: 15px;
-        margin-bottom: 0px !important;
-    }
-
-    .project-details {
-        grid-template-columns: 1fr;
-        width: 100%;
-        max-width: 100%;
+    .slide.active {
+        display: flex !important;
+        flex-direction: column;
         gap: 20px;
-        padding: 20px 0;
-        margin: 10px 0 0 0;
-        justify-content: start; 
+    }
+    .slide-img-container {
+        height: 250px;
+        width: 100%;
+        flex: none;
+    }
+    .slide img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+    .slide-info {
+        flex: none;
+        width: 100%;
+        margin-top: 20px !important;
+    }
+    .slide-info h3{
+        font-size: 1.5rem;
+    }
+    .project-details {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        border-top: 1px solid #d5d4d4;
+        margin-bottom: 0;
+        
     }
     .detail-item {
         align-items: flex-start;
         text-align: center;
     }
+    .detail-item:nth-child(2) {
+        grid-column: span 2;
+    }
 
-    /* Botón más cómodo para pulsar con el dedo */
-    .btn-slider {
-        width: 160px;
-        padding: 8px 6px;
-        text-align: center;
-    }
-    .slider-container {
-        touch-action: pan-y; /* Permite scroll vertical pero bloquea el horizontal nativo para usar el nuestro */
-    }
-    /* Los puntos un poco más cerca */
-    .slider-dots {
-        position: absolute;
-        top: 330px; /* 300px de imagen + 10px de aire */
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 0;
-        gap: 8px;
-        z-index: 10;
-    }
 }
