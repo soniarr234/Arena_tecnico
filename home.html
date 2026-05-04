@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Título de la pestaña -->
-    <title>Arena Técnica | Gestión Integral de Proyectos</title>
+    <title>Arena Técnica | Arquitecto Técnico en Madrid</title>
     <!-- Descripción para Google (SEO) -->
-    <meta name="description" content="Arena Técnica: Tu técnico de confianza para la gestión integral de proyectos. Desde la decisión inicial hasta la entrega final de obra. Calidad y rigor técnico.">
+    <meta name="description" content="Arquitecto Técnico en Madrid. Especialista en gestión integral de proyectos, licencias, ITE y dirección de obra. Rigor técnico de principio a fin. ¡Pide presupuesto!">
     <!-- Favicon (el icono pequeño que sale en la pestaña) -->
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -15,25 +15,31 @@
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/footer.css">
+    <!-- Open Graph para Redes Sociales -->
+    <meta property="og:title" content="Arena Técnica | Arquitectura Técnica y Gestión de Proyectos">
+    <meta property="og:description" content="Servicios profesionales de arquitectura técnica. Calidad y rigor en cada fase de tu obra.">
+    <meta property="og:image" content="assets/img/background-parallax.webp">
+    <meta property="og:url" content="https://tuweb.com"> <!--IMPORTANTE PONER LA WEB-->
+    <link rel="canonical" href="https://tuweb.com"> <!--IMPORTANTE PONER LA WEB-->
     <!-- Fuentes de Google Fonts -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400,700&display=swap" rel="stylesheet">
     <!-- Para cargar los iconos de Yesicon -->
     <script src="https://iconify.design"></script>
 </head>
 <body>
     <header class="navbar">
         <!-- Botones navbar formato móvil -->
-        <div class="menu-toggle" id="mobile-menu">
+        <button class="menu-toggle" id="mobile-menu">
             <div class="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-        </div>
+        </button>
         <a href="home.html" class="logo-link">
-            <img class="logo-nav" src="assets/img/logo-navbar.webp" alt="imagen del logo de Arena Técnica">
+            <img class="logo-nav" src="assets/img/logo-navbar.webp" alt="imagen del logo de Arena Técnica - Arquitecto Técnico en Madrid">
         </a>        
         <nav class="nav-container">
             <ul class="nav-links">
@@ -50,33 +56,30 @@
             <p>¡Bienvenido a nuestro espacio de arquitectura técnico!</p>
             <a href="about-me.html" class="btn-primary">
                 <span>CONÓCENOS</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
         </div>
     </section>
-    <section class="proyectos-slider">
+    <section class="projects-slider">
         <div class="container">
-            <!-- Texto fijo que no se mueve -->
             <div class="slider-intro">
-                <!-- El texto que "flota" al fondo -->
-                <span class="bg-text-decor">PROYECTOS DESTACADOS</span> 
+                <h2 class="bg-text-decor">PROYECTOS DESTACADOS</h2> 
                 <p class="descripcion-intro">
-                    Gestionamos todo el proceso constructivo desde fase inicial de toma de decisiones, 
-                    redacción de proyectos, gestión de obra y entrega final.
+                    Gestionamos todo el proceso constructivo desde fase inicial de toma de decisiones, redacción de proyectos, gestión de obra y entrega final.
                 </p>
             </div>
 
-            <!-- Contenedor del movimiento -->
+            <!-- CARRUSEL -->
             <div class="slider-wrapper">
                 <div class="slider-container" id="slider">
                     
                     <!-- PROYECTO 1 -->
                     <div class="slide active">
                         <div class="slide-img-container">
-                            <img src="assets/img/img1_carrousel.webp" alt="Foto de un edificio blanco">
+                            <img src="assets/img/img1_carrousel.webp" alt="Vista exterior de edificio residencial en Carabanchel tras la dirección de obra">
                         </div>
                         <div class="slide-info">
-                            <h3>Edificio de viviendas</h3>
+                            <h3>Promoción Residencial en Carabanchel</h3>
                             <p class="slide-description">Dirección facultativa, coordinación de seguridad y salud y servicios de Project Manager en Carabanchel (Madrid).</p>
                             <div class="project-details">
                                 <div class="detail-item"><span class="label">PEM</span><span class="value">4.000.000€</span></div>
@@ -90,7 +93,7 @@
                     <!-- PROYECTO 2 -->
                     <div class="slide">
                         <div class="slide-img-container">
-                            <img src="assets/img/img2_carrousel.webp" alt="Palacio El Rincón">
+                            <img loading="lazy" src="assets/img/img2_carrousel.webp" alt="Vista exterior de las obras de rehabilitación en la fachada del Palacio El Rincón">
                         </div>
                         <div class="slide-info">
                             <h3>Palacio El Rincón</h3>
@@ -107,10 +110,10 @@
                     <!-- PROYECTO 3 (Corregido: quitado el 'active') -->
                     <div class="slide">
                         <div class="slide-img-container">
-                            <img src="assets/img/img3_carrousel.webp" alt="Fachada Jorge Juan">
+                            <img loading="lazy" src="assets/img/img3_carrousel.webp" alt="Detalle de la fachada rehabilitada con protección histórica en calle Jorge Juan, Madrid">
                         </div>
                         <div class="slide-info">
-                            <h3>Fachada en edificio con protección</h3>
+                            <h3>Rehabilitación de Fachada Protegida en Jorge Juan</h3>
                             <p class="slide-description">Redacción de proyecto de rehabilitación de fachada singular en edificio con protección en Calle Jorge Juan (Madrid).</p>
                             <div class="project-details">
                                 <div class="detail-item"><span class="label">PEM</span><span class="value">80.000€</span></div>
@@ -123,11 +126,11 @@
                     <!-- PROYECTO 4 -->
                     <div class="slide">
                         <div class="slide-img-container">
-                            <img src="assets/img/img4_carrousel.webp" alt="Edificio histórico Lara">
+                            <img loading="lazy" src="assets/img/img4_carrousel.webp" alt="Rehabilitación integral del edificio histórico Larra 14 en Madrid, vista de la estructura">
                         </div>
                         <div class="slide-info">
-                            <h3>Edificio histórico Lara</h3>
-                            <p class="slide-description">Dirección facultativa, coordinación de seguridad y salud para obras de rehabilitación de Edificio histórico Lara 12-4 (Madrid).</p>
+                            <h3>Edificio histórico Larra</h3>
+                            <p class="slide-description">Dirección facultativa, coordinación de seguridad y salud para obras de rehabilitación de Edificio histórico Larra 12-4 (Madrid).</p>
                             <div class="project-details">
                                 <div class="detail-item"><span class="label">PEM</span><span class="value">1.500.000€</span></div>
                                 <div class="detail-item"><span class="label">Promotor</span><span class="value">Ephimera S.L</span></div>
