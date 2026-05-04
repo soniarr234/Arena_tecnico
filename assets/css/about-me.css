@@ -1,36 +1,11 @@
-/* ==========================================================================
-   CABECERA DE PÁGINA
-   ========================================================================== */
-.page-header {
-    background-color: var(--bg-dark);
-    padding: 80px 10%;
-    text-align: center;
-    color: var(--bg-light);
-}
-
-.page-header h1 {
-    font-size: 3rem;
-    color: var(--color-logo-light);
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.page-header p {
-    color: var(--text-light);
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-
-/* --- Intro de Impacto --- */
-.intro-hybrid {
-    padding: 110px 10% 40px 10%; /* Un poco más de aire abajo */
-    background-color: #f8f9fa; /* Un gris casi blanco, muy profesional */
+/* ========================================================================================================================
+                                                    SECCIÓN CABECERA DE LA PÁGINA
+   ======================================================================================================================== */
+.hero-intro {
+    padding: 110px 10% 40px 10%;
+    background-color: #f8f9fa;
     border-bottom: 1px solid #eee;
 }
-
 .sub-label {
     color: var(--color-logo-dark);
     font-size: 0.75rem;
@@ -39,31 +14,28 @@
     display: block;
     margin-bottom: 15px;
 }
-
-.intro-hybrid h2 {
+.hero-intro h1 {
     font-size: clamp(2.2rem, 5vw, 3.5rem);
     line-height: 1.1;
     color: var(--text-dark);
 }
+.hero-intro h1 span { color: var(--color-logo-light); }
 
-.intro-hybrid h2 span { color: var(--color-logo-light); }
-
-/* ==========================================================================
-   SECCIÓN PERFIL (Grid de 2 columnas)
-   ========================================================================== */
-.perfil-seccion {
+/* ========================================================================================================================
+                                                   SECCIÓN PERFIL (Grid de 2 columnas)
+   ======================================================================================================================== */
+.profile-section {
     padding: 50px 10%;
     background-color: var(--bg-light);
 }
-
-.perfil-grid {
+.profile-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 30px;
     align-items: center;
 }
 
-.perfil-imagen {
+.profile-image-wrapper {
     position: relative;
     /* Ajustamos el tamaño aquí */
     width: 100%;
@@ -71,29 +43,29 @@
     margin: 0 auto;   /* La mantiene centrada en su columna */
 }
 
-.perfil-imagen img {
+.profile-image-wrapper img {
     width: 100%;      /* La imagen se adapta al contenedor de 400px */
     height: auto;
     border-radius: 10px;
     box-shadow: 15px 15px 0px var(--color-logo-dark); /* Sombra un poco más pequeña */
 }
 
-.experiencia-badge {
+.experience-badge {
     padding: 25px 12px 12px 12px;
 }
 
-.experiencia-badge .anos {
+.experience-badge .years {
     font-size: 1.5rem;
 }
 
-.experiencia-badge .texto {
+.experience-badge .label-text {
     font-size: 0.8rem;
     text-transform: uppercase;
     color: var(--bg-dark);
     font-weight: 600;
 }
 
-.perfil-texto h2 {
+.profile-content h2 {
     font-size: 2.5rem;
     color: var(--text-dark);
     margin-bottom: 5px;
@@ -106,14 +78,14 @@
     margin-bottom: 25px;
 }
 
-.perfil-texto p {
+.profile-content p {
     margin-bottom: 20px;
     line-height: 1.8;
     color: var(--text-dark);
 }
 
 /* Iconos de Valores */
-.valores-grid {
+.values-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -122,7 +94,7 @@
     border-top: 1px solid #eee;
 }
 
-.valor-item {
+.value-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -135,25 +107,25 @@
 /* ==========================================================================
    METODOLOGÍA (Tarjetas)
    ========================================================================== */
-.metodologia {
+.methodology-section {
     background-color: #f9f9f9;
     padding: 50px 10%;
     text-align: center;
 }
 
-.metodologia-intro h2 {
+.methodology-header h2 {
     font-size: 2rem;
     margin-bottom: 15px;
 }
 
-.metodos-grid {
+.process-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-top: 50px;
 }
 
-.metodo-card {
+.step-card {
     background: white;
     padding: 40px;
     border-radius: 10px;
@@ -161,11 +133,11 @@
     border-bottom: 4px solid var(--color-logo-light);
 }
 
-.metodo-card:hover {
+.step-card:hover {
     transform: translateY(-10px);
 }
 
-.metodo-card h3 {
+.step-card h3 {
     color: var(--color-logo-dark);
     margin-bottom: 15px;
 }
@@ -185,14 +157,14 @@
 }
 
 /* Tarjeta de Colegiado */
-.colegiado-card {
+.license-card {
     background: #fdfaf3; /* Un crema muy suave */
-    padding: 30px;
+    padding: 30px 30px 10px 30px;
     border-left: 5px solid var(--color-logo-light);
-    margin-bottom: 40px;
+    margin-top: 40px;
 }
 
-.colegiado-label {
+.license-label {
     display: block;
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -201,7 +173,7 @@
     margin-bottom: 5px;
 }
 
-.colegiado-numero {
+.license-id {
     font-size: 1.5rem;
     font-weight: 900;
     color: var(--text-dark);
@@ -297,13 +269,12 @@
 }
 
 /* Estilos para el CTA final */
-.cta-sobre-mi {
+.about-cta {
     padding: 50px 10% 70px 10%;
-    background-color: #f9f9f9;
     text-align: center;
 }
 
-.cta-sobre-mi h2 {
+.about-cta h2 {
     font-size: 1.8rem;
     margin-bottom: 40px;
     max-width: 700px;
@@ -311,7 +282,7 @@
 }
 
 /* Aseguramos que el botón resalte sobre el fondo oscuro */
-.cta-sobre-mi .btn-primary {
+.about-cta .btn-primary {
     background-color: var(--color-logo-light);
     color: var(--bg-dark);
     padding: 15px 35px;
@@ -321,14 +292,14 @@
     transition: transform var(--transition), background-color var(--transition);
 }
 
-.cta-sobre-mi .btn-primary:hover {
+.about-cta .btn-primary:hover {
     background-color: var(--color-logo-dark);
     transform: translateY(-3px);
     color: var(--color-logo-light);
 }
 
 /* Estilo para los SVGs de los valores (ajuste de tamaño) */
-.valor-item svg {
+.value-item svg {
     color: var(--color-logo-light);
     margin-bottom: 5px;
 }
@@ -362,39 +333,39 @@
 /* ==========================================================================
    MEDIA QUERY
    ========================================================================== */
-@media (max-width: 750px) {
-    .perfil-grid {
+@media (max-width: 800px) {
+    .profile-grid {
         display: flex;
         flex-direction: column; /* Forzamos orden vertical */
         gap: 20px;
         text-align: left;
     }
 
-    .perfil-imagen {
+    .profile-image-wrapper {
         max-width: 280px;      /* Foto más pequeña aún en móvil */
     }
 
-    .perfil-imagen img {
+    .profile-image-wrapper img {
         box-shadow: 10px 10px 0px var(--color-logo-dark); /* Sombra más sutil */
     }
 
-    .experiencia-badge {
+    .experience-badge {
         right: 50%;
         bottom: -15px;
         width: 100%;
     }
 
-    .perfil-texto h2 {
+    .profile-content h2 {
         font-size: 1.8rem;
     }
 
-    .valores-grid {
+    .values-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
         padding-top: 25px;
     }
     
-    .valor-item {
+    .value-item {
         flex-direction: row; /* Icono al lado del texto */
         justify-content: flex-start; /* Alineado a la izquierda para mejor lectura */
         background: #f8f9fa; /* Un fondo muy sutil para que parezca una etiqueta */
@@ -403,7 +374,7 @@
         gap: 10px;
         font-size: 0.85rem;
     }
-    .valor-item:last-child {
+    .value-item:last-child {
         grid-column: span 2;
         justify-content: center;
     }
@@ -413,15 +384,15 @@
         flex-direction: column;
         gap: 0px;
     }
-    .valor-item svg {
+    .value-item svg {
         width: 18px; /* Un poco más pequeños para móvil */
         height: 18px;
         flex-shrink: 0; /* Evita que el icono se aplaste si el texto es largo */
     }
-    .profesional-left {
+    .license-container {
         display: contents; 
     }
-    .colegiado-card {
+    .license-card {
         order: 1; /* Primero: Colegiado */
     }
 
