@@ -2,7 +2,7 @@
                                                     SECCIÓN CABECERA DE LA PÁGINA
    ======================================================================================================================== */
 .hero-intro {
-    padding: 110px 10% 40px 10%;
+    padding: 110px 10% 40px;
     background-color: #f8f9fa;
     border-bottom: 1px solid #eee;
 }
@@ -103,14 +103,8 @@
 /*========================================================================== 
   Sección Tarjeta de Colegiado
 ==========================================================================*/
-.license-container {
-    display: contents; 
-}
 .license-card {
-    order: 1; /* Primero: Colegiado */
-}
-.license-card {
-    background: #fdfaf3; /* Un crema muy suave */
+    background: #fdfaf3;
     padding: 30px 30px 10px 30px;
     border-left: 5px solid var(--color-logo-light);
     margin-top: 40px;
@@ -128,217 +122,73 @@
     font-weight: 900;
     color: var(--text-dark);
 }
-
-/* ==========================================================================
-   METODOLOGÍA (Tarjetas)
-   ========================================================================== */
+/* ========================================================================================================================
+                                                     METODOLOGÍA (Tarjetas)
+   ======================================================================================================================== */
 .methodology-section {
     background-color: #f9f9f9;
     padding: 50px 10%;
     text-align: center;
 }
-
 .methodology-header h2 {
     font-size: 2rem;
     margin-bottom: 15px;
 }
-
 .process-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-top: 50px;
 }
-
 .step-card {
     background: white;
     padding: 40px;
     border-radius: 10px;
     transition: transform var(--transition);
     border-bottom: 4px solid var(--color-logo-light);
+    cursor: auto;
 }
-
 .step-card:hover {
     transform: translateY(-10px);
 }
-
 .step-card h3 {
     color: var(--color-logo-dark);
     margin-bottom: 15px;
 }
 
-/* --- Sección Detalles Profesionales --- */
-.detalles-profesionales {
-    padding: 50px 10%;
-    background-color: #fff;
-    border-top: 1px solid var(--border-soft);
-}
-
-.profesional-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-}
-
-/* Listado de Skills */
-.skills-list {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-}
-
-.skills-list li {
-    font-size: 0.95rem;
-    padding-left: 20px;
-    position: relative;
-}
-
-.skills-list li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: var(--color-logo-light);
-    font-weight: bold;
-}
-
-/* Timeline Laboral */
-.timeline {
-    margin-top: 30px;
-}
-
-.timeline-item {
-    margin-bottom: 40px;
-    padding-left: 25px;
-    border-left: 1px solid var(--color-logo-light);;
-    position: relative;
-}
-
-.timeline-item::after {
-    content: "";
-    position: absolute;
-    left: -5px;
-    top: 5px;
-    width: 9px;
-    height: 9px;
-    background: var(--color-logo-dark);
-    border-radius: 50%;
-}
-
-.timeline-date {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--color-logo-light);
-}
-
-.timeline-item h4 {
-    font-size: 1.1rem;
-    margin: 5px 0;
-}
-
-/* Estilos para Herramientas */
-.software-herramientas {
-    margin-top: 40px;
-    padding-top: 20px;
-}
-
-/* Grid de iconos */
-.software-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 por fila en PC */
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.software-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.software-item img {
-    width: 40px; /* Tamaño ideal para PC */
-    height: 40px;
-    object-fit: contain;
-    margin-bottom: 8px;
-}
-
-.software-item span {
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-/* Estilos para el CTA final */
+/* ========================================================================================================================
+                                                     CTA (Call to Action section)
+   ======================================================================================================================== */
 .about-cta {
-    padding: 50px 10% 70px 10%;
+    padding: 50px 10% 70px;
     text-align: center;
 }
-
 .about-cta h2 {
-    font-size: 1.8rem;
-    margin-bottom: 40px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 35px;
     max-width: 700px;
     margin-inline: auto;
+    color: var(--text-dark);
 }
-
-/* Aseguramos que el botón resalte sobre el fondo oscuro */
+/* Solo ajustes específicos, el resto lo hereda de .btn-primary */
 .about-cta .btn-primary {
     background-color: var(--color-logo-light);
     color: var(--bg-dark);
-    padding: 15px 35px;
-    font-weight: 700;
-    border: none;
-    border-radius: 5px;
-    transition: transform var(--transition), background-color var(--transition);
+    padding: 16px 40px;
+    border-radius: 10px;
 }
-
 .about-cta .btn-primary:hover {
     background-color: var(--color-logo-dark);
+    color: var(--color-logo-light);
     transform: translateY(-3px);
-    color: var(--color-logo-light);
 }
-
-/* Estilo para los SVGs de los valores (ajuste de tamaño) */
-.value-item svg {
-    color: var(--color-logo-light);
-    margin-bottom: 5px;
-}
-
-.estudios-contenedor {
-    margin: 30px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 25px; /* Espacio entre cada estudio */
-}
-
-.estudio-item {
-    padding-left: 20px;
-    border-left: 1px solid var(--color-logo-light); /* La línea vertical */
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.estudio-item h4 {
-    font-size: 1rem;
-    margin: 0;
-    line-height: 1.3;
-}
-.estudio-centro {
-    font-size: 0.9rem;
-    color: var(--color-logo-dark);
-    margin: 4px 0 0 0;
-    font-weight: 500;
-}
-
 /* ========================================================================================================================
                                                         MEDIA QUERY
    ======================================================================================================================== */
 /*===============================================================================================================
                                             Pantallas menores a 800 
 ===============================================================================================================*/
-@media (max-width: 800px) {
+@media (max-width: 850px) {
     /* ==========================================================================
        SECCIÓN PERFIL
     ========================================================================== */
@@ -387,41 +237,9 @@
         grid-column: span 2;
         justify-content: center;
     }
-    
-    .profesional-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 0px;
-    }
     .value-item svg {
-        width: 18px; /* Un poco más pequeños para móvil */
+        width: 18px;
         height: 18px;
-        flex-shrink: 0; /* Evita que el icono se aplaste si el texto es largo */
-    }
-    
-
-    .profesional-right {
-        order: 2; /* Segundo: Trayectoria */
-    }
-
-    .skills-tecnicas {
-        order: 3; /* Tercero: Skills (al final de todo) */
-    }
-    .software-herramientas {
-        order: 4; /* Tercero: Skills (al final de todo) */
-    }
-
-    .software-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 por fila en móvil */
-        gap: 15px;
-    }
-    
-    .software-item img {
-        width: 32px; /* Iconos un poco más pequeños en móvil */
-        height: 32px;
-    }
-    
-    .software-item span {
-        font-size: 0.75rem; /* Texto más compacto */
+        flex-shrink: 0;
     }
 }
