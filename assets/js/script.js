@@ -188,3 +188,78 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+
+
+
+
+const projectsData = {
+    'promocion-residencial-carabanchel': {
+        title: 'Promoción residencial en Carabanchel',
+        desc: 'Dirección facultativa, coordinación de seguridad y salud y servicios de Project Manager en Carabanchel (Madrid).',
+        cost: '45.000€',
+        promotor: '3SUCCES AML INVESTMENT S.L.U',
+        contratista: 'PGM',
+        mainImg: 'assets/img/img1_carrousel.webp',
+        gallery: [
+            'assets/img/img1_carrousel.webp',
+            'assets/img/img2_carrousel.webp',
+            'assets/img/img3_carrousel.webp'
+        ]
+    },
+};
+
+function openModal(id) {
+    const data = projectsData[id];
+    if (!data) return;
+
+    const body = document.getElementById('modal-body');
+
+    // Generar HTML de miniaturas
+    const thumbnailsHTML = data.gallery.map(img => 
+        `<img src="${img}" class="modal-thumb" onclick="changeModalMainImage('${img}')" alt="Vista previa">`
+    ).join('');
+
+    body.innerHTML = `
+        <div class="modal-body-wrapper">
+            <div class="modal-image-container">
+                <img src="${data.mainImg}" id="modal-main-img" class="modal-header-img">
+                <div class="modal-thumbnails">
+                    <img src="${data.mainImg}" class="modal-thumb" onclick="changeModalMainImage('${data.mainImg}')">
+                    ${thumbnailsHTML}
+                </div>
+            </div>
+            <div class="modal-info">
+                <h2>${data.title}</h2>
+                <p>${data.desc}</p>
+                <div class="project-specs">
+                    <div class="spec-item"><span>PEM</span><strong>${data.cost}</strong></div>
+                    <div class="spec-item"><span>Promotor</span><strong>${data.promotor}</strong></div>
+                    <div class="spec-item"><span>Contratista</span><strong>${data.contratista}</strong></div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('project-modal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Función para cambiar la imagen principal
+function changeModalMainImage(src) {
+    document.getElementById('modal-main-img').src = src;
+}
+
+function closeModal() {
+    document.getElementById('project-modal').style.display = 'none';
+    document.body.style.overflow = 'auto'; // Devuelve el scroll
+}
+
+// 2. LA MAGIA: Leer la URL al cargar la página
+window.onload = () => {
+    const params = new URLSearchParams(window.location.search);
+    const projectId = params.get('id');
+    if (projectId) {
+        openModal(projectId);
+    }
+};
