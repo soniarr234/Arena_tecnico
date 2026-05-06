@@ -1,46 +1,36 @@
 /* ========================================================================================================================
-                                                    SECCIÓN INICIO (HERO PARALLAX)
+                                                    SECCIÓN PARALLAX
    ======================================================================================================================== */
 .hero-parallax {
-    /* Ajustamos la altura para que ocupe casi toda la pantalla */
     height: 50vh; 
-    /* Imagen de fondo */
-       background: linear-gradient(rgba(0, 0, 0, 0.249), rgba(0, 0, 0, 0.244)), 
+    /* Cambiamos fixed por scroll en móviles más adelante por rendimiento */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
                 url('../img/background-contact.webp') no-repeat center 48% / cover fixed;
-
-    /* Centrado del texto */
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    text-align: left;
-    color: white;
-    position: relative;
     padding-left: 10%;
+    color: white;
 }
 .hero-content {
-    position: relative;
-    z-index: 2;
     max-width: 850px;
     border-left: 4px solid var(--color-logo-light); 
     padding: 10px 0 10px 30px;
+    z-index: 2;
 }
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 6vw, 3rem);
     line-height: 1.1;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .hero-content p {
     font-size: 1.15rem;
-    margin-bottom: 35px;
     color: #e0e0e0;
 }
-
 /* Inicialmente los ocultamos para que la animación los "despierte" */
 .hero-content h1, .hero-content p, .hero-content {
     opacity: 0;
     animation: fadeInUp 0.8s ease-out forwards;
 }
-
 /* Retrasos para crear la cascada */
 .hero-content h1 { animation-delay: 0.3s; }
 .hero-content p { animation-delay: 0.6s; }
@@ -55,77 +45,108 @@
 /* ========================================================================================================================
                                             SECCIÓN INTERMEDIA (COLUMNAS)
    ======================================================================================================================== */
-.contacto-intermedia {
+.contact-main-info {
     padding: 80px 10%;
     background-color: #fff;
 }
-
 .container-grid {
     display: grid;
-    grid-template-columns: 1fr 1.2fr; /* Dos columnas: datos y formulario */
+    grid-template-columns: 1fr 1.2fr;
     gap: 60px;
     align-items: start;
+    color: #333;
 }
 
-/* Columna Info */
-.info-contacto h2 {
+/*========================================================================== 
+  Columna Info 
+==========================================================================*/
+.contact-details h2 {
     font-size: 2rem;
-    color: var(--color-logo-light);
     margin-bottom: 20px;
+    color: #333;
+}
+.title{
+    color: var(--color-logo-light);
 }
 
-.metodos-directos {
-    margin-top: 40px;
+/* Contenedor de las tarjetas */
+.contact-methods-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
 }
-
-.metodo-item {
+/* La tarjeta base */
+.contact-card {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.metodo-item .iconify {
-    font-size: 24px;
-    color: var(--color-logo-light, #007bff); /* Usa tu color corporativo */
-}
-
-.metodo-item .label {
-    font-weight: bold;
-    font-size: 0.9rem;
-    margin: 0;
-    color: #777;
-}
-
-.metodo-item a, .metodo-item p {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
     text-decoration: none;
-    color: #333;
-    font-size: 1.1rem;
-    margin: 0;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
 }
+.contact-card:hover {
+    transform: translateX(10px);
+    background: #fdfdfd;
+    border-color: var(--color-logo-light, #465d63);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+.card-icon {
+    width: 50px;
+    height: 50px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    color: var(--color-logo-dark);
+    transition: 0.3s;
+}
+.contact-card:hover .card-icon {
+    background: var(--color-logo-light, #465d63);
+}
+/* Texto dentro de la tarjeta */
+.card-info span {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+.card-info strong {
+    display: block;
+    font-size: 1.05rem;
+}
+/* Ajuste para la tarjeta que no es link */
+address { font-style: normal; }
 
-.formulario-contacto-moderno {
+/*========================================================================== 
+  Columna Formulario 
+==========================================================================*/
+.form-wrapper {
     background: #ffffff;
     padding: 40px;
     border-radius: 15px;
     border: 1px solid #e3e2e2;
     box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
-
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
-
-.form-group-moderno {
+.form-group {
     position: relative;
     margin-bottom: 25px;
 }
-
 /* Estilo de los inputs y textarea */
-.form-group-moderno input,
-.form-group-moderno textarea {
+.form-group input,
+.form-group textarea {
     width: 100%;
     padding: 15px 0; /* Sin padding lateral para efecto línea */
     border: none;
@@ -137,16 +158,14 @@
     transition: all 0.3s ease;
     outline: none;
 }
-
-
 /* Efecto de la línea al hacer foco */
-.form-group-moderno input:focus, 
-.form-group-moderno textarea:focus {
-    border-bottom-color: var(--color-logo-light, #333);
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-bottom: 1px solid var(--color-logo-light, #465d63);
+    background: rgba(70, 93, 99, 0.02);
 }
-
 /* Animación del Label (Floating Labels) */
-.form-group-moderno label {
+.form-group label {
     position: absolute;
     top: 15px;
     left: 0;
@@ -154,20 +173,17 @@
     pointer-events: none;
     transition: all 0.3s ease;
 }
-
 /* Cuando escribimos o hacemos foco, la etiqueta sube */
-.form-group-moderno input:focus + label,
-.form-group-moderno input:not(:placeholder-shown) + label,
-.form-group-moderno textarea:focus + label,
-.form-group-moderno textarea:not(:placeholder-shown) + label {
-    top: -10px;
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    top: -15px;
     font-size: 0.75rem;
     color: var(--color-logo-light, #333);
     font-weight: bold;
 }
-
-/* Botón Moderno con Icono */
-.btn-enviar-moderno {
+.btn-submit {
     color: var(--color-logo-dark);
     background-color: transparent;
     padding: 15px 35px;
@@ -180,35 +196,58 @@
     justify-content: center;
     gap: 10px;
     transition: all 0.3s ease;
-    width: auto; /* Ya no ocupa todo el ancho */
+    width: auto;
     margin-top: 10px;
+    white-space: nowrap;
+    min-width: 200px;
 }
-
-.btn-enviar-moderno:hover {
+.btn-submit:hover {
     font-weight: 700;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
-
-/* Contenedor del mensaje de éxito */
-.success-overlay {
-    text-align: center;
-    padding: 40px 0;
-    overflow: hidden; /* Evita scroll si el avión sale rápido */
+.form-privacy {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 30px;
 }
-
+.form-privacy input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--color-logo-light, #465d63);
+    margin-top: 2px;
+}
+.form-privacy label {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+    cursor: pointer;
+    user-select: none;
+}
+.form-privacy label a {
+    color: var(--color-logo-light, #465d63);
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+.form-privacy label a:hover {
+    color: var(--color-logo-dark, #333);
+}
+/*========================================================================== 
+  Columna Formulario -- Mensaje de Exito
+==========================================================================*/
 /* Contenedor del mensaje de éxito */
 .success-overlay {
     text-align: center;
     padding: 40px 0;
     overflow: hidden;
 }
-
 /* Círculo contenedor de iconos */
 .success-icon {
     width: 80px;
     height: 80px;
-    background: #10b981; /* Verde éxito */
+    background: #10b981;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -219,13 +258,11 @@
     box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
     position: relative;
     opacity: 0;
-    
     /* Animación: Aparece y luego vuela tras 1.5s */
     animation: 
         fadeInSimple 0.5s ease forwards, 
         paperPlaneFly 1.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards 1.5s;
 }
-
 /* Posicionamiento de los iconos uno sobre otro */
 .icon-check, .icon-plane {
     position: absolute;
@@ -233,7 +270,6 @@
     justify-content: center;
     align-items: center;
 }
-
 /* Transición: El Check desaparece justo antes del vuelo */
 .icon-check {
     opacity: 1;
@@ -241,7 +277,6 @@
     /* A los 1.4s desaparece */
     animation: fadeOutIcon 0.2s forwards 1.4s;
 }
-
 /* Transición: El Avión aparece justo para el vuelo */
 .icon-plane {
     opacity: 0;
@@ -249,25 +284,21 @@
     /* A los 1.4s aparece */
     animation: fadeInIcon 0.2s forwards 1.4s;
 }
-
 /* Keyframes para el intercambio real de iconos */
 @keyframes fadeOutIcon {
     from { opacity: 1; transform: scale(1); }
     to { opacity: 0; transform: scale(0.5); visibility: hidden; }
 }
-
 @keyframes fadeInIcon {
     from { opacity: 0; transform: scale(0.5); visibility: hidden; }
     to { opacity: 1; transform: scale(1); visibility: visible; }
 }
-
 /* Animación del despegue */
 @keyframes paperPlaneFly {
     0% { transform: translate(0, 0) rotate(0); opacity: 1; }
     20% { transform: translate(-10px, 5px) rotate(-10deg); }
     100% { transform: translate(500px, -400px) rotate(-45deg); opacity: 0; }
 }
-
 /* Estilos de los textos */
 .success-overlay h3 {
     font-size: 1.5rem;
@@ -276,177 +307,94 @@
     opacity: 0;
     animation: fadeInSimple 0.5s ease forwards 0.2s;
 }
-
 .success-overlay p {
     color: #666;
     opacity: 0;
     animation: fadeInSimple 0.5s ease forwards 0.4s;
 }
-
 @keyframes fadeInSimple {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 /* Transición del Formulario al volver */
 form {
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
 .fade-out {
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
 }
 
-
-/* Contenedor de las tarjetas */
-.metodos-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-/* La tarjeta base */
-.contacto-card {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 12px;
-    text-decoration: none; /* Quita el subrayado de los links */
-    color: inherit;
-    transition: all 0.3s ease;
-    border: 1px solid #f0f0f0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-}
-
-/* Efecto al pasar el ratón */
-.contacto-card:not(.no-link):hover {
-    transform: translateX(10px); /* Se desplaza un poco a la derecha */
-    background: #fdfdfd;
-    border-color: var(--color-logo-light, #007bff);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-}
-
-/* El círculo del icono */
-.card-icon {
-    width: 50px;
-    height: 50px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-    color: var(--color-logo-light, #007bff);
-    font-size: 24px;
-    transition: 0.3s;
-}
-
-.contacto-card:hover .card-icon {
-    background: var(--color-logo-light, #007bff);
-    color: white;
-}
-
-/* Texto dentro de la tarjeta */
-.card-info span {
-    display: block;
-    font-size: 0.85rem;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 2px;
-}
-
-.card-info strong {
-    display: block;
-    font-size: 1.05rem;
-    color: #333;
-    word-break: break-all; /* Evita que el email largo rompa el diseño en móvil */
-}
-
-/* Ajuste para la tarjeta que no es link */
-.contacto-card.no-link {
-    cursor: default;
-}
-
-
 /* ========================================================================================================================
                                                     SECCIÓN MAPA (FULL WIDTH)
    ======================================================================================================================== */
 .mapa-contacto {
     width: 100%;
-    line-height: 0; /* Elimina un pequeño espacio en blanco debajo del iframe */
+    line-height: 0;
     overflow: hidden;
 }
-
 .mapa-contacto iframe {
     width: 100%;
     display: block;
 }
 
-
 /* ========================================================================================================================
                                                         MEDIA QUERY
    ======================================================================================================================== */
-/*________________________________________________Pantallas menores a 650___________________________________________________*/
-@media (max-width: 850px) {
-    /*________________________________________________Sección Inicio (Parallax)_____________________________________________________*/
+/*===============================================================================================================
+                                            Pantallas menores a 850 
+===============================================================================================================*/
+@media (max-width: 900px) {
+    /* ==========================================================================
+       SECCIÓN PARALLAX
+    ========================================================================== */
     .hero-parallax {
-        background-attachment: scroll; 
-        height: 30vh;
-        
-        /* CENTRADO TOTAL */
-        display: flex;
-        flex-direction: column; /* Apila el contenido si fuera necesario */
-        justify-content: center; /* Centrado vertical */
-        align-items: center;     /* Centrado horizontal */
-        
+        background-attachment: scroll;
+        height: 35vh;
+        padding-left: 5%;
+        padding-right: 5%;
+        justify-content: center;
         text-align: center;
-        padding: 0 5%; /* Padding lateral mínimo para que el texto no toque los bordes */
-        background-position: center center;
         margin-top: 80px;
     }
-
     .hero-content {
-        border-left: none; /* Quitamos la línea lateral en móvil */
+        border-left: none;
         padding: 0;
-        margin: 0; /* Eliminamos márgenes que puedan desplazarlo */
-        width: 100%; 
     }
-
-    .hero-content h1 { 
-        font-size: 2.2rem; /* Un poco más grande para que destaque */
-        margin-bottom: 10px;
+    /* ==========================================================================
+       SECCIÓN INTERMEDIA (COLUMNAS)
+    ========================================================================== */
+    .contact-main-info {
+        padding: 50px 5%;
     }
-    
-    .hero-content p { 
-        font-size: 1rem; 
-        margin-bottom: 0; /* Quitamos el margen inferior para que el centro sea real */
-    }
-
     .container-grid {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    .info-contacto h2 {
+    /*========================================================================== 
+      Columna Info 
+    ==========================================================================*/
+    .contact-details h2 {
         font-size: 1.5rem;
-        margin-bottom: 10px;
     }
-    .contacto-intermedia {
-        padding: 50px 5%;
+    .card-info strong {
+        font-size: 0.96rem;
+        margin-top: 5px;
+        word-break: break-word;
     }
-
+    /*========================================================================== 
+      Columna Formulario 
+    ==========================================================================*/
     .form-row {
         grid-template-columns: 1fr;
     }
-    .btn-enviar-moderno {
+    .btn-submit {
         width: 100%;
     }
-
-
+    /*========================================================================== 
+      Mapa 
+    ==========================================================================*/
     .mapa-contacto iframe {
         height: 300px; /* Reducimos la altura en pantallas pequeñas */
     }
