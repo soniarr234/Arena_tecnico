@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Título de la pestaña -->
-    <title>Contacta con Arena Técnica | Arena Técnica</title>
+    <title>Contacto | Arquitecto Técnico en Madrid - Arena Técnica</title>
     <!-- Descripción para Google (SEO) -->
     <meta name="description" content="¿Necesitas asesoramiento técnico? Contacta con Arena Técnica para informes IEE, certificaciones energéticas o gestión de obras. Respuesta en menos de 24h.">
-    <!-- Favicon (el icono pequeño que sale en la pestaña) -->
+    <!-- Favicon (el icono pequeño que sale en la pestaña) --><!-- Favicon (el icono pequeño que sale en la pestaña) -->
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
     <!-- Enlace al CSS -->
@@ -15,25 +15,31 @@
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/contact.css">
     <link rel="stylesheet" href="assets/css/footer.css">
+    <!-- Open Graph para Redes Sociales -->
+    <meta property="og:title" content="Conoce a Arena Técnica | Arquitecto Técnico y Gestión de Proyectos">
+    <meta property="og:description" content="Descubre la experiencia y el rigor técnico detrás de Arena Técnica. Especialista en Dirección de Obra y metodología BIM.">
+    <meta property="og:image" content="assets/img/background-parallax.webp">
+    <meta property="og:url" content="https://tuweb.com"> <!--IMPORTANTE PONER LA WEB-->
+    <link rel="canonical" href="https://tuweb.com"> <!--IMPORTANTE PONER LA WEB-->
     <!-- Fuentes de Google Fonts -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400,700&display=swap" rel="stylesheet">
     <!-- Para cargar los iconos de Yesicon -->
     <script src="https://iconify.design"></script>
 </head>
 <body>
     <header class="navbar">
         <!-- Botones navbar formato móvil -->
-        <div class="menu-toggle" id="mobile-menu">
+        <button class="menu-toggle" id="mobile-menu">
             <div class="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-        </div>
+        </button>
         <a href="home.html" class="logo-link">
-            <img class="logo-nav" src="assets/img/logo-navbar.webp" alt="imagen del logo de Arena Técnica">
+            <img class="logo-nav" src="assets/img/logo-navbar.webp" alt="imagen del logo de Arena Técnica - Arquitecto Técnico en Madrid">
         </a>        
         <nav class="nav-container">
             <ul class="nav-links">
@@ -44,28 +50,28 @@
             </ul>
         </nav>
     </header>
-    <main class="contacto-page">
+    <main class="contact-page">
         <!-- SECCIÓN HERO PARALLAX -->
         <section class="hero-parallax">
             <div class="hero-content">
-                <h1>¿Hablamos?</h1>
+                <h1>¿Hablamos sobre tu proyecto?</h1>
                 <p>Estamos a un mensaje de distancia para dar forma a tus ideas.</p>
             </div>
         </section>
 
         <!-- SECCIÓN INTERMEDIA: DATOS + FORMULARIO -->
-        <section class="contacto-intermedia">
+        <section class="contact-main-info">
             <div class="container-grid">
                 <!-- Columna Datos -->
-                <div class="info-contacto">
-                    <h2>Contacta con Arena Técnica</h2>
+                <div class="contact-details">
+                    <h2>Contacta con <span class="title">Arena Técnica</span></h2>
                     <p>Si buscas un presupuesto, tienes una duda técnica o necesitas asesoramiento para una obra, rellena el formulario o utiliza mis datos directos.</p>
                     
-                    <div class="metodos-grid">
+                    <div class="contact-methods-grid">
                         <!-- Tarjeta Email -->
-                        <a href="mailto:ruben.rodriguez@arenatecnica.es" class="contacto-card">
+                        <a href="mailto:ruben.rodriguez@arenatecnica.es" class="contact-card" title="Enviar un correo electrónico a Arena Técnica">
                             <div class="card-icon">
-                                <span class="iconify" data-icon="hugeicons:mail-send-01"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#465d63" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect width="20" height="16" x="2" y="4" rx="2"/></g></svg></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect width="20" height="16" x="2" y="4" rx="2"/></svg>
                             </div>
                             <div class="card-info">
                                 <span>Escríbeme</span>
@@ -74,9 +80,9 @@
                         </a>
 
                         <!-- Tarjeta Teléfono -->
-                        <a href="tel:+34658774738" class="contacto-card">
+                        <a href="tel:+34658774738" class="contact-card" title="Llamar por teléfono a Arena Técnica">
                             <div class="card-icon">
-                                <span class="iconify" data-icon="hugeicons:customer-service-01"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="#465d63" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .948.684l1.498 4.493a1 1 0 0 1-.502 1.21l-2.257 1.13a11.04 11.04 0 0 0 5.517 5.516l1.128-2.257a1 1 0 0 1 1.21-.502l4.494 1.498a1 1 0 0 1 .684.949V19a2 2 0 0 1-2 2h-1C9.716 21 3 14.284 3 6z"/></svg></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                             </div>
                             <div class="card-info">
                                 <span>Llamadas o WhatsApp</span>
@@ -85,48 +91,54 @@
                         </a>
 
                         <!-- Tarjeta Ubicación -->
-                        <div class="contacto-card no-link">
+                        <div class="contact-card">
                             <div class="card-icon">
-                                <span class="iconify" data-icon="hugeicons:location-01"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="#465d63" d="M24 6.5c-.329 0-.659.07-.937.245C21.5 7.733 21.5 9.08 21.5 10v.5H17m-8 3h15m-7.5 0V24m-4.5-.5c-1 0-1.75-1.5-1.75-1.5c-.75-1.5-.75-2.5-.75-4v-1.5h-8v-.25l1.922-7.495A3 3 0 0 1 6.328 6.5H7.5l1.447 2.894a2 2 0 0 0 1.79 1.106H15m-7.65-6s-1.6-1-1.6-2.25a1.747 1.747 0 1 1 3.496 0C9.246 3.5 7.65 4.5 7.65 4.5z"/></svg></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                             </div>
                             <div class="card-info">
                                 <span>Oficina central</span>
-                                <strong>Calle de Perseo, 33, 28938 Móstoles, Madrid</strong>
+                                <address><strong>Calle de Perseo, 33, 28938 Móstoles, Madrid</strong></address>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Columna Formulario -->
-                <div class="formulario-contacto-moderno">
-                    <form action="#" method="POST" class="form-container" id="contact-form">
+                <div class="form-wrapper">
+                    <form action="#" method="POST" class="contact-form" id="contact-form" autocomplete="on">
                         <div class="form-row">
-                            <div class="form-group-moderno">
-                                <input type="text" id="nombre" name="nombre" placeholder=" " required>
+                            <div class="form-group">
+                                <input type="text" id="nombre" name="nombre" placeholder=" " required autocomplete="name">
                                 <label for="nombre">Nombre</label>
                             </div>
-                            <div class="form-group-moderno">
-                                <input type="email" id="email" name="email" placeholder=" " required>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder=" " required autocomplete="email">
                                 <label for="email">Email</label>
                             </div>
                         </div>
-                        <div class="form-group-moderno">
+                        <div class="form-group">
                             <textarea id="mensaje" name="mensaje" rows="4" placeholder=" " required></textarea>
                             <label for="mensaje">¿En qué podemos ayudarte?</label>
                         </div>
 
-                        <button type="submit" class="btn-enviar-moderno" id="btn-submit">
-                            <span>ENVIAR MENSAJE</span>
+                        <button type="submit" class="btn-submit" id="btn-submit" aria-label="Enviar formulario de contacto">
+                            <span>SOLICITAR INFORMACIÓN</span>
                             <span class="iconify" data-icon="hugeicons:sent-01"></span>
                         </button>
+                        <div class="form-privacy">
+                            <input type="checkbox" id="privacidad" name="privacidad" required>
+                            <label for="privacidad">
+                                He leído y acepto la <a href="/politica-privacidad" target="_blank">política de privacidad</a>
+                            </label>
+                        </div>
                     </form>
                     <!-- Mensaje de éxito oculto por defecto -->
-                    <div id="mensaje-exito" class="success-overlay" style="display: none;">
+                    <div id="success-msg" class="success-overlay" style="display: none;">
                         <div class="success-icon">
                             <!-- Icono de Check (se ve al principio) -->
                             <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36"><path fill="currentColor" d="M13.72 27.69L3.29 17.27a1 1 0 0 1 1.41-1.41l9 9L31.29 7.29A1 1 0 0 1 32.7 8.7Z" className="clr-i-outline clr-i-outline-path-1"/><path fill="none" d="M0 0h36v36H0z"/></svg>
                             <!-- Icono de Avión (aparece para despegar) -->
-                             <svg class="icon-plane" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="m14.134 6.992l3.396-3.397a2.033 2.033 0 0 1 2.875 2.875l-3.397 3.396l1.838 9.145c.235 1.17-2.034 2.8-2.638 1.25l-2.69-6.904l-3.493 3.493c.17 2.041.207 2.72-1.224 4.15l-2.175-3.626L3 15.199c1.43-1.431 2.109-1.395 4.15-1.224l3.493-3.492l-6.904-2.691c-1.55-.604.08-2.874 1.25-2.638z"/></svg>
+                            <svg class="icon-plane" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M22.615 5.296a2.86 2.86 0 0 0 .84-2.29c-.26-2.67-4.451-2-7.011 2.63a.3.3 0 0 0 .1.41a.31.31 0 0 0 .46-.11c.8-1.27 2.52-3.14 4-3.43a1.6 1.6 0 0 1 1.22.06c.44.33.2 1.25-.12 1.71l-.75.73c-.07.12-.64.53-.3 1s1 0 1.61.7c1.09 1.21-1.77 1.89-1.69 2.7c0 .36.43.42.85.51c1.72.321-.62 3.151-3.3 3.481a.35.35 0 0 0-.3.37c.08.72 2.06-.1 2.65-.41a5.8 5.8 0 0 0 1.91-1.47a1.85 1.85 0 0 0-.11-2.68c2.03-1.36 1.5-3.3-.06-3.91m-17.132 7.79a6 6 0 0 1-2-.72c-.68-.38-1.671-1.14-1.841-1.92c-.28-1.36 1.21-.35 1.36-1.35a.65.65 0 0 0-.28-.57c-.18-.13-.66-.41-.69-.43a3 3 0 0 1-.7-.6a.88.88 0 0 1 .55-1.49c.22 0 .77 0 1.12-.32c.63-.791-1.24-1.071-1.37-2.681a.79.79 0 0 1 .23-.74a.84.84 0 0 1 .49-.15a4 4 0 0 1 2.53 1.07c.847.71 1.582 1.542 2.18 2.47a.29.29 0 0 0 .4.1a.3.3 0 0 0 .11-.41a11.6 11.6 0 0 0-2.18-2.75a5.5 5.5 0 0 0-2.11-1.27a3.9 3.9 0 0 0-1.13-.16a1.77 1.77 0 0 0-.88.29a1.7 1.7 0 0 0-.71 1.29a2.83 2.83 0 0 0 .84 2.26a2.3 2.3 0 0 0-.9.63a1.9 1.9 0 0 0-.5 1.2c-.011.42.115.83.36 1.17c.273.361.613.666 1 .9a1.44 1.44 0 0 0-.52.66a1.7 1.7 0 0 0-.07.901c.067.407.239.79.5 1.11a6.1 6.1 0 0 0 1.86 1.43a6.9 6.9 0 0 0 2.28.71a.34.34 0 0 0 .37-.3a.33.33 0 0 0-.3-.33m2.911 4.291a.3.3 0 0 0-.31.28c-.12.56-.27 1.1-.37 1.66a6 6 0 0 0-.1.72c0 .24 0 .48-.05.72v1.7a.34.34 0 0 0 .67.11c.15-.57.31-1.11.43-1.68c.05-.24.09-.48.12-.73a6 6 0 0 0 0-.73c0-.59-.07-1.15-.12-1.74a.29.29 0 0 0-.27-.31m3.721-.27a.301.301 0 0 0-.6-.05a10 10 0 0 0-.25 1.95q.01.562.08 1.12q.105.807.09 1.62a.34.34 0 0 0 .26.4a.35.35 0 0 0 .4-.27c.206-.647.317-1.32.33-2q.015-.577-.06-1.15c-.07-.53-.22-1.06-.25-1.62m3.8 2.11c-.11-.47-.27-.9-.4-1.36a.3.3 0 0 0-.527-.154a.3.3 0 0 0-.063.214a14 14 0 0 0-.08 1.43q.02.603.16 1.19c.1.46.23.9.34 1.36a.34.34 0 0 0 .36.31a.34.34 0 0 0 .296-.237a.3.3 0 0 0 .014-.133q.037-.714 0-1.43q.023-.3 0-.6a4 4 0 0 0-.1-.59"/><path fill="currentColor" d="M16.814 7.556a1.85 1.85 0 0 0-.77-.2a36 36 0 0 0-4.381 0a19 19 0 0 0-4.541.65c-.3.14-.73.41-.73 1.76q.006 2.509.28 5.002a.74.74 0 0 0 .66.64c1.14 0 5.07-.11 7.441-.23c.78 0 1.4-.07 1.69-.1c.136-.012.269-.05.39-.11a1.15 1.15 0 0 0 .33-.73q.246-1.823.24-3.661c.014-.751-.05-1.502-.19-2.24a1.47 1.47 0 0 0-.42-.78m-1 .91a1.4 1.4 0 0 1 .31 0c-.6.32-1.89 1-3.051 1.54l-1.23.561c-.46.2-.55.29-1.07 0s-1-.59-1.51-1s-.96-.56-1.341-.89q.935-.143 1.88-.19a52 52 0 0 1 5.961-.02zm.37 5.542c0 .08-.11.09-.19.1c-1 .07-3.061.27-5.001.4c-2.44.16-3.371.2-3.651.21a.1.1 0 0 1-.11-.09a21 21 0 0 1-.1-2.43c0-1.14 0-2.391.1-3.091a23 23 0 0 0 2.19 1.94a4.5 4.5 0 0 0 1.65.91a4.7 4.7 0 0 0 1.93-.69a38 38 0 0 0 3.211-2.12c0 .24.05.51.07.81a30 30 0 0 1-.1 4.05"/></svg>
                         </div>
                         <h3>¡Mensaje enviado!</h3>
                         <p>Gracias por contactar con Arena Técnica. Te responderemos lo antes posible.</p>
@@ -145,55 +157,51 @@
             </small>
         </section>
     </main>
-
-    
-    <footer class="footer">
+    <footer class="main-footer">
         <div class="footer-container">
-            <!-- Lado Izquierdo: Logo -->
-            <div class="footer-brand">
-                <img src="assets/img/logo-navbar.webp" alt="Arena Técnica" class="footer-mini-logo">
+            <!-- Columna 1: Branding -->
+            <div class="footer-col branding">
+                <a href="/" class="footer-logo-link">
+                    <img src="assets/img/logo-navbar.webp" alt="Arena Técnica - Asesoramiento en Obras" class="footer-img-logo">
+                </a>
+                <p>Especialistas en asesoramiento técnico y ejecución de obras con precisión y compromiso en toda la Comunidad de Madrid.</p>
             </div>
 
-            <!-- Lado Derecho: Contacto con diseño de rejilla sutil -->
-            <div class="footer-contact-wrapper">
-                <h4>CONTACTO</h4>
-                <div class="footer-contact-grid">
-                    <div class="contact-item">
-                        <span class="iconify" data-icon="hugeicons:mail-04"></span>
-                        <div class="contact-text">
-                            <small>Escríbenos</small>
-                            <a href="mailto:ruben.rodriguez@arenatecnica.es">ruben.rodriguez@arenatecnica.es</a>
-                        </div>
-                    </div>
+            <!-- Columna 2: Contacto -->
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul class="contact-list">
+                    <li>
+                        <svg class="iconify" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <a href="https://www.google.com/maps/place/C.+de+Perseo,+33,+28938+M%C3%B3stoles,+Madrid/@40.3073755,-3.8683492,17z/data=!3m1!4b1!4m6!3m5!1s0xd418dcad7b2cfc7:0x7ff7299142487152!8m2!3d40.3073714!4d-3.8657689!16s%2Fg%2F11cpqdht7l!5m1!1e4?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">C. de Perseo, 33, Móstoles</a>
+                    </li>
+                    <li>
+                        <svg class="iconify" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect width="20" height="16" x="2" y="4" rx="2"/></svg>
+                        <a href="tel:+34658774738">+34 658 774 738</a>
+                    </li>
+                    <li>
+                        <svg class="iconify" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <a href="mailto:ruben.rodriguez@arenatecnica.es">ruben.rodriguez@arenatecnica.es</a>
+                    </li>
+                </ul>
+            </div>
 
-                    <div class="contact-item">
-                        <span class="iconify" data-icon="hugeicons:call"></span>
-                        <div class="contact-text">
-                            <small>Llámanos</small>
-                            <a href="tel:+34658774738">+34 658 774 738</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <span class="iconify" data-icon="hugeicons:location-01"></span>
-                        <div class="contact-text">
-                            <small>Ubicación</small>
-                            <a href="https://google.com..." target="_blank">Móstoles, Madrid</a>
-                        </div>
-                    </div>
-                </div>
+            <!-- Columna 3: Legal -->
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/aviso-legal">Aviso Legal</a></li>
+                    <li><a href="/politica-privacidad">Política de Privacidad</a></li>
+                    <li><a href="/cookies">Política de Cookies</a></li>
+                </ul>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>© 2026 Arena Técnica — Todos los derechos reservados.</p>
-            <div class="footer-legal">
-                <a href="#">Aviso Legal</a>
-                <a href="#">Privacidad</a>
-            </div>
+            <p>&copy; 2024 Arena Técnica. Todos los derechos reservados.</p>
         </div>
     </footer>
-
+    
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
