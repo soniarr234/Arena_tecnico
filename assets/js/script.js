@@ -65,14 +65,12 @@ const initSlider = () => {
 const updateUI = () => {
     slides.forEach(s => {
         s.classList.remove('active');
-        s.style.opacity = "0"; // Refuerzo visual
     });
     
     const dots = document.querySelectorAll('.dot');
     dots.forEach(d => d.classList.remove('active'));
     
-    slides[counter].classList.add('active');
-    slides[counter].style.opacity = "1"; // Refuerzo visual
+    if(slides[counter]) slides[counter].classList.add('active');
     if(dots[counter]) dots[counter].classList.add('active');
 };
 
@@ -140,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     const btnSubmit = document.getElementById('btn-submit');
-    const successMsg = document.getElementById('mensaje-exito');
+    const successMsg = document.getElementById('success-msg');
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
