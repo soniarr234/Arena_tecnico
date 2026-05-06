@@ -1,178 +1,195 @@
-.footer {
-    background-color: var(--bg-dark);
-    padding: 40px 8% 30px; /* Más aire arriba para que respire */
-    color: white;
+/* ========================================================================================================================
+                                                    FOOTER (Escritorio)
+   ======================================================================================================================== */
+.main-footer {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    padding: 40px 10% 20px;
 }
 
 .footer-container {
-    display: flex;
-    justify-content: space-between; /* Empuja logo a un lado y contacto al otro */
-    align-items: flex-start;
-    gap: 40px;
-    margin-bottom: 20px;
-}
-
-.footer-mini-logo {
-    width: 120px;
-    filter: brightness(1.1);
-}
-
-.footer-contact-wrapper {
-    flex: 1;
-    max-width: 750px; /* Evita que se estire demasiado en pantallas gigantes */
-}
-
-.footer-contact-wrapper h4 {
-    color: var(--color-logo-light);
-    letter-spacing: 3px;
-    font-size: 0.75rem;
-    margin-bottom: 10px;
-    /* Eliminamos el padding para que se alinee con el texto de abajo */
-    padding-left: 0;
-}
-
-/* Grid de contacto para que no sea una lista aburrida */
-.footer-contact-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px;
+    grid-template-columns: 1.5fr 1fr 1fr; 
+    gap: 60px;
+    margin-bottom: 30px;
+    align-items: start;
 }
-
-.contact-item {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+/* --- Columna Branding & Logo --- */
+.footer-logo-link {
+    display: inline-block;
+    margin-bottom: 25px;
+    transition: opacity 0.3s ease;
 }
-
-/* Centramos el segundo y el tercero */
-.contact-item:nth-child(2),
-.contact-item:nth-child(3) {
-    align-items: center;
-}
-
-/* El primero lo forzamos a la izquierda (aunque ya lo esté, por seguridad) */
-.contact-item:first-child {
-    align-items: flex-start;
-    text-align: left;
-}
-
-/* Ajuste del header para que los iconos también se centren en el 2 y 3 */
-.contact-item:nth-child(2) .contact-item-header,
-.contact-item:nth-child(3) .contact-item-header {
-    justify-content: center;
-}
-
-.contact-item:first-child .contact-item-header {
-    justify-content: flex-start;
-}
-.contact-item-header {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centra el icono y el 'small' entre sí */
-    gap: 8px;
-    color: #888;
-    width: 100%;
-}
-
-.contact-item-header .iconify {
-    font-size: 1rem;
-    color: var(--color-logo-light);
-}
-
-.contact-text small {
+.footer-img-logo {
+    max-width: 130px;
+    height: auto;
     display: block;
-    font-size: 0.7rem;
+}
+.branding p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #aaa;
+    max-width: 400px;
+}
+/* --- Títulos de Columnas --- */
+.footer-col h4 {
+    color: #fff;
+    margin-bottom: 20px;
+    position: relative;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    width: fit-content;
+    font-size: 0.90rem;
 }
-
-.contact-text a {
-    color: var(--text-light);
+/* Línea decorativa bajo los títulos */
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-logo-light, #465d63);
+}
+/* --- Listas y Enlaces --- */
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-col ul li {
+    margin-bottom: 15px;
+}
+.footer-col ul li a {
+    color: #aaa;
     text-decoration: none;
-    font-size: 0.85rem; /* Un poco más pequeño para que quepa bien el email */
-    word-break: break-all; /* Evita que el email largo rompa la columna */
-    transition: color 0.3s;
+    font-size: 0.93rem;
+    transition: all 0.3s ease;
 }
-
-.contact-text a:hover {
-    color: var(--color-logo-light);
+.footer-col ul li a:hover {
+    color: var(--color-logo-light, #465d63);
+    padding-left: 5px;
 }
-
-/* Barra inferior */
-.footer-bottom {
-    border-top: 1px solid rgba(252, 252, 252, 0.05);
-    padding-top: 30px;
+/* --- Lista de Contacto con Iconos --- */
+.contact-list li {
     display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
+    align-items: center;
+    gap: 12px;
+}
+.contact-list .iconify {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+/* --- Barra de Copyright --- */
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 25px;
+    text-align: center;
+    font-size: 0.85rem;
     color: #666;
 }
 
-.footer-legal {
-    display: flex;
-    gap: 20px;
-}
-
-.footer-legal a { color: inherit; text-decoration: none; }
-
-/* Responsive */
-@media (max-width: 850px) {
+/* ========================================================================================================================
+                                                        MEDIA QUERY
+   ======================================================================================================================== */
+/*===============================================================================================================
+                                            Pantallas menores a 900 
+===============================================================================================================*/
+@media (max-width: 900px) {
     .footer-container {
-        flex-direction: column;
-        align-items: flex-start; /* Esto mantiene el logo a la izquierda */
+        grid-template-columns: 1fr 1fr;
         gap: 40px;
     }
-
-    .footer-brand {
-        width: 100%;
+    .branding {
+        grid-column: span 2;
+        margin-bottom: 20px;
         display: flex;
-        justify-content: flex-start; /* Logo a la izquierda */
-    }
-
-    .footer-contact-wrapper {
-        width: 100%;
-    }
-
-    /* El título de contacto sí lo centramos para que mande sobre la lista */
-    .footer-contact-wrapper h4 {
-        text-align: center;
-        margin-bottom: 25px;
-    }
-
-    /* Pasamos a una sola columna para los datos */
-    .footer-contact-grid {
-        grid-template-columns: 1fr;
+        align-items: end;
         gap: 30px;
     }
-
-    /* Forzamos a que todos los items de contacto se centren uno debajo de otro */
-    .contact-item,
-    .contact-item:first-child,
-    .contact-item:nth-child(2),
-    .contact-item:nth-child(3) {
+    .footer-logo-link {
+        margin-bottom: 0;
+    }
+    .branding p {
+        max-width: none;
+        border-left: 1px solid #333; /* línea sutil separadora */
+        padding-left: 30px;
+    }
+}
+/*===============================================================================================================
+                                            Pantallas menores a 700 
+===============================================================================================================*/
+@media (max-width: 700px) {
+    .main-footer {
+        padding: 40px 5% 20px;
+        background-color: #161616;
+    }
+    .footer-container {
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+    .branding {
+        grid-column: span 1;
+        background: transparent;
+        padding: 10px 5px;        
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-start;
+        margin-bottom: 0;
+        text-align: left;
+        gap: 15px;
+    }
+    .footer-img-logo {
+        max-width: 130px;
+        margin-bottom: 5px;
+    }
+    .branding p {
+        border-left: none;
+        padding-left: 0;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    .footer-col:not(.branding) {
+        background: #1f1f1f;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: left;
+    }
+    .footer-col h4 {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+        color: var(--color-logo-light, #465d63);
+        width: 100%;
+    }
+    .footer-col h4::after {
+        display: none; 
+    }
+    .footer-col ul {
+        display: block;
+    }
+    .footer-col ul li {
+        border-bottom: 1px solid #323232;
+        padding: 12px 0;
+        margin-bottom: 0;
+    }
+    .footer-col ul li:last-child {
+        border-bottom: none;
+    }
+    .footer-col ul li a {
+        background: transparent;
+        padding: 0;
+        border-radius: 0;
+        font-size: 0.9rem;
+        display: block;
+    }
+    .contact-list li {
+        display: flex;
         align-items: center;
-        text-align: center;
+        gap: 12px;
     }
-
-    .contact-item-header {
-        justify-content: center;
-    }
-
     .footer-bottom {
-        flex-direction: column; /* Apila los elementos verticalmente */
-        gap: 20px;             /* Espacio entre el copyright y los legales */
-        text-align: center;    /* Centra el texto */
-        align-items: center;   /* Centra los bloques */
-        border-top: 1px solid rgba(252, 252, 252, 0.115);
-    }
-
-    .footer-legal {
-        justify-content: center; /* Centra Aviso Legal y Privacidad entre sí */
-        width: 100%;
-    }
-
-    .footer-bottom-left, 
-    .footer-bottom-right { 
-        justify-content: center;
-        width: 100%;
+        margin-top: 30px;
+        border-top: 1px solid #323232;
+        padding-top: 20px;
     }
 }
