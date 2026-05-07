@@ -52,33 +52,17 @@
     </header>
 
     <main>
+        <div class="slider-intro">
+            <h2 class="bg-text-decor">PROYECTOS DESTACADOS</h2> 
+        </div>
+        <!-- El contenedor ahora está vacío, JS lo rellenará -->
+        <section class="projects-container" id="projects-grid"></section>
 
-        <section class="projects-container">
-            <!-- Tarjeta 1 -->
-            <div class="project-card" onclick="openModal('promocion-residencial-carabanchel')">
-                <img src="assets/img/img1_carrousel.webp" alt="Reforma en Móstoles">
-                <h3>Promoción residencial en Carabanchel</h3>
-            </div>
-
-            <!-- Tarjeta 2 -->
-            <div class="project-card" onclick="openModal('reforma-otra')">
-                <img src="assets/img/img1_carrousel.webp" alt="Reforma en Móstoles">
-                <h3>Reforma Integral Móstoles</h3>
-            </div>
-
-            <!-- Tarjeta 3 -->
-            <div class="project-card" onclick="openModal('reforma-otra2')">
-                <img src="assets/img/img1_carrousel.webp" alt="Reforma en Móstoles">
-                <h3>Reforma Integral Móstoles</h3>
-            </div>
-        </section>
-        <!-- El Modal (Oculto por defecto) -->
+        <!-- El Modal se queda igual -->
         <div id="project-modal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
-                <div id="modal-body">
-                    <!-- Aquí el JS inyectará las fotos, texto y coste -->
-                </div>
+                <div id="modal-body"></div>
             </div>
         </div>        
     </main>
