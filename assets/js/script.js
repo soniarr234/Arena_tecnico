@@ -193,11 +193,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+/* ========================================================================================================================
+                                            DATOS DE LOS PROYECTOS (Base de datos)
+   ======================================================================================================================== */
 const projectsData = {
     'promocion-residencial-carabanchel': {
         title: 'Promoción residencial en Carabanchel',
         desc: 'Dirección facultativa, coordinación de seguridad y salud y servicios de Project Manager en Carabanchel (Madrid).',
-        cost: '45.000€',
+        cost: '4.000.000€',
         promotor: '3SUCCES AML INVESTMENT S.L.U',
         contratista: 'PGM',
         mainImg: 'assets/img/img1_carrousel.webp',
@@ -207,17 +210,86 @@ const projectsData = {
             'assets/img/img3_carrousel.webp'
         ]
     },
+    
+    'palacio-rincon': {
+        title: 'Palacio El Rincón',
+        desc: 'Dirección facultativa, coordinación de seguridad y Project Manager para obras de rehabilitación de Palacio El Ricón.',
+        cost: '2.500.000€',
+        promotor: 'El Rincón Estate, S.L.',
+        contratista: 'Antana',
+        mainImg: 'assets/img/img2_carrousel.webp',
+        gallery: [
+            'assets/img/img1_carrousel.webp',
+            'assets/img/img2_carrousel.webp',
+            'assets/img/img3_carrousel.webp'
+        ]
+    },
+
+    'fachada-jorge-juan': {
+        title: 'Rehabilitación de Fachada Protegida en Jorge Juan',
+        desc: 'Redacción de proyecto de rehabilitación de fachada singular en edificio con protección en Calle Jorge Juan (Madrid).',
+        cost: '80.000€',
+        promotor: 'Comunidad de propietarios',
+        mainImg: 'assets/img/img3_carrousel.webp',
+        gallery: [
+            'assets/img/img1_carrousel.webp',
+            'assets/img/img2_carrousel.webp',
+            'assets/img/img3_carrousel.webp'
+        ]
+    },
+
+    'edificio-larra': {
+        title: 'Edificio histórico Larra',
+        desc: 'Dirección facultativa, coordinación de seguridad y salud para obras de rehabilitación de Edificio histórico Larra 12-4 (Madrid).',
+        cost: '1.500.000€',
+        promotor: 'Ephimera S.L',
+        contratista: 'Contrucciones AG',
+        mainImg: 'assets/img/img4_carrousel.webp',
+        gallery: [
+            'assets/img/img1_carrousel.webp',
+            'assets/img/img2_carrousel.webp',
+            'assets/img/img3_carrousel.webp'
+        ]
+    },
 };
 
+/* ========================================================================================================================
+                                            GENERACIÓN AUTOMÁTICA DE TARJETAS
+   ======================================================================================================================== */
+function renderProjects() {
+    const grid = document.getElementById('projects-grid');
+    if (!grid) return;
+
+    grid.innerHTML = ''; // Limpiar contenedor
+
+    Object.keys(projectsData).forEach(id => {
+        const project = projectsData[id];
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.onclick = () => openModal(id);
+
+        card.innerHTML = `
+            <img src="${project.mainImg}" alt="${project.title}" loading="lazy">
+            <h3>${project.title}</h3>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+/* ========================================================================================================================
+                                            GESTIÓN DEL MODAL (VENTANA EMERGENTE)
+   ======================================================================================================================== */
 function openModal(id) {
     const data = projectsData[id];
     if (!data) return;
 
+    const modal = document.getElementById('project-modal');
     const body = document.getElementById('modal-body');
 
-    // Generar HTML de miniaturas
-    const thumbnailsHTML = data.gallery.map(img => 
-        `<img src="${img}" class="modal-thumb" onclick="changeModalMainImage('${img}')" alt="Vista previa">`
+    // Generar miniaturas de la galería
+    const thumbnailsHTML = data.gallery.map((img, index) => 
+        `<img src="${img}" class="modal-thumb ${index === 0 ? 'active' : ''}" 
+              onclick="changeModalMainImage('${img}', this)" alt="Vista previa">`
     ).join('');
 
     body.innerHTML = `
@@ -225,7 +297,6 @@ function openModal(id) {
             <div class="modal-image-container">
                 <img src="${data.mainImg}" id="modal-main-img" class="modal-header-img">
                 <div class="modal-thumbnails">
-                    <img src="${data.mainImg}" class="modal-thumb" onclick="changeModalMainImage('${data.mainImg}')">
                     ${thumbnailsHTML}
                 </div>
             </div>
@@ -241,25 +312,53 @@ function openModal(id) {
         </div>
     `;
     
-    document.getElementById('project-modal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
-}
-
-// Función para cambiar la imagen principal
-function changeModalMainImage(src) {
-    document.getElementById('modal-main-img').src = src;
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Bloquear scroll de la página
 }
 
 function closeModal() {
-    document.getElementById('project-modal').style.display = 'none';
-    document.body.style.overflow = 'auto'; // Devuelve el scroll
+    const modal = document.getElementById('project-modal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Devolver scroll
+    }
 }
 
-// 2. LA MAGIA: Leer la URL al cargar la página
+// Cambiar la imagen principal al clicar en miniatura
+function changeModalMainImage(src, element) {
+    document.getElementById('modal-main-img').src = src;
+    
+    // Resaltar miniatura activa
+    document.querySelectorAll('.modal-thumb').forEach(thumb => thumb.classList.remove('active'));
+    if(element) element.classList.add('active');
+}
+
+/* ========================================================================================================================
+                                            EVENTOS Y CARGA INICIAL
+   ======================================================================================================================== */
+
+// Cerrar modal al hacer clic fuera de la caja blanca
+window.onclick = function(event) {
+    const modal = document.getElementById('project-modal');
+    if (event.target == modal) {
+        closeModal();
+    }
+}
+
+// Cerrar modal con la tecla ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") closeModal();
+});
+
+// Al cargar la página
 window.onload = () => {
+    // 1. Dibujar todas las tarjetas
+    renderProjects();
+
+    // 2. Comprobar si venimos de otra página con un ID (ej: inicio)
     const params = new URLSearchParams(window.location.search);
     const projectId = params.get('id');
-    if (projectId) {
+    if (projectId && projectsData[projectId]) {
         openModal(projectId);
     }
 };
