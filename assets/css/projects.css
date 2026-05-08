@@ -56,26 +56,22 @@
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
-
-
 .slider-intro {
     text-align: center;
-    margin-bottom: 40px;
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
 }
-/*========================================================================== 
-  Texto principal de la sección "Proyectos destacados"
-==========================================================================*/
+
 .bg-text-decor {
-    font-size: clamp(30px, 9vw, 90px);
+    font-size: clamp(30px, 11vw, 120px);
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: clamp(4px, 1.5vw, 15px);
     color: transparent;
-    -webkit-text-stroke: 1px rgba(70, 93, 99, 0.3);
+    -webkit-text-stroke: 1px var(--color-logo-dark); /* Color de trazo suave */
     line-height: 0.95;
     user-select: none;
 }
