@@ -96,7 +96,7 @@
   Texto principal de la sección "Proyectos destacados"
 ==========================================================================*/
 .bg-text-decor {
-    font-size: clamp(30px, 9vw, 90px);
+    font-size: clamp(25px, 7vw, 100px);
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: clamp(4px, 1.5vw, 15px);
