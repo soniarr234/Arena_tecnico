@@ -197,6 +197,77 @@ document.addEventListener('DOMContentLoaded', () => {
                                             DATOS DE LOS PROYECTOS (Base de datos)
    ======================================================================================================================== */
 const projectsData = {
+
+    'palacio-rincon': {
+        title: 'Palacio El Rincón',
+        desc: 'Dirección facultativa, coordinación de seguridad y Project Manager para obras de rehabilitación de Palacio El Ricón.',
+        cost: '2.500.000€',
+        promotor: 'El Rincón Estate, S.L.',
+        contratista: 'Antana',
+        mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262075/IMG-20260514-WA0002_likvxs.jpg',
+        gallery: [
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262077/IMG-20260514-WA0000_gxtnun.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262076/IMG-20260514-WA0004_gpi80o.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262076/IMG-20260514-WA0003_swxfe7.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262076/IMG-20260514-WA0001_t4r7n5.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262076/IMG-20260514-WA0021_upgibi.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262076/IMG-20260514-WA0020_pscdcs.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262074/IMG-20260514-WA0023_sn1tma.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262074/IMG-20260514-WA0022_y8dyrp.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262072/IMG-20260514-WA0026_e7n1zo.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262071/IMG-20260514-WA0030_qoiz9g.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262071/IMG-20260514-WA0027_wdan1t.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262071/IMG-20260514-WA0024_mukkfa.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262071/IMG-20260514-WA0025_ahmgbn.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262070/IMG-20260514-WA0028_wtf0dm.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262069/IMG-20260514-WA0029_sppwq5.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262068/IMG-20260514-WA0032_jja49h.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262067/IMG-20260514-WA0044_r7k7px.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262067/IMG-20260514-WA0033_mvn8t4.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262066/IMG-20260514-WA0034_qcjnhb.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262066/IMG-20260514-WA0031_yvrbj1.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262066/IMG-20260514-WA0037_oaihqp.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262065/IMG-20260514-WA0035_b7qo5d.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262065/IMG-20260514-WA0036_tjo8uo.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262064/IMG-20260514-WA0040_cu7bij.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262064/IMG-20260514-WA0038_tcqnsf.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262064/IMG-20260514-WA0043_umsuzy.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262063/IMG-20260514-WA0039_zkeihq.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262063/IMG-20260514-WA0041_dii4yj.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262063/IMG-20260514-WA0042_ueba5s.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262061/IMG-20260514-WA0046_a65iix.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262061/IMG-20260514-WA0045_fnypju.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262061/IMG-20260514-WA0047_lpr8jm.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262061/IMG-20260514-WA0048_ftzprb.jpg',
+        ]
+    },
+
+    'edificio-larra': {
+        title: 'Edificio histórico Larra',
+        desc: 'Dirección facultativa, coordinación de seguridad y salud para obras de rehabilitación de Edificio histórico Larra 12-4 (Madrid).',
+        cost: '1.500.000€',
+        promotor: 'Ephimera S.L',
+        contratista: 'Contrucciones AG',
+        mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0010_vvlgwf.jpg',
+        gallery: [
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0006_d0pwr2.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0007_hgmxcj.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261428/IMG-20260514-WA0011_cr3vz3.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0010_vvlgwf.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0005_hjzzvo.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0009_ocvjyw.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261427/IMG-20260514-WA0008_jpcdzz.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261427/IMG-20260514-WA0012_agoy4a.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261427/IMG-20260514-WA0014_xnvblr.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261427/IMG-20260514-WA0019_wfcdva.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261426/IMG-20260514-WA0015_ltrypi.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261426/IMG-20260514-WA0013_kugytr.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261426/IMG-20260514-WA0016_uq8qjl.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261426/IMG-20260514-WA0018_tth7sh.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261426/IMG-20260514-WA0017_ap1ueu.jpg'
+        ]
+    },
+
     'promocion-residencial-carabanchel': {
         title: 'Promoción residencial en Carabanchel',
         desc: 'Dirección facultativa, coordinación de seguridad y salud y servicios de Project Manager en Carabanchel (Madrid).',
@@ -211,40 +282,12 @@ const projectsData = {
         ]
     },
     
-    'palacio-rincon': {
-        title: 'Palacio El Rincón',
-        desc: 'Dirección facultativa, coordinación de seguridad y Project Manager para obras de rehabilitación de Palacio El Ricón.',
-        cost: '2.500.000€',
-        promotor: 'El Rincón Estate, S.L.',
-        contratista: 'Antana',
-        mainImg: 'assets/img/img2_carrousel.webp',
-        gallery: [
-            'assets/img/img1_carrousel.webp',
-            'assets/img/img2_carrousel.webp',
-            'assets/img/img3_carrousel.webp'
-        ]
-    },
-
     'fachada-jorge-juan': {
         title: 'Rehabilitación de Fachada Protegida en Jorge Juan',
         desc: 'Redacción de proyecto de rehabilitación de fachada singular en edificio con protección en Calle Jorge Juan (Madrid).',
         cost: '80.000€',
         promotor: 'Comunidad de propietarios',
         mainImg: 'assets/img/img3_carrousel.webp',
-        gallery: [
-            'assets/img/img1_carrousel.webp',
-            'assets/img/img2_carrousel.webp',
-            'assets/img/img3_carrousel.webp'
-        ]
-    },
-
-    'edificio-larra': {
-        title: 'Edificio histórico Larra',
-        desc: 'Dirección facultativa, coordinación de seguridad y salud para obras de rehabilitación de Edificio histórico Larra 12-4 (Madrid).',
-        cost: '1.500.000€',
-        promotor: 'Ephimera S.L',
-        contratista: 'Contrucciones AG',
-        mainImg: 'assets/img/img4_carrousel.webp',
         gallery: [
             'assets/img/img1_carrousel.webp',
             'assets/img/img2_carrousel.webp',
