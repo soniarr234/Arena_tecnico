@@ -5,7 +5,7 @@
     height: 65vh; 
     /* Imagen de fondo */
        background: linear-gradient(rgba(0, 0, 0, 0.249), rgba(0, 0, 0, 0.244)), 
-                url('../img/background-parallax.webp') no-repeat center 48% / cover fixed;
+                url('https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779266800/background-parallax_xggiiz.png') no-repeat center 48% / cover fixed;
     /* Centrado del texto */
     display: flex;
     justify-content: flex-start;
@@ -307,6 +307,9 @@
 /*===============================================================================================================
                                             Pantallas menores a 750 
 ===============================================================================================================*/
+@media (max-width: 800px){
+    .hero-content h1 { font-size: 2.5rem; }
+}
 @media (max-width: 750px) {
     body{ padding-top: 80px; }
     /* ==========================================================================
@@ -372,9 +375,8 @@
         width: 100%;
         margin-top: 20px !important;
     }
-    .slide-info h3{
-        font-size: 1.5rem;
-    }
+    .slide-info h3{ font-size: 1.3rem; }
+    .slide-description{ font-size: 0.9rem; }
     .project-details {
         grid-template-columns: 1fr 1fr;
         gap: 20px;
@@ -388,6 +390,9 @@
     }
     .detail-item:nth-child(2) {
         grid-column: span 2;
+    }
+    .btn-slider{
+        padding: 10px;
     }
 
 }
