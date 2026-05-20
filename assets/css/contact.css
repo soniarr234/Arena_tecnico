@@ -5,7 +5,7 @@
     height: 50vh; 
     /* Cambiamos fixed por scroll en móviles más adelante por rendimiento */
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-                url('../img/background-contact.webp') no-repeat center 48% / cover fixed;
+                url('https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779266800/background-contact_magln5.jpg') no-repeat center 48% / cover fixed;
     display: flex;
     align-items: center;
     padding-left: 10%;
@@ -109,6 +109,9 @@
 .contact-card:hover .card-icon {
     background: var(--color-logo-light, #465d63);
 }
+.card-info{
+    cursor: pointer;
+}
 /* Texto dentro de la tarjeta */
 .card-info span {
     display: block;
@@ -122,8 +125,9 @@
     display: block;
     font-size: 1.05rem;
 }
-/* Ajuste para la tarjeta que no es link */
-address { font-style: normal; }
+address {
+    font-style: normal;
+}
 
 /*========================================================================== 
   Columna Formulario 
@@ -343,7 +347,7 @@ form {
                                                         MEDIA QUERY
    ======================================================================================================================== */
 /*===============================================================================================================
-                                            Pantallas menores a 850 
+                                            Pantallas menores a 900 
 ===============================================================================================================*/
 @media (max-width: 900px) {
     /* ==========================================================================
@@ -356,7 +360,6 @@ form {
         padding-right: 5%;
         justify-content: center;
         text-align: center;
-        margin-top: 80px;
     }
     .hero-content {
         border-left: none;
@@ -399,4 +402,12 @@ form {
         height: 300px; /* Reducimos la altura en pantallas pequeñas */
     }
 
+}
+/*===============================================================================================================
+                                            Pantallas menores a 750 
+===============================================================================================================*/
+@media (max-width: 750px) {
+    .hero-parallax {
+        margin-top: 80px;
+    }
 }
