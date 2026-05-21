@@ -2,10 +2,7 @@
                                        ESTILOS BASE DE LA PÁGINA AVISO LEGAL
    ======================================================================================================================== */
 .aviso-legal {
-    max-width: 850px;
-    margin: 100px auto 50px auto; /* Mismo margen superior para esquivar el navbar fijo */
-    padding: 0 20px;
-    font-family: 'Roboto', sans-serif;
+    padding: 80px 10%;
     color: #2c3e50;
     line-height: 1.7;
 }
@@ -58,8 +55,8 @@
 /* Ajuste móvil */
 @media (max-width: 768px) {
     .aviso-legal {
-        margin-top: 80px;
-        padding: 0 15px;
+        padding: 120px 10% 80px 10%;
+        font-size: 15px;
     }
     
     .legal-title {

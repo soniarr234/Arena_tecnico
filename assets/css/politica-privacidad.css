@@ -2,9 +2,7 @@
                                        ESTILOS BASE DE LA PÁGINA PRIVACIDAD
    ======================================================================================================================== */
 .privacidad {
-    margin: 80px 10%;
-    padding: 0 20px;
-    font-family: 'Roboto', sans-serif;
+    padding: 80px 10%;
     color: #2c3e50;
     line-height: 1.7;
 }
@@ -57,8 +55,8 @@
 /* Ajuste móvil */
 @media (max-width: 768px) {
     .privacidad {
-        margin-top: 80px;
-        padding: 0 15px;
+        padding: 120px 10% 80px 10%;
+        font-size: 15px;
     }
     
     .legal-title {
