@@ -1,0 +1,179 @@
+/* ========================================================================================================================
+                                            ESTILOS PARA PÁGINAS LEGALES
+   ======================================================================================================================== */
+
+.cookies{
+    padding: 80px 10%;
+    line-height: 1.7;
+    margin: 0 auto;
+    color: #2c3e50;
+    background-color: #fcfcfc;
+}
+
+.legal-title {
+    font-size: 2.2rem;
+    color: #1a252f;
+    border-bottom: 2px solid #eef2f3;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.legal-subtitle {
+    font-size: 1.4rem;
+    color: #34495e;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.legal-text {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.legal-list {
+    margin-bottom: 25px;
+    padding-left: 20px;
+}
+
+.legal-list-item {
+    margin-bottom: 10px;
+}
+
+.legal-bold {
+    color: #111;
+}
+
+.legal-link {
+    color: #3498db;
+    text-decoration: none;
+    border-bottom: 1px dashed #3498db;
+    transition: all 0.2s ease;
+}
+
+.legal-link:hover {
+    color: #2980b9;
+    border-bottom-style: solid;
+}
+
+/* --- TABLA DE COOKIES --- */
+.legal-table-container {
+    width: 100%;
+    margin: 25px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    background-color: #ffffff;
+}
+
+.legal-table-th, 
+.legal-table-td {
+    padding: 12px 15px;
+    border: 1px solid #eef2f3;
+    text-align: left;
+}
+
+.legal-table-th {
+    background-color: var(--color-logo-dark);
+    color: var(--color-logo-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.legal-table-row:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.legal-provider {
+    color: #e74c3c;
+}
+
+/* --- RESPONSIVO MÓVIL --- */
+@media (max-width: 600px) {
+    .cookies {
+        padding: 120px 10% 80px 10%;
+        font-size: 15px;
+    }
+
+    .legal-title {
+        font-size: 1.8rem;
+    }
+
+    .legal-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .legal-table-container {
+        box-shadow: none;
+        background: none;
+    }
+
+    /* Forzamos a la tabla y sus componentes a comportarse como bloques apilados */
+    .legal-table, 
+    .legal-table-thead, 
+    .legal-table-tbody, 
+    .legal-table-th, 
+    .legal-table-td, 
+    .legal-table-row { 
+        display: block; 
+    }
+    
+    /* Ocultamos por completo los encabezados (Proveedor, Cookies, Finalidad) */
+    .legal-table th { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    /* Convertimos cada fila en una tarjeta independiente */
+    .legal-table-row {
+        background: #ffffff;
+        border: 1px solid #eef2f3;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    /* Estilizamos cada celda simulando etiquetas mediante CSS inline alternativo */
+    .legal-table-td { 
+        border: none;
+        padding: 8px 0;
+        position: relative;
+        padding-left: 0; 
+    }
+    
+    /* Añadimos un pequeño separador visual interno antes de la descripción */
+    .legal-table-td:not(:last-child) {
+        border-bottom: 1px solid #f8f9fa;
+    }
+
+    /* Añadimos etiquetas manuales simuladas usando pseudo-elementos para que el usuario sepa qué lee */
+    .legal-table-td:nth-of-type(1)::before {
+        content: "Proveedor: ";
+        font-weight: bold;
+        color: #34495e;
+    }
+    
+    .legal-table-td:nth-of-type(2)::before {
+        content: "Cookies: ";
+        font-weight: bold;
+        color: #34495e;
+    }
+    
+    .legal-table-td:nth-of-type(3)::before {
+        content: "Finalidad y vencimiento: \A"; /* \A hace un salto de línea limpio */
+        white-space: pre;
+        font-weight: bold;
+        color: #34495e;
+    }
+}

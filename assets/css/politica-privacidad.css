@@ -1,0 +1,80 @@
+/* ========================================================================================================================
+                                       ESTILOS BASE DE LA PÁGINA PRIVACIDAD
+   ======================================================================================================================== */
+.privacidad {
+    margin: 80px 10%;
+    padding: 0 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #2c3e50;
+    line-height: 1.7;
+}
+
+.legal-title {
+    font-size: 2.2rem;
+    color: #1a252f;
+    margin-bottom: 25px;
+    font-weight: 700;
+    border-bottom: 2px solid #eef2f3;
+    padding-bottom: 15px;
+}
+
+.legal-subtitle {
+    font-size: 1.4rem;
+    color: #34495e;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.legal-text {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.legal-list {
+    margin-bottom: 25px;
+    padding-left: 20px;
+    background-color: #f8f9fa; /* Una caja sutil gris de fondo para resaltar los datos */
+    padding: 20px 20px 20px 35px;
+    border-radius: 6px;
+    border-left: 4px solid #1a252f;
+}
+
+.legal-list-item {
+    margin-bottom: 12px;
+}
+
+.legal-list-item:last-child {
+    margin-bottom: 0;
+}
+
+.legal-bold {
+    color: #111;
+    display: inline-block;
+    min-width: 110px; /* Alinea los títulos sutilmente */
+}
+
+/* Ajuste móvil */
+@media (max-width: 768px) {
+    .privacidad {
+        margin-top: 80px;
+        padding: 0 15px;
+    }
+    
+    .legal-title {
+        font-size: 1.8rem;
+    }
+
+    .legal-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .legal-bold {
+        display: block; /* Se apila en vertical en teléfonos móviles */
+        margin-bottom: 2px;
+    }
+    
+    .legal-list {
+        padding: 15px 15px 15px 25px;
+    }
+}
