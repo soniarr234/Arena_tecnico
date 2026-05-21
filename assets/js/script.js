@@ -199,7 +199,7 @@ const projectsData = {
     'palacio-rincon': {
         title: 'Palacio El Rincón',
         desc: 'Dirección facultativa, coordinación de seguridad y Project Manager para obras de rehabilitación de Palacio El Ricón.',
-        cost: '2.500.000€',
+        cost: '5.000.000€',
         promotor: 'El Rincón Estate, S.L.',
         contratista: 'Antana',
         mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262075/IMG-20260514-WA0002_likvxs.jpg',
