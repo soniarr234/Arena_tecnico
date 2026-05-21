@@ -1,54 +1,66 @@
-const menuBtn = document.querySelector('#mobile-menu');
-const navLinks = document.querySelector('.nav-links');
-const body = document.body; // Añadimos la referencia al body
+/* ========================================================================================================================
+                                            VARIABLES GLOBALES PARA EL CARRUSEL DEL MODAL
+   ======================================================================================================================= */
+let currentProjectGallery = [];
+let currentImgIndex = 0;
 
-// Función para cerrar todo (limpia el código)
-const closeMenu = () => {
-    menuBtn.classList.remove('is-active');
-    navLinks.classList.remove('active');
-    body.classList.remove('menu-open');
-};
+/* ========================================================================================================================
+                                            MENÚ MÓVIL (HAMBURGER)
+   ======================================================================================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.querySelector('#mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
 
-// Abrir/Cerrar al dar clic al botón
-menuBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); // Evita que el clic se propague al body inmediatamente
-    menuBtn.classList.toggle('is-active'); // Cambia hamburguesa por X
-    navLinks.classList.toggle('active'); // Despliega el menú
-    body.classList.toggle('menu-open'); // Activa la capa oscura y bloquea scroll
-});
+    if (menuBtn && navLinks) {
+        const closeMenu = () => {
+            menuBtn.classList.remove('is-active');
+            navLinks.classList.remove('active');
+            body.classList.remove('menu-open');
+        };
 
-// CERRAR AL HACER CLIC FUERA (en la zona oscura)
-body.addEventListener('click', (e) => {
-    // Si el menú está abierto y el clic NO fue dentro del menú ni en el botón...
-    if (body.classList.contains('menu-open') && 
-        !navLinks.contains(e.target) && 
-        !menuBtn.contains(e.target)) {
-        closeMenu();
+        // Abrir/Cerrar al dar clic al botón
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            menuBtn.classList.toggle('is-active'); 
+            navLinks.classList.toggle('active'); 
+            body.classList.toggle('menu-open'); 
+        });
+
+        // Cerrar al hacer clic fuera (en la zona oscura)
+        body.addEventListener('click', (e) => {
+            if (body.classList.contains('menu-open') && 
+                !navLinks.contains(e.target) && 
+                !menuBtn.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // Cerrar al hacer clic en un enlace del menú
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
     }
 });
 
-// Cerrar al hacer clic en un enlace del menú
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', closeMenu);
-});
-
-
-
+/* ========================================================================================================================
+                                            SLIDER PRINCIPAL (Control de errores añadido)
+   ======================================================================================================================= */
 const slider = document.getElementById('slider');
 const slides = document.querySelectorAll('.slide');
 const dotsContainer = document.getElementById('dots-container');
 let counter = 0;
 let interval;
 
-// --- NUEVA FUNCIÓN DE INICIALIZACIÓN ---
 const initSlider = () => {
-    // 1. Forzamos que solo el primero sea visible al cargar
+    // Si no existen diapositivas o contenedor de puntos en la página actual, salimos sin romper el script
+    if (slides.length === 0 || !dotsContainer) return;
+
     slides.forEach((s, i) => {
         if (i === 0) s.classList.add('active');
         else s.classList.remove('active');
     });
 
-    // 2. Creamos los puntos (Dots)
     slides.forEach((_, i) => {
         const dot = document.createElement('div');
         dot.classList.add('dot');
@@ -57,15 +69,12 @@ const initSlider = () => {
         dotsContainer.appendChild(dot);
     });
 
-    // 3. Iniciamos el auto-play
     startAutoPlay();
 };
 
-// 2. FUNCIONES DE NAVEGACIÓN (Corregidas para evitar solapamientos)
 const updateUI = () => {
-    slides.forEach(s => {
-        s.classList.remove('active');
-    });
+    if (slides.length === 0) return;
+    slides.forEach(s => s.classList.remove('active'));
     
     const dots = document.querySelectorAll('.dot');
     dots.forEach(d => d.classList.remove('active'));
@@ -75,11 +84,13 @@ const updateUI = () => {
 };
 
 const nextSlide = () => {
+    if (slides.length === 0) return;
     counter = (counter < slides.length - 1) ? counter + 1 : 0;
     updateUI();
 };
 
 const prevSlide = () => {
+    if (slides.length === 0) return;
     counter = (counter > 0) ? counter - 1 : slides.length - 1;
     updateUI();
 };
@@ -90,9 +101,9 @@ const goToSlide = (index) => {
     resetAutoPlay();
 };
 
-// 3. AUTO-REPRODUCCIÓN
 const startAutoPlay = () => {
-    clearInterval(interval); // Limpiamos cualquier intervalo previo por seguridad
+    if (slides.length === 0) return;
+    clearInterval(interval); 
     interval = setInterval(nextSlide, 9000);
 };
 
@@ -101,7 +112,6 @@ const resetAutoPlay = () => {
     startAutoPlay(); 
 };
 
-// 4. EVENTOS (Encapsulados en un chequeo de existencia)
 const setupEvents = () => {
     const nextBtn = document.getElementById('nextBtn');
     const prevBtn = document.getElementById('prevBtn');
@@ -109,7 +119,6 @@ const setupEvents = () => {
     if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
     if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
 
-    // Swipe para móvil
     if (slider) {
         let touchStartX = 0;
         slider.addEventListener('touchstart', e => {
@@ -125,49 +134,47 @@ const setupEvents = () => {
     }
 };
 
-// --- EJECUCIÓN AL CARGAR EL DOM ---
+// Carga del Slider en el DOM
 document.addEventListener('DOMContentLoaded', () => {
     initSlider();
     setupEvents();
 });
 
-
 /* ========================================================================================================================
                                             GESTIÓN DEL FORMULARIO (EmailJS)
-   ======================================================================================================================== */
+   ======================================================================================================================= */
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     const btnSubmit = document.getElementById('btn-submit');
     const successMsg = document.getElementById('success-msg');
 
-    if (contactForm) {
+    if (contactForm && btnSubmit) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // 1. Desactivar botón para evitar múltiples clics
             const originalBtnContent = btnSubmit.innerHTML;
             btnSubmit.disabled = true;
             btnSubmit.innerHTML = '<span>ENVIANDO...</span>';
 
-            // 2. Enviar vía EmailJS
-            // service_yw5zhtr, template_y4sozo6 (Tus IDs proporcionados)
             emailjs.sendForm('service_yw5zhtr', 'template_y4sozo6', this)
                 .then(() => {
-                    // --- ÉXITO: EJECUTAR TUS ANIMACIONES ---
                     contactForm.classList.add('fade-out');
 
                     setTimeout(() => {
                         contactForm.style.display = 'none';
-                        successMsg.style.display = 'block';
+                        if(successMsg) successMsg.style.display = 'block';
 
-                        // Resetear el formulario después de la animación (6 segundos)
                         setTimeout(() => {
-                            successMsg.style.opacity = '0';
-                            successMsg.style.transition = 'opacity 0.5s ease';
+                            if(successMsg) {
+                                successMsg.style.opacity = '0';
+                                successMsg.style.transition = 'opacity 0.5s ease';
+                            }
 
                             setTimeout(() => {
-                                successMsg.style.display = 'none';
-                                successMsg.style.opacity = '1';
+                                if(successMsg) {
+                                    successMsg.style.display = 'none';
+                                    successMsg.style.opacity = '1';
+                                }
                                 contactForm.reset();
                                 contactForm.style.display = 'block';
                                 btnSubmit.disabled = false;
@@ -178,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 400);
 
                 }, (error) => {
-                    // --- ERROR: NOTIFICAR AL USUARIO ---
                     console.error('EmailJS Error:', error);
                     alert('Lo sentimos, hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.');
                     btnSubmit.disabled = false;
@@ -188,14 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
-
-
-
-
-/* ========================================================================================================================
-                                            DATOS DE LOS PROYECTOS (Base de datos)
-   ======================================================================================================================== */
 const projectsData = {
 
     'palacio-rincon': {
@@ -206,6 +204,7 @@ const projectsData = {
         contratista: 'Antana',
         mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262075/IMG-20260514-WA0002_likvxs.jpg',
         gallery: [
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262075/IMG-20260514-WA0002_likvxs.jpg',
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262077/IMG-20260514-WA0000_gxtnun.jpg',
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262076/IMG-20260514-WA0004_gpi80o.jpg',
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262076/IMG-20260514-WA0003_swxfe7.jpg',
@@ -250,10 +249,10 @@ const projectsData = {
         contratista: 'Contrucciones AG',
         mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0010_vvlgwf.jpg',
         gallery: [
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0010_vvlgwf.jpg',
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0006_d0pwr2.jpg',
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0007_hgmxcj.jpg',
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261428/IMG-20260514-WA0011_cr3vz3.jpg',
-            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0010_vvlgwf.jpg',
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0005_hjzzvo.jpg',
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261429/IMG-20260514-WA0009_ocvjyw.jpg',
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779261427/IMG-20260514-WA0008_jpcdzz.jpg',
@@ -274,11 +273,16 @@ const projectsData = {
         cost: '4.000.000€',
         promotor: '3SUCCES AML INVESTMENT S.L.U',
         contratista: 'PGM',
-        mainImg: 'assets/img/img1_carrousel.webp',
+        mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779266796/img1_carrousel_exbt3p.png',
         gallery: [
-            'assets/img/img1_carrousel.webp',
-            'assets/img/img2_carrousel.webp',
-            'assets/img/img3_carrousel.webp'
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779266796/img1_carrousel_exbt3p.png',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779343309/IMG-20260520-WA0026_kqkm2q.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779343308/IMG-20260520-WA0024_prhvz9.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779343309/IMG-20260520-WA0022_duaw2f.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779343309/IMG-20260520-WA0023_jo9ovu.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779343309/IMG-20260520-WA0027_o9pik1.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779343309/IMG-20260520-WA0021_w008ij.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779343310/IMG-20260520-WA0025_vhoxrd.jpg',
         ]
     },
     
@@ -294,114 +298,182 @@ const projectsData = {
             'assets/img/img3_carrousel.webp'
         ]
     },
+
+    'vivienda-unifamiliar-cotos': {
+        title: 'Vivienda unifamiliar en Cotos de Monterrey',
+        desc: 'Dirección facultativa, coordinación de seguridad y salud y servicios de Project Manager en Cotos de Monterrey (Madrid).',
+        cost: '500.000€',
+        promotor: 'Particular',
+        mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779293350/IMG-20260520-WA0015_wxxkmj.jpg',
+        gallery: [
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779293350/IMG-20260520-WA0015_wxxkmj.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779293350/IMG-20260520-WA0018_tpsahn.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779293350/IMG-20260520-WA0017_knuibz.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779293350/IMG-20260520-WA0016_zmhmil.jpg'
+        ]
+    },
 };
 
 /* ========================================================================================================================
-                                            GENERACIÓN AUTOMÁTICA DE TARJETAS
-   ======================================================================================================================== */
-function renderProjects() {
-    const grid = document.getElementById('projects-grid');
+                                            GENERACIÓN AUTOMÁTICA DE PROYECTOS Y MODAL
+   ======================================================================================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    // Pintar proyectos
+    renderProjectGrid();
+
+    // Comprobar parámetros URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const proyectoId = urlParams.get('id');
+
+    if (proyectoId && projectsData[proyectoId]) {
+        setTimeout(() => {
+            openModal(proyectoId);
+        }, 100);
+    }
+});
+
+function renderProjectGrid() {
+    const grid = document.getElementById("projects-grid");
     if (!grid) return;
 
-    grid.innerHTML = ''; // Limpiar contenedor
-
-    Object.keys(projectsData).forEach(id => {
-        const project = projectsData[id];
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        card.onclick = () => openModal(id);
-
-        card.innerHTML = `
-            <img src="${project.mainImg}" alt="${project.title}" loading="lazy">
-            <h3>${project.title}</h3>
+    grid.innerHTML = Object.keys(projectsData).map(key => {
+        const project = projectsData[key];
+        return `
+            <div class="project-card" onclick="openModal('${key}')">
+                <img src="${project.mainImg}" alt="${project.title}">
+                <h3>${project.title}</h3>
+            </div>
         `;
-        grid.appendChild(card);
-    });
+    }).join('');
 }
 
-/* ========================================================================================================================
-                                            GESTIÓN DEL MODAL (VENTANA EMERGENTE)
-   ======================================================================================================================== */
-function openModal(id) {
-    const data = projectsData[id];
-    if (!data) return;
+function openModal(projectKey) {
+    const modal = document.getElementById("project-modal");
+    const modalBody = document.getElementById("modal-body");
+    const project = projectsData[projectKey];
 
-    const modal = document.getElementById('project-modal');
-    const body = document.getElementById('modal-body');
+    if (!project || !modal || !modalBody) return;
 
-    // Generar miniaturas de la galería
-    const thumbnailsHTML = data.gallery.map((img, index) => 
-        `<img src="${img}" class="modal-thumb ${index === 0 ? 'active' : ''}" 
-              onclick="changeModalMainImage('${img}', this)" alt="Vista previa">`
-    ).join('');
+    currentProjectGallery = project.gallery || [project.mainImg];
+    currentImgIndex = 0;
 
-    body.innerHTML = `
+    modalBody.innerHTML = `
         <div class="modal-body-wrapper">
             <div class="modal-image-container">
-                <img src="${data.mainImg}" id="modal-main-img" class="modal-header-img">
-                <div class="modal-thumbnails">
-                    ${thumbnailsHTML}
+                <!-- Foto principal limpia sin flechas -->
+                <img src="${currentProjectGallery[0]}" class="modal-header-img" id="modalMainImage" alt="${project.title}">
+                
+                <!-- Las flechas ahora envuelven horizontalmente al contenedor de miniaturas de abajo -->
+                <div class="thumbnails-slider-wrapper">
+                    <button class="thumb-arrow prev-thumb" id="prevThumbBtn" onclick="scrollThumbnails(-1); event.stopPropagation();">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    
+                    <div class="modal-thumbnails" id="modalThumbnails">
+                        ${currentProjectGallery.map((imgUrl, index) => `
+                            <img src="${imgUrl}" 
+                                class="modal-thumb ${index === 0 ? 'active' : ''}" 
+                                alt="Miniatura ${index + 1}"
+                                data-index="${index}"
+                                onclick="cambiarImagenPrincipal(this, ${index}); event.stopPropagation();">
+                        `).join('')}
+                    </div>
+                    
+                    <button class="thumb-arrow next-thumb" id="nextThumbBtn" onclick="scrollThumbnails(1); event.stopPropagation();">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
                 </div>
             </div>
+
             <div class="modal-info">
-                <h2>${data.title}</h2>
-                <p>${data.desc}</p>
+                <h2>${project.title}</h2>
+                <p>${project.desc}</p>
                 <div class="project-specs">
-                    <div class="spec-item"><span>PEM</span><strong>${data.cost}</strong></div>
-                    <div class="spec-item"><span>Promotor</span><strong>${data.promotor}</strong></div>
-                    <div class="spec-item"><span>Contratista</span><strong>${data.contratista}</strong></div>
+                    <div class="spec-item"><span>Importe M.E.</span><strong>${project.cost}</strong></div>
+                    <div class="spec-item"><span>Promotor</span><strong>${project.promotor}</strong></div>
+                    <div class="spec-item"><span>Contratista</span><strong>${project.contratista || 'No definido'}</strong></div>
                 </div>
             </div>
         </div>
     `;
-    
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Bloquear scroll de la página
+
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
 }
 
 function closeModal() {
-    const modal = document.getElementById('project-modal');
-    if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Devolver scroll
+    const modal = document.getElementById("project-modal");
+    if (modal && modal.style.display === "block") {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+        
+        const url = new URL(window.location.href);
+        url.searchParams.delete('id');
+        window.history.replaceState({}, document.title, url.pathname);
     }
 }
 
-// Cambiar la imagen principal al clicar en miniatura
-function changeModalMainImage(src, element) {
-    document.getElementById('modal-main-img').src = src;
+function cambiarImagenPrincipal(thumbElement, index) {
+    currentImgIndex = index;
+    const nuevaSrc = currentProjectGallery[currentImgIndex];
     
-    // Resaltar miniatura activa
-    document.querySelectorAll('.modal-thumb').forEach(thumb => thumb.classList.remove('active'));
-    if(element) element.classList.add('active');
+    const mainImg = document.getElementById("modalMainImage");
+    if (mainImg) mainImg.src = nuevaSrc;
+
+    const thumbs = document.querySelectorAll(".modal-thumb");
+    thumbs.forEach(t => t.classList.remove("active"));
+    
+    if (thumbElement) {
+        thumbElement.classList.add("active");
+    } else {
+        const activeThumb = document.querySelector(`.modal-thumb[data-index="${index}"]`);
+        if (activeThumb) activeThumb.classList.add("active");
+    }
 }
 
-/* ========================================================================================================================
-                                            EVENTOS Y CARGA INICIAL
-   ======================================================================================================================== */
+// Nueva función de desplazamiento para la fila inferior de miniaturas
+function scrollThumbnails(direction) {
+    const container = document.getElementById("modalThumbnails");
+    if (!container) return;
+    
+    const scrollAmount = 200; // Píxeles que se desplazará en cada clic
+    container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth' // Desplazamiento animado suave
+    });
+}
 
-// Cerrar modal al hacer clic fuera de la caja blanca
-window.onclick = function(event) {
+// Mantenemos la navegación con teclado físico para cambiar la foto grande de arriba cómodamente
+function navigateModalImage(direction) {
+    if (currentProjectGallery.length <= 1) return;
+    currentImgIndex += direction;
+
+    if (currentImgIndex >= currentProjectGallery.length) currentImgIndex = 0;
+    else if (currentImgIndex < 0) currentImgIndex = currentProjectGallery.length - 1;
+
+    cambiarImagenPrincipal(null, currentImgIndex);
+    
+    // Auto-scrollear la miniatura activa en vista si se usan las flechas del teclado
+    const activeThumb = document.querySelector(`.modal-thumb[data-index="${currentImgIndex}"]`);
+    if (activeThumb) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+}
+
+// Evento global unificado para clics y cierre del modal de forma segura sin pisar al menú
+document.addEventListener('click', (e) => {
     const modal = document.getElementById('project-modal');
-    if (event.target == modal) {
+    if (modal && modal.style.display === 'block' && e.target === modal) {
         closeModal();
     }
-}
-
-// Cerrar modal con la tecla ESC
-document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape") closeModal();
 });
 
-// Al cargar la página
-window.onload = () => {
-    // 1. Dibujar todas las tarjetas
-    renderProjects();
-
-    // 2. Comprobar si venimos de otra página con un ID (ej: inicio)
-    const params = new URLSearchParams(window.location.search);
-    const projectId = params.get('id');
-    if (projectId && projectsData[projectId]) {
-        openModal(projectId);
+// Soporte teclado físico
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('project-modal');
+    if (modal && modal.style.display === 'block') {
+        if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowRight") navigateModalImage(1);
+        if (e.key === "ArrowLeft") navigateModalImage(-1);
     }
-};
+});

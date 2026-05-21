@@ -17,7 +17,7 @@
     cursor: pointer;
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    will-change: transform, box-shadow; /* Optimizó el rendimiento de renderizado */
+    will-change: transform, box-shadow;
 }
 
 .project-card img {
@@ -53,7 +53,7 @@
 }
 
 .project-card:hover {
-    transform: translateY(-6px); /* Quitamos el scale(1.02) para evitar desenfoques de imagen */
+    transform: translateY(-6px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
@@ -72,16 +72,15 @@
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: clamp(4px, 1.5vw, 15px);
-    color: var(--color-logo-dark); /* Color de respaldo para navegadores antiguos */
+    color: var(--color-logo-dark, #1a1a1a);
     line-height: 0.95;
     user-select: none;
 }
 
-/* Si el navegador soporta el trazo de texto, aplica el formato transparente moderno */
 @supports (-webkit-text-stroke: 1px black) {
     .bg-text-decor {
         color: transparent;
-        -webkit-text-stroke: 1px var(--color-logo-dark);
+        -webkit-text-stroke: 1px var(--color-logo-dark, #1a1a1a);
     }
 }
 
@@ -98,7 +97,7 @@
     height: 100%;
     background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px); /* Soporte para Safari en iOS */
+    -webkit-backdrop-filter: blur(15px);
     overflow-y: auto;
     animation: fadeIn 0.4s ease;
 }
@@ -113,16 +112,15 @@
     animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Botón Cerrar Fijo (Escritorio) */
 .close {
     position: absolute;
     top: 30px;
     right: 0px;
     font-size: 30px;
-    color: var(--color-logo-light);
+    color: var(--color-logo-light, #fff);
     cursor: pointer;
-    background-color: var(--color-logo-dark);
-    width: 44px; /* Cambiado a 44px (Estándar mínimo de accesibilidad móvil) */
+    background-color: var(--color-logo-dark, #1a1a1a);
+    width: 44px;
     height: 44px;
     display: flex;
     align-items: center;
@@ -130,7 +128,7 @@
     border-radius: 50%;
     z-index: 10001;
     transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-    line-height: 1; /* Estabiliza el centrado vertical del carácter × */
+    line-height: 1;
 }
 
 .close:hover { 
@@ -150,46 +148,117 @@
     background: #f9f9f9;
     border-radius: 20px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-header-img {
     width: 100%;
     height: auto;
-    max-height: 70vh;
+    max-height: 65vh;
     object-fit: contain;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     display: block;
+}
+
+/* ==========================================================================
+   CARRUSEL DE MINIATURAS CON FLECHAS FLOTANTES
+   ========================================================================== */
+.thumbnails-slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 50px; /* Margen para que las flechas no pisen las esquinas de las imágenes */
+    background: #f9f9f9;
+    margin-top: 10px;
 }
 
 .modal-thumbnails {
     display: flex;
-    gap: 15px;
-    padding: 20px;
+    gap: 12px;
+    padding: 20px 0;
     overflow-x: auto;
-    scrollbar-width: thin; /* Barra de scroll más fina para Firefox */
+    scroll-behavior: smooth;
+    width: 100%;
+    cursor: grab; /* Mano abierta por defecto en todo el área */
+    user-select: none;
+    
+    &::-webkit-scrollbar { display: none; }
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+.modal-thumbnails.grabbing,
+.modal-thumbnails.grabbing .modal-thumb {
+    cursor: grabbing !important; /* Forzamos el puño cerrado durante el arrastre */
+    scroll-behavior: auto;
 }
 
 .modal-thumb {
-    width: 70px;
-    height: 70px;
-    border-radius: 12px;
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
     opacity: 0.4;
-    transition: 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     filter: grayscale(100%);
-    cursor: pointer;
+    cursor: inherit; 
     object-fit: cover;
-    flex-shrink: 0; /* Evita que las miniaturas se deformen si hay muchas */
+    flex-shrink: 0;
+    border: 2px solid transparent;
+    pointer-events: auto;
+    -webkit-user-drag: none;
 }
 
 .modal-thumb.active, .modal-thumb:hover {
     opacity: 1;
     filter: grayscale(0%);
-    transform: scale(1.05);
+    transform: scale(1.02);
+    border-color: var(--color-logo-dark, #1a1a1a);
 }
 
-/* Info Derecha */
+/* Flechas Estilizadas Modernas */
+.thumb-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent; /* Sin fondo de color */
+    color: var(--color-logo-dark, #1a1a1a);
+    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+.thumb-arrow svg {
+    transition: stroke-width 0.2s ease;
+}
+.thumb-arrow:hover {
+    color: #000000;
+}
+.thumb-arrow:hover svg {
+    stroke-width: 2.5;
+}
+.thumb-arrow:active {
+    transform: translateY(-50%) scale(0.92);
+}
+
+.prev-thumb {
+    left: 10px;
+}
+
+.next-thumb {
+    right: 10px;
+}
+
+/* ==========================================================================
+   INFO DE PROYECTO (COLUMNA DERECHA)
+   ========================================================================== */
 .modal-info {
     position: sticky;
+    top: 40px;
 }
 
 .modal-info h2 {
@@ -247,15 +316,26 @@
     .modal-info h2 { font-size: 1.8rem; }
     .slider-intro { margin-top: 80px; }
     
-    /* Versión móvil optimizada, limpia y accesible con el pulgar */
     .close { 
-        position: fixed; /* Mantiene el botón siempre disponible para salir fácil */
+        position: fixed;
         top: 20px; 
-        right: 20px; /* Margen limpio respecto a la esquina de la pantalla */
-        width: 46px; /* Un pelín más grande para facilitar la pulsación táctil */
+        right: 20px;
+        width: 46px;
         height: 46px; 
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra suave para que contraste sobre las fotos */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
+
+    /* En móviles reducimos el padding lateral para ganar pantalla */
+    .thumbnails-slider-wrapper {
+        padding: 0 35px;
+    }
+    .thumb-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    .prev-thumb { left: 2px; }
+    .next-thumb { right: 2px; }
 }
 
 @media (max-width: 480px) {
