@@ -310,6 +310,20 @@ const projectsData = {
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779293350/IMG-20260520-WA0016_zmhmil.jpg'
         ]
     },
+
+    'vivienda-unifamiliar-hinojosa': {
+        title: 'Vivienda unifamiliar en Hinojosa de San Vicente',
+        desc: 'Dirección facultativa, coordinación de seguridad y salud y servicios de Project Manager en Hinojosa de San Vicente (Toledo).',
+        cost: '100.000€',
+        promotor: 'Particular',
+        mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779364480/file_0000000065d0720ab57db29cdfd82cb6_k5ihe3.png',
+        gallery: [
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779364480/file_0000000065d0720ab57db29cdfd82cb6_k5ihe3.png',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779364478/file_0000000076f8720aa923fad41079653a_jhjqtu.png',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779364479/file_000000009d1c71f48ec0c22f36d09dbe_zqv8xz.png',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779364479/file_00000000dbfc7246a7daa9254b7b9e0f_clvjvt.png'
+        ]
+    },
 };
 
 /* ========================================================================================================================
