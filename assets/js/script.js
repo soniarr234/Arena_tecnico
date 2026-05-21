@@ -291,11 +291,9 @@ const projectsData = {
         desc: 'Redacción de proyecto de rehabilitación de fachada singular en edificio con protección en Calle Jorge Juan (Madrid).',
         cost: '80.000€',
         promotor: 'Comunidad de propietarios',
-        mainImg: 'assets/img/img3_carrousel.webp',
+        mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779266798/img3_carrousel_loesic.png',
         gallery: [
-            'assets/img/img1_carrousel.webp',
-            'assets/img/img2_carrousel.webp',
-            'assets/img/img3_carrousel.webp'
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779266798/img3_carrousel_loesic.png'
         ]
     },
 
