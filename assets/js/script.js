@@ -403,7 +403,9 @@ function openModal(projectKey) {
                 <div class="project-specs">
                     <div class="spec-item"><span>Importe M.E.</span><strong>${project.cost}</strong></div>
                     <div class="spec-item"><span>Promotor</span><strong>${project.promotor}</strong></div>
-                    <div class="spec-item"><span>Contratista</span><strong>${project.contratista || 'No definido'}</strong></div>
+                    ${project.contratista ? `
+                        <div class="spec-item"><span>Contratista</span><strong>${project.contratista}</strong></div>
+                    ` : ''}
                 </div>
             </div>
         </div>
