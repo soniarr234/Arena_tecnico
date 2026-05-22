@@ -199,7 +199,7 @@ const projectsData = {
     'palacio-rincon': {
         title: 'Palacio El Rincón',
         desc: 'Dirección facultativa, coordinación de seguridad y Project Manager para obras de rehabilitación de Palacio El Ricón.',
-        cost: '5.000.000€',
+        cost: '2.500.000€',
         promotor: 'El Rincón Estate, S.L.',
         contratista: 'Antana',
         mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779262075/IMG-20260514-WA0002_likvxs.jpg',
@@ -291,9 +291,13 @@ const projectsData = {
         desc: 'Redacción de proyecto de rehabilitación de fachada singular en edificio con protección en Calle Jorge Juan (Madrid).',
         cost: '80.000€',
         promotor: 'Comunidad de propietarios',
-        mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779266798/img3_carrousel_loesic.png',
+        mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427150/IMG-20260521-WA0023_zqfmxz.jpg',
         gallery: [
-            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779266798/img3_carrousel_loesic.png'
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427150/IMG-20260521-WA0023_zqfmxz.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779266798/img3_carrousel_loesic.png',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427149/IMG-20260521-WA0022_mil0nr.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427149/IMG-20260521-WA0021_fbw6wj.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427150/IMG-20260521-WA0020_pi1vss.jpg'
         ]
     },
 
@@ -322,6 +326,38 @@ const projectsData = {
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779364478/file_0000000076f8720aa923fad41079653a_jhjqtu.png',
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779364479/file_000000009d1c71f48ec0c22f36d09dbe_zqv8xz.png',
             'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779364479/file_00000000dbfc7246a7daa9254b7b9e0f_clvjvt.png'
+        ]
+    },
+
+    'vivienda-unifamiliar-hinojosa-toledo': {
+        title: 'Vivienda unifamiliar en Hinojosa de San Vicente',
+        desc: 'Dirección facultativa, coordinación de seguridad y salud y servicios de Project Manager en Hinojosa de San Vicente (Toledo).',
+        cost: '300.000€',
+        promotor: 'Particular',
+        mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427171/IMG-20260521-WA0030_xfrxol.jpg',
+        gallery: [
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427171/IMG-20260521-WA0030_xfrxol.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427170/IMG-20260521-WA0029_o9fqlg.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427171/IMG-20260521-WA0033_lrrs9w.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427172/IMG-20260521-WA0032_uj6qkk.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427172/IMG-20260521-WA0035_x9fyno.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427172/IMG-20260521-WA0035_x9fyno.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427172/IMG-20260521-WA0034_z1aug8.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427171/IMG-20260521-WA0031_t32zbh.jpg'
+        ]
+    },
+
+    'reforma-benidorm': {
+        title: 'Vivienda unifamiliar en Hinojosa de San Vicente',
+        desc: 'Dirección facultativa, coordinación de seguridad y salud y servicios de Project Manager en Benidorm.',
+        cost: '150.000€',
+        promotor: 'Particular',
+        mainImg: 'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427200/IMG-20260521-WA0018_ezxkb9.jpg',
+        gallery: [
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427200/IMG-20260521-WA0018_ezxkb9.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427200/IMG-20260521-WA0019_jlrfuk.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427200/IMG-20260521-WA0017_ht8fql.jpg',
+            'https://res.cloudinary.com/djeqw1kqi/image/upload/q_auto/f_auto/v1779427200/IMG-20260521-WA0016_xdlqtt.jpg'
         ]
     },
 };
@@ -401,7 +437,7 @@ function openModal(projectKey) {
                 <h2>${project.title}</h2>
                 <p>${project.desc}</p>
                 <div class="project-specs">
-                    <div class="spec-item"><span>Importe M.E.</span><strong>${project.cost}</strong></div>
+                    <div class="spec-item"><span>PEM</span><strong>${project.cost}</strong></div>
                     <div class="spec-item"><span>Promotor</span><strong>${project.promotor}</strong></div>
                     ${project.contratista ? `
                         <div class="spec-item"><span>Contratista</span><strong>${project.contratista}</strong></div>
