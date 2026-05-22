@@ -98,7 +98,7 @@
     background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    overflow-y: auto;
+    overflow-y: scroll;
     animation: fadeIn 0.4s ease;
 }
 
@@ -116,24 +116,45 @@
     position: absolute;
     top: 30px;
     right: 0px;
-    font-size: 30px;
-    color: var(--color-logo-light, #fff);
+    width: 50px;
+    height: 50px;
     cursor: pointer;
-    background-color: var(--color-logo-dark, #1a1a1a);
-    width: 44px;
-    height: 44px;
+    background-color: transparent; /* Eliminamos el fondo de círculo oscuro */
+    z-index: 10001;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); /* Transición más fluida */
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    z-index: 10001;
-    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-    line-height: 1;
 }
 
+/* Creamos las líneas finas de la cruz */
+.close::before,
+.close::after {
+    content: '';
+    position: absolute;
+    width: 28px; /* Largo de la línea */
+    height: 1px;  /* Grosor ultra fino premium */
+    background-color: var(--color-logo-dark, #1a1a1a); /* Color adaptado a tu paleta */
+    transition: background-color 0.3s ease;
+}
+
+/* Cruzamos las líneas */
+.close::before {
+    transform: rotate(45deg);
+}
+
+.close::after {
+    transform: rotate(-45deg);
+}
+
+/* Comportamiento al pasar el ratón (Hover) */
 .close:hover { 
-    color: #fff; 
-    transform: rotate(90deg);
+    transform: rotate(135deg); /* Gira un cuarto de vuelta extra de forma espectacular */
+}
+
+.close:hover::before,
+.close:hover::after {
+    background-color: #999; /* Suaviza el color al interactuar */
 }
 
 /* Layout 2 Columnas */
@@ -321,8 +342,7 @@
         top: 20px; 
         right: 20px;
         width: 46px;
-        height: 46px; 
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        height: 46px;
     }
 
     /* En móviles reducimos el padding lateral para ganar pantalla */
