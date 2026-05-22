@@ -21,7 +21,7 @@
     gap: 30px;
 }
 .nav-links a {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-dark);
     transition: color var(--transition);
     position: relative;

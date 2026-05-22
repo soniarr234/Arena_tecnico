@@ -59,12 +59,13 @@
 
 .slider-intro {
     text-align: center;
-    padding: 60px 0;
+    padding: 110px 10% 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
 }
 
 .bg-text-decor {

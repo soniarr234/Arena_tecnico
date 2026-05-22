@@ -1,0 +1,206 @@
+.arena-services-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px 24px 80px 24px;
+    background-color: #ffffff;
+}
+
+/* --- CABECERA --- */
+.arena-main-header {
+    padding: 110px 10% 80px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.arena-subtitle {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #888888;
+    margin-bottom: 14px;
+}
+
+.arena-main-header h1 {
+    font-size: 3.2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+/* --- DISEÑO EN COLUMNAS ASIMÉTRICAS --- */
+.arena-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 60px;
+    margin-bottom: 100px;
+}
+.arena-section:first-of-type {
+    border-top: none;
+    padding-top: 40px; /* Ajuste sutil opcional de espaciado al no tener borde */
+}
+
+/* Lado izquierdo fijo con efecto Sticky */
+.section-meta {
+    position: sticky;
+    top: 120px; /* Se queda quieto debajo del navbar al hacer scroll */
+    height: max-content;
+}
+
+.section-number {
+    display: block;
+    font-size: 4rem;
+    font-weight: 100;
+    line-height: 1;
+    color: #cccccc;
+    margin-bottom: 12px;
+}
+
+.section-meta h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: #1a1a1a;
+}
+
+/* Lado derecho con las filas */
+.section-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- FILAS INTERACTIVAS (ELIMINA LO SOSO) --- */
+.service-row {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 30px 10px;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+    border-radius: 4px;
+}
+
+/* Animación de entrada al pasar el ratón por encima de la fila */
+.service-row:hover {
+    background-color: #fafafa;
+    padding-left: 20px; /* Desplazamiento orgánico hacia la derecha */
+}
+
+/* Cabecera interna de cada servicio */
+.service-title-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    position: relative;
+}
+
+.service-row h3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.service-row p {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: #666666;
+    max-width: 620px;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+/* El texto se oscurece un poco para mejorar la lectura al hacer hover */
+.service-row:hover p {
+    color: #333333;
+}
+
+/* --- BOTÓN FLOTANTE INTERACTIVO con Iconify --- */
+.service-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    color: #888888;
+    text-decoration: none;
+    opacity: 0;
+    transform: scale(0.85) rotate(-45deg);
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* El botón aparece de forma fluida y rota al pasar el ratón sobre la fila entera */
+.service-row:hover .service-action-btn {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    border-color: #1a1a1a;
+    color: #1a1a1a;
+}
+
+/* Efecto hover individual sobre el propio botón */
+.service-action-btn:hover {
+    background-color: #1a1a1a;
+    color: #ffffff !important;
+}
+
+.service-action-btn .iconify {
+    font-size: 1.15rem;
+}
+
+/* --- RESPONSIVE PARA DISPOSITIVOS MÓVILES --- */
+@media (max-width: 768px) {
+    .arena-services-wrapper {
+        padding: 80px 24px 50px 24px;
+    }
+
+    .arena-main-header{
+        margin-top: 80px;
+    }
+
+    .arena-main-header h1 {
+        font-size: 2.3rem;
+    }
+
+    .arena-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+    .arena-section:first-of-type {
+        padding-top: 0px;
+    }
+
+    .section-meta {
+        position: relative;
+        top: 0;
+    }
+
+    .section-number {
+        font-size: 3rem;
+        margin-bottom: 4px;
+    }
+
+    .service-row {
+        padding: 20px 5px;
+    }
+
+    .service-row:hover {
+        padding-left: 5px;
+        background-color: transparent;
+    }
+
+    /* En móviles el botón está siempre visible de forma sutil */
+    .service-action-btn {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
