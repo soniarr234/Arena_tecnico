@@ -348,7 +348,7 @@ const projectsData = {
     },
 
     'reforma-benidorm': {
-        title: 'Vivienda unifamiliar en Hinojosa de San Vicente',
+        title: 'Reforma interior de apartamento en Benidorm',
         desc: 'Dirección facultativa, coordinación de seguridad y salud y servicios de Project Manager en Benidorm.',
         cost: '150.000€',
         promotor: 'Particular',
