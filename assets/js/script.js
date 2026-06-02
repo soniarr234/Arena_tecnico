@@ -408,8 +408,18 @@ function openModal(projectKey) {
     modalBody.innerHTML = `
         <div class="modal-body-wrapper">
             <div class="modal-image-container">
-                <!-- Foto principal limpia sin flechas -->
-                <img src="${currentProjectGallery[0]}" class="modal-header-img" id="modalMainImage" alt="${project.title}">
+                <!-- Foto principal -->
+                <div class="main-image-wrapper">
+                    <button class="main-arrow prev-main" id="prevMainBtn" onclick="cambiarImagenPrincipalFlecha(-1); event.stopPropagation();">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+
+                    <img src="${currentProjectGallery[0]}" class="modal-header-img" id="modalMainImage" alt="${project.title}">
+                    
+                    <button class="main-arrow next-main" id="nextMainBtn" onclick="cambiarImagenPrincipalFlecha(1); event.stopPropagation();">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
                 
                 <!-- Las flechas ahora envuelven horizontalmente al contenedor de miniaturas de abajo -->
                 <div class="thumbnails-slider-wrapper">
@@ -428,7 +438,7 @@ function openModal(projectKey) {
                     </div>
                     
                     <button class="thumb-arrow next-thumb" id="nextThumbBtn" onclick="scrollThumbnails(1); event.stopPropagation();">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </button>
                 </div>
             </div>
@@ -449,6 +459,60 @@ function openModal(projectKey) {
 
     modal.style.display = "block";
     document.body.style.overflow = "hidden";
+
+    // LÓGICA DE ARRASTRE (DRAG TO SCROLL) PARA LAS MINIATURAS
+    const slider = document.getElementById("modalThumbnails");
+    const prevThumbBtn = document.getElementById("prevThumbBtn");
+    const nextThumbBtn = document.getElementById("nextThumbBtn");
+    const sliderWrapper = document.querySelector(".thumbnails-slider-wrapper");
+
+    if (slider && prevThumbBtn && nextThumbBtn) {
+        // Ejecutamos la lógica tras un micro-milisegundo para que el navegador renderice los anchos reales
+        setTimeout(() => {
+            if (slider.scrollWidth <= slider.clientWidth) {
+                prevThumbBtn.style.display = "none";
+                nextThumbBtn.style.display = "none";
+                slider.classList.add("no-scroll"); // Añade clase para centrar las fotos
+                if (sliderWrapper) sliderWrapper.style.padding = "0 20px"; // Reduce padding innecesario
+            }
+        }, 50);
+
+        // LÓGICA DE ARRASTRE (DRAG TO SCROLL) PARA LAS MINIATURAS
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            if (slider.scrollWidth <= slider.clientWidth) return; // Desactiva arrastre si no hace falta
+            isDown = true;
+            slider.classList.add('grabbing');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('grabbing');
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('grabbing');
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 1.5; 
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        const thumbImages = slider.querySelectorAll('.modal-thumb');
+        thumbImages.forEach(img => {
+            img.addEventListener('dragstart', (e) => e.preventDefault());
+        });
+    }
 }
 
 function closeModal() {
@@ -491,6 +555,37 @@ function scrollThumbnails(direction) {
         left: direction * scrollAmount,
         behavior: 'smooth' // Desplazamiento animado suave
     });
+}
+
+function cambiarImagenPrincipalFlecha(direccion) {
+    // 1. Buscamos la miniatura que tiene actualmente la clase 'active'
+    const thumbnails = document.querySelectorAll('.modal-thumb');
+    if (!thumbnails.length) return;
+
+    let currentIndex = 0;
+    thumbnails.forEach((thumb, index) => {
+        if (thumb.classList.contains('active')) {
+            currentIndex = index;
+        }
+    });
+
+    // 2. Calculamos el índice de la nueva imagen de forma cíclica
+    let newIndex = currentIndex + direccion;
+    if (newIndex < 0) {
+        newIndex = thumbnails.length - 1; // Si va hacia atrás del principio, va al final
+    } else if (newIndex >= thumbnails.length) {
+        newIndex = 0; // Si pasa del final, vuelve al principio
+    }
+
+    // 3. Simulamos el click en la miniatura correspondiente para aprovechar tu función existente
+    const nextThumb = thumbnails[newIndex];
+    if (nextThumb) {
+        // Ejecuta tu función que cambia la foto principal y actualiza la miniatura activa
+        cambiarImagenPrincipal(nextThumb, newIndex);
+        
+        // OPCIONAL: Hace que el scroll de abajo acompañe visualmente a la foto seleccionada
+        nextThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
 }
 
 // Mantenemos la navegación con teclado físico para cambiar la foto grande de arriba cómodamente
