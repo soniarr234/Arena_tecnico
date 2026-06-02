@@ -174,12 +174,65 @@
     flex-direction: column;
 }
 
+/* ==========================================================================
+   FLECHAS FLOTANTES DE LA IMAGEN PRINCIPAL (AÑADIDO)
+   ========================================================================== */
+
+/* Contenedor de la imagen principal para que las flechas se posicionen respecto a él */
+.main-image-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+    padding: 30px 80px 10px 80px; /* Margen para las flechas en PC */
+    box-sizing: border-box;
+}
+
+/* Flechas principales superiores: Ahora son botones flotantes premium circulares */
+.main-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--color-logo-dark, #1a1a1a);
+    cursor: pointer;
+    z-index: 10;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;                    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; 
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.main-arrow:focus {
+    outline: none;
+}
+
+/* Efecto hover interactivo: Se elevan ligeramente y cambian al tono rojo acento */
+.main-arrow:hover {
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.prev-main {
+    left: 20px;
+}
+
+.next-main {
+    right: 20px;
+}
+
 .modal-header-img {
     width: 100%;
     height: auto;
     max-height: 65vh;
     object-fit: contain;
-    padding: 20px 20px 0 20px;
+    padding: 0; 
     display: block;
 }
 
@@ -213,6 +266,10 @@
 .modal-thumbnails.grabbing .modal-thumb {
     cursor: grabbing !important; /* Forzamos el puño cerrado durante el arrastre */
     scroll-behavior: auto;
+}
+.modal-thumbnails.no-scroll {
+    justify-content: center;
+    cursor: default; /* Quita la mano de arrastre ya que no hace falta */
 }
 
 .modal-thumb {
@@ -346,6 +403,14 @@
         height: 46px;
     }
 
+    .main-arrow {
+        display: none !important;
+    }
+    .main-image-wrapper {
+        padding: 20px 20px 0 20px;
+    }
+
+
     /* En móviles reducimos el padding lateral para ganar pantalla */
     .thumbnails-slider-wrapper {
         padding: 0 35px;
@@ -360,5 +425,5 @@
 }
 
 @media (max-width: 480px) {
-    .spec-item { flex-direction: column; gap: 5px; }
+    .spec-item {flex-direction: column; gap: 5px; }
 }
